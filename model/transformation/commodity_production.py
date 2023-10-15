@@ -1,7 +1,11 @@
-import reflex as rx
+from dataclasses import dataclass
+from datetime import datetime
+from enum import Enum
+from typing import List, Optional
 
 
-class ProductionStructure(rx.Model, table=True):
+@dataclass
+class ProductionStructure():
     economic_complexity_index: float
     agriculture_share: float
     industry_share: float
@@ -12,7 +16,8 @@ class ProductionStructure(rx.Model, table=True):
     construction_share: float
 
 
-class InvestmentStructure(rx.Model, table=True):
+@dataclass
+class InvestmentStructure():
     foreign_direct_investment_in_gdp: float
     rnd_investment_in_gdp: float
     infrastructure_investment_in_gdp: float
@@ -21,7 +26,8 @@ class InvestmentStructure(rx.Model, table=True):
     services_investment_in_gdp: float
 
 
-class EmploymentStructure(rx.Model, table=True):
+@dataclass
+class EmploymentStructure():
     agriculture_employment: float
     industry_employment: float
     services_employment: float
@@ -33,19 +39,22 @@ class EmploymentStructure(rx.Model, table=True):
     unpaid_family_worker_share: float
 
 
-class InternalTradeStructure(rx.Model, table=True):
+@dataclass
+class InternalTradeStructure():
     trade_penetration: float
     commercial_employment: float
 
 
-class ForeignTradeStructure(rx.Model, table=True):
+@dataclass
+class ForeignTradeStructure():
     imports_in_gdp: float
     exports_in_gdp: float
     trade_diversification: float
     number_of_trade_partners: float
 
 
-class CommodityProduction(rx.Model):
+@dataclass
+class CommodityProduction():
     production_structure: ProductionStructure
     investment_structure: InvestmentStructure
     employment_structure: EmploymentStructure

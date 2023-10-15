@@ -1,12 +1,17 @@
-import reflex as rx
+from dataclasses import dataclass
+from datetime import datetime
+from enum import Enum
+from typing import List, Optional
 
 
-class EconomicGrowth(rx.Model, table=True):
+@dataclass
+class EconomicGrowth():
     gdp_growth: float
     gni_growth: float
 
 
-class CapitalFormation(rx.Model, table=True):
+@dataclass
+class CapitalFormation():
     gross_capital_formation: float
     private_gross_capital_formation: float
     gross_fixed_capital_formation: float
@@ -15,7 +20,8 @@ class CapitalFormation(rx.Model, table=True):
     annual_rate_of_profit_of_corporations: float
 
 
-class CapitalEndowment(rx.Model, table=True):
+@dataclass
+class CapitalEndowment():
     gdp_per_capita: float
     per_adult_national_wealth: float
     wealth_per_capita: float
@@ -24,7 +30,8 @@ class CapitalEndowment(rx.Model, table=True):
     capital_per_capita: float
 
 
-class ProfitStructure(rx.Model, table=True):
+@dataclass
+class ProfitStructure():
     profits_of_corporations_in_gdp: float
     profits_of_state_in_gdp: float
     share_of_profits_in_industry: float
@@ -33,14 +40,16 @@ class ProfitStructure(rx.Model, table=True):
     share_of_profits_in_financial_services: float
 
 
-class IntellectualProperty(rx.Model, table=True):
+@dataclass
+class IntellectualProperty():
     patents_per_capita: float
     trademarks_per_capita: float
     patent_applications_per_capita: float
     trademark_applications_per_capita: float
 
 
-class Accumulation(rx.Model):
+@dataclass
+class Accumulation():
     economic_growth: EconomicGrowth
     capital_formation: CapitalFormation
     capital_endowment: CapitalEndowment

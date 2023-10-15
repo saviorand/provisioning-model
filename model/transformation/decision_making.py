@@ -5,7 +5,7 @@ from typing import List, Optional
 
 
 @dataclass
-class PoliticsAndState:
+class Government:
     government_effectiveness_index: float
     government_spending_in_gdp: float
     one_party_system: bool
@@ -81,15 +81,33 @@ class ParticipationInWars:
     military_expenditure_in_gdp: float
 
 
+# Aggregates
+
 @dataclass
-class DecisionMaking:
-    politics_and_state: PoliticsAndState
+class PoliticsAndPower:
+    government: Government
     media_structure: MediaStructure
     corporate_power: CorporatePower
+
+
+@dataclass
+class InequalityAndCrime:
     economic_inequality: EconomicInequality
     gender_inequality: GenderInequality
     ethnic_inequality: EthnicInequality
     crime_and_despair: CrimeAndDespair
+
+
+@dataclass
+class ForeignRelations:
     participation_in_global_institutions: ParticipationInGlobalInstitutions
     participation_in_regional_institutions: ParticipationInRegionalInstitutions
     participation_in_wars: ParticipationInWars
+
+
+# Final aggregate
+@dataclass
+class DecisionMaking:
+    politics_and_power: PoliticsAndPower
+    inequality_and_crime: InequalityAndCrime
+    foreign_relations: ForeignRelations

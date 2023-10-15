@@ -42,7 +42,7 @@ class FinanceAndTrade:
 
 
 @dataclass
-class SectoralComposition:
+class Sectors:
     agriculture: Agriculture
     industry: Industry
     services: Services

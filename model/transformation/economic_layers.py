@@ -44,7 +44,7 @@ class Foundational:
 
 
 @dataclass
-class LayerComposition:
+class Layers:
     core: Core
     foundational: Foundational
     overlooked: Overlooked

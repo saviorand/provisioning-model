@@ -4,11 +4,9 @@ from enum import Enum
 from typing import List, Optional
 
 
-# internal:
-# energy use
-# energy sources
-# energy efficiency
-
 @dataclass
-class EnergyConsumption:
-    energy_use: float
+class ResourceConsumption:
+    wood: float
+    water: float
+    metal: float
+    rare_earth: float

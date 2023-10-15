@@ -1,7 +1,4 @@
 from dataclasses import dataclass
-from datetime import datetime
-from enum import Enum
-from typing import List, Optional
 
 
 @dataclass
@@ -21,16 +18,6 @@ class CapitalFormation:
 
 
 @dataclass
-class CapitalEndowment:
-    gdp_per_capita: float
-    per_adult_national_wealth: float
-    wealth_per_capita: float
-    wealth_income_ratio: float
-    capital_per_worker: float
-    capital_per_capita: float
-
-
-@dataclass
 class ProfitStructure:
     profits_of_corporations_in_gdp: float
     profits_of_state_in_gdp: float
@@ -41,9 +28,7 @@ class ProfitStructure:
 
 
 @dataclass
-class IntellectualProperty:
-    patents_per_capita: float
-    trademarks_per_capita: float
+class IntellectualPropertyGrowth:
     patent_applications_per_capita: float
     trademark_applications_per_capita: float
 
@@ -52,6 +37,5 @@ class IntellectualProperty:
 class Accumulation:
     economic_growth: EconomicGrowth
     capital_formation: CapitalFormation
-    capital_endowment: CapitalEndowment
     profit_structure: ProfitStructure
-    intellectual_property: IntellectualProperty
+    intellectual_property: IntellectualPropertyGrowth

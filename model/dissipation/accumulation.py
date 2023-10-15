@@ -5,13 +5,13 @@ from typing import List, Optional
 
 
 @dataclass
-class EconomicGrowth():
+class EconomicGrowth:
     gdp_growth: float
     gni_growth: float
 
 
 @dataclass
-class CapitalFormation():
+class CapitalFormation:
     gross_capital_formation: float
     private_gross_capital_formation: float
     gross_fixed_capital_formation: float
@@ -21,7 +21,7 @@ class CapitalFormation():
 
 
 @dataclass
-class CapitalEndowment():
+class CapitalEndowment:
     gdp_per_capita: float
     per_adult_national_wealth: float
     wealth_per_capita: float
@@ -31,7 +31,7 @@ class CapitalEndowment():
 
 
 @dataclass
-class ProfitStructure():
+class ProfitStructure:
     profits_of_corporations_in_gdp: float
     profits_of_state_in_gdp: float
     share_of_profits_in_industry: float
@@ -41,7 +41,7 @@ class ProfitStructure():
 
 
 @dataclass
-class IntellectualProperty():
+class IntellectualProperty:
     patents_per_capita: float
     trademarks_per_capita: float
     patent_applications_per_capita: float
@@ -49,7 +49,7 @@ class IntellectualProperty():
 
 
 @dataclass
-class Accumulation():
+class Accumulation:
     economic_growth: EconomicGrowth
     capital_formation: CapitalFormation
     capital_endowment: CapitalEndowment

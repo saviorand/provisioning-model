@@ -5,7 +5,7 @@ from typing import List, Optional
 
 
 @dataclass
-class ProductionStructure():
+class ProductionStructure:
     economic_complexity_index: float
     agriculture_share: float
     industry_share: float
@@ -17,7 +17,7 @@ class ProductionStructure():
 
 
 @dataclass
-class InvestmentStructure():
+class InvestmentStructure:
     foreign_direct_investment_in_gdp: float
     rnd_investment_in_gdp: float
     infrastructure_investment_in_gdp: float
@@ -27,7 +27,7 @@ class InvestmentStructure():
 
 
 @dataclass
-class EmploymentStructure():
+class EmploymentStructure:
     agriculture_employment: float
     industry_employment: float
     services_employment: float
@@ -40,13 +40,13 @@ class EmploymentStructure():
 
 
 @dataclass
-class InternalTradeStructure():
+class InternalTradeStructure:
     trade_penetration: float
     commercial_employment: float
 
 
 @dataclass
-class ForeignTradeStructure():
+class ForeignTradeStructure:
     imports_in_gdp: float
     exports_in_gdp: float
     trade_diversification: float
@@ -54,7 +54,7 @@ class ForeignTradeStructure():
 
 
 @dataclass
-class CommodityProduction():
+class CommodityProduction:
     production_structure: ProductionStructure
     investment_structure: InvestmentStructure
     employment_structure: EmploymentStructure

@@ -8,19 +8,19 @@ from typing import List, Optional
 # natural endowment: land, water, climate, minerals, energy
 # artificial endowment: urbanization, where is capital located, infrastructure, education
 @dataclass
-class Urbanization():
+class Urbanization:
     urbanization_rate: float
     urbanization_level: float
 
 
 @dataclass
-class NaturalResources():
+class NaturalResources:
     land_area: float
     rare_minerals_per_cap: float
     clean_water_per_cap: float
 
 
 @dataclass
-class InitialConditions():
+class InitialConditions:
     natural_resources: NaturalResources
     urbanization: Urbanization

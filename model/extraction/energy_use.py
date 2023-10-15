@@ -10,5 +10,5 @@ from typing import List, Optional
 # energy efficiency
 
 @dataclass
-class EnergyConsumption():
+class EnergyConsumption:
     energy_use: float

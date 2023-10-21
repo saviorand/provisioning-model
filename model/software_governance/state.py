@@ -25,3 +25,8 @@ class CorporatePower:
 class Commercialization:
     trade_penetration: float
     commercial_employment: float
+
+
+@dataclass
+class LegalSystem:
+    pass

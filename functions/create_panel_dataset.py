@@ -54,71 +54,19 @@ def remove_cols_with_few_observations(df, threshold_country=75, threshold_year=7
     return updated_df
 
 
-def create_outcome_summaries(
-    df,
-    outcome_variables,
-    filter_year=None,
-    index_offset=3,
-    outcome_index_offset=17,
-    remove_cols_func=None,
-    remove_outliers_func=None,
-):
-    """
-    Create summaries for each outcome variable in a list.
+def create_outcome_df_with_metadata(df, outcome, index_offset, outcome_index_offset):
+    summary = {}
 
-    Parameters:
-        df (pd.DataFrame): The DataFrame containing the data.
-        outcome_variables (list): List of outcome variables to summarize.
-        filter_year (int): The year to filter the DataFrame by for cross-sectional analysis. Default is None.
-        index_offset (int): The number of columns to skip from the beginning to exclude index variables
-        outcome_index_offset (int): The number of columns to take from the last column to exclude outcomes
-        remove_cols_func (function): Function to remove columns with few observations. Default is None.
-        remove_outliers_func (function): Function to remove outliers. Default is None.
+    # Store information in the summary dictionary
+    summary[outcome + "_df"] = df
+    summary[outcome + "_indicators"] = df.iloc[
+                                       :, index_offset: len(df.columns) - outcome_index_offset
+                                       ]
+    summary[outcome + "_outcome"] = df[outcome]
+    summary[outcome + "_countries"] = df["Country.Name"].unique()
+    summary[outcome + "_variables"] = df.columns[index_offset:]
 
-    Returns:
-        list: A list of dictionaries containing summaries for each outcome variable.
-    """
-
-    outcome_summaries = []
-
-    # Filter the DataFrame by the specified year if provided
-    if filter_year is not None:
-        df = df[df["Year"] == filter_year]
-
-    for outcome in outcome_variables:
-        outcome_summary = {}
-
-        # Drop rows where the outcome variable is NaN
-        outcome_df = df.dropna(subset=[outcome])
-
-        # Remove columns with few observations if a function is provided
-        if remove_cols_func:
-            outcome_df_no_few_obs = remove_cols_func(outcome_df)
-        else:
-            outcome_df_no_few_obs = outcome_df
-
-        # Remove outliers if a function is provided
-        if remove_outliers_func:
-            outcome_df_no_outliers = remove_outliers_func(outcome_df_no_few_obs)
-        else:
-            outcome_df_no_outliers = outcome_df_no_few_obs
-
-        # Store various pieces of information in the summary dictionary
-        outcome_summary[outcome + "_df"] = outcome_df_no_outliers
-        outcome_summary[outcome + "_indicators"] = outcome_df_no_outliers.iloc[
-            :, index_offset : len(outcome_df_no_outliers.columns) - outcome_index_offset
-        ]
-        outcome_summary[outcome + "_outcome"] = outcome_df_no_outliers[outcome]
-        outcome_summary[outcome + "_countries"] = outcome_df_no_outliers[
-            "Country.Name"
-        ].unique()
-        outcome_summary[outcome + "_variables"] = outcome_df_no_outliers.columns[
-            index_offset:
-        ]
-
-        outcome_summaries.append(outcome_summary)
-
-    return outcome_summaries
+    return summary
 
 
 def remove_outliers_iqr(df, factor=1.5):
@@ -132,10 +80,12 @@ def remove_outliers_iqr(df, factor=1.5):
     Returns:
         pd.DataFrame: A new DataFrame with outliers removed.
     """
+    # only apply to float64 columns
+    df_float = df.select_dtypes(include=["float64"])
 
     # Calculate Q1, Q3, and IQR for each column
-    Q1 = df.quantile(0.25)
-    Q3 = df.quantile(0.75)
+    Q1 = df_float.quantile(0.25)
+    Q3 = df_float.quantile(0.75)
     IQR = Q3 - Q1
 
     # Define bounds for the outliers
@@ -143,6 +93,9 @@ def remove_outliers_iqr(df, factor=1.5):
     upper_bound = Q3 + factor * IQR
 
     # Remove outliers
-    df_filtered = df[~((df < lower_bound) | (df > upper_bound)).any(axis=1)]
+    df_filtered_float = df_float[~((df_float < lower_bound) | (df_float > upper_bound)).any(axis=1)]
+
+    # return the original df with the outliers removed
+    df_filtered = df[df_float.index.isin(df_filtered_float.index)]
 
     return df_filtered

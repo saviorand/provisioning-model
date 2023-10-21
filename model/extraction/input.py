@@ -19,3 +19,13 @@ class Employment:
     wage_worker_share: float
     self_employed_share: float
     unpaid_family_worker_share: float
+
+
+@dataclass
+class ResourceUse:
+    pass
+
+
+@dataclass
+class CapitalUse:
+    pass

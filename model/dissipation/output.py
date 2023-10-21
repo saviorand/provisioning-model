@@ -12,6 +12,16 @@ class CapitalOutput:
 
 
 @dataclass
+class NatureOutput:
+    pass
+
+
+@dataclass
+class EnergyOutput:
+    pass
+
+
+@dataclass
 class NeedSatisfaction(PeopleOutput):
     food: float
     water: float
@@ -23,6 +33,7 @@ class Accumulation(CapitalOutput):
     gdp_growth: float
     gni_growth: float
     gross_capital_formation: float
+    corporate_profits_in_gdp: float
     patent_applications_per_capita: float
     trademark_applications_per_capita: float
 
@@ -37,3 +48,15 @@ class HumanDevelopment(PeopleOutput):
     mobile_subscriptions_per_capita: float
     press_freedom_index: float
     happiness_index: float
+
+
+@dataclass
+class ImpactOnEcosystems(NatureOutput):
+    pass
+
+
+@dataclass
+class WasteAndPollution(NatureOutput):
+    volume: float
+    structure: float
+    recycling_rate: float

@@ -21,8 +21,7 @@ def panel_cross_validation(models, model_names, x, y):
     - best_model: the best model
     - results: a dictionary containing the results of all evaluated models
     """
-    candidate_splits = [5]
-    # do this initially [2, 3, 5, 7, 10, 15]
+    candidate_splits = [2, 3, 5, 7, 10, 15]
     results = {}
 
     best_model = None

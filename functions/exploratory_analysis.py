@@ -87,9 +87,9 @@ def plot_summary_variable(summary_df: pd.DataFrame, summary_variable) -> None:
     plt.show()
 
 
-def plot_outliers(df, variable):
+def plot_outliers(df):
     """
-    Create a boxplot of a given variable for a given list of countries.
+    Create a boxplot of a given dataframe.
 
     Parameters:
         df (pd.DataFrame): Input DataFrame with observations for multiple variables,
@@ -115,7 +115,7 @@ def plot_correlation_matrix(df, threshold=0.8, annot=False):
     corr = df.corr()
 
     # Determine the order of the columns based on hierarchical clustering
-    corr_condensed = 1 - corr.abs()  # Convert correlation to distance
+    corr_condensed = -corr.abs()  # Convert correlation to distance
     linkage = sns.clustermap(corr_condensed, method='average', metric='euclidean', figsize=(1, 1),
                              cbar_pos=None).dendrogram_col.linkage
     plt.close()  # Close the clustermap plot

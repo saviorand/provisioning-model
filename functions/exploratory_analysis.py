@@ -5,7 +5,7 @@ import seaborn as sns
 
 
 def create_summary_df(
-    df: pd.DataFrame, countries: list, variables: list
+        df: pd.DataFrame, countries: list, variables: list
 ) -> pd.DataFrame:
     """
     Create a summary dataframe for a given dataframe describing the number of observations, the first and last year, the number of countries and the number of years for each variable.
@@ -114,31 +114,41 @@ def plot_correlation_matrix(df, threshold=0.8, annot=False):
     # Compute the correlation matrix
     corr = df.corr()
 
+    # Determine the order of the columns based on hierarchical clustering
+    corr_condensed = 1 - corr.abs()  # Convert correlation to distance
+    linkage = sns.clustermap(corr_condensed, method='average', metric='euclidean', figsize=(1, 1),
+                             cbar_pos=None).dendrogram_col.linkage
+    plt.close()  # Close the clustermap plot
+    order = sns.clustermap(corr, row_linkage=linkage, col_linkage=linkage, figsize=(1, 1),
+                           cbar_pos=None).dendrogram_col.reordered_ind
+    plt.close()  # Close the clustermap plot
+    sorted_corr = corr.iloc[order, order]
+
     # Create a mask to hide the upper triangle of the correlation matrix (since it's symmetric)
-    mask = np.triu(np.ones_like(corr, dtype=bool))
+    mask = np.triu(np.ones_like(sorted_corr, dtype=bool))
 
     # Plot the heatmap with the mask
     plt.figure(figsize=(12, 8))
-    sns.heatmap(corr, mask=mask, cmap="coolwarm", annot=annot, fmt=".2f")
+    sns.heatmap(sorted_corr, mask=mask, cmap="coolwarm", annot=annot, fmt=".2f")
     plt.title("Correlation Matrix")
     plt.show()
 
     # Identify and print names of columns with high correlation
     high_corr_pairs = []
-    for i in range(len(corr.columns)):
+    for i in range(len(sorted_corr.columns)):
         for j in range(i):
-            if abs(corr.iloc[i, j]) > threshold:
+            if abs(sorted_corr.iloc[i, j]) > threshold:
                 high_corr_pairs.append(
-                    (corr.columns[i], corr.columns[j], corr.iloc[i, j])
+                    (sorted_corr.columns[i], sorted_corr.columns[j], sorted_corr.iloc[i, j])
                 )
-                print(f"{corr.columns[i]} and {corr.columns[j]}: {corr.iloc[i, j]:.2f}")
+                # print(f"{sorted_corr.columns[i]} and {sorted_corr.columns[j]}: {sorted_corr.iloc[i, j]:.2f}")
 
     return high_corr_pairs
 
 
 def plot_histograms(df, cols, bins=50):
     """
-    Plots a histogram for each column in a given list of columns.
+    Plots a histogram for each column in a given list of columns on a single figure.
 
     Parameters:
         df (pd.DataFrame): The DataFrame for which to plot the histograms.
@@ -148,8 +158,26 @@ def plot_histograms(df, cols, bins=50):
     Returns:
         None
     """
-    for col in cols:
-        plt.figure(figsize=(8, 4))
-        plt.hist(df[col], bins=bins)
-        plt.title(f"Histogram of {col}")
-        plt.show()
+
+    # Number of rows and columns for subplot grid
+    n = len(cols)
+    n_cols = 2  # For instance, you can adjust this value as per your preference.
+    n_rows = int(n / n_cols) + (n % n_cols)  # Calculate the number of rows required based on the number of columns
+
+    fig, axes = plt.subplots(n_rows, n_cols, figsize=(15, 5 * n_rows))  # Adjust size based on the number of plots
+
+    # Flatten the axes array if there's only one row
+    if n_rows == 1:
+        axes = np.array(axes).reshape(1, -1)
+
+    for idx, col in enumerate(cols):
+        ax = axes[idx // n_cols, idx % n_cols]
+        ax.hist(df[col].dropna(), bins=bins)  # Drop NaN values before plotting
+        ax.set_title(f"Histogram of {col}")
+
+    # Remove any unused subplots
+    for j in range(n, n_rows * n_cols):
+        fig.delaxes(axes.flatten()[j])
+
+    plt.tight_layout()
+    plt.show()

@@ -13,6 +13,10 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 
+[build]
+include = ["provisioning_model/**/*"]
+exclude = ["notebooks/*", "data/*"]
+
 [project.urls]
 "Homepage" = "https://github.com/saviorand/provisioning-model"
 "Bug Tracker" = "https://github.com/saviorand/provisioning-model/issues"

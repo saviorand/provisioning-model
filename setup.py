@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(
-    name='Provisioning Domain Model',
+    name='provisioning_model',
     url='https://github.com/saviorand/provisioning-model',
     author='Valentin Erokhin',
     author_email='a2svior@gmail.com',

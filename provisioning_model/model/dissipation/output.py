@@ -23,9 +23,9 @@ class EnergyOutput:
 
 @dataclass
 class NeedSatisfaction(PeopleOutput):
-    food: float
-    water: float
-    shelter: float
+    nutrition: float  # from GoodLife, kilocalories per capita per day
+    sanitation: float  # from GoodLife, percentage of population with access to improved sanitation
+    income: float  # from GoodLife, percentage of population who earn above $1.90 per day
 
 
 @dataclass
@@ -40,19 +40,20 @@ class Accumulation(CapitalOutput):
 
 @dataclass
 class HumanDevelopment(PeopleOutput):
-    life_expectancy: float
-    education_index: float
-    health_expenditure_in_gdp: float
-    education_expenditure_in_gdp: float
+    life_satisfaction: float  # from GoodLife, [0-10] Cantril scale
+    healthy_life_expectancy: float  # from GoodLife, years of healthy life
+    education: float  # from GoodLife, percentage enrolment in secondary school
+    social_support: float  # from GoodLife, percentage of population with friends or family they can depend on
     internet_users_per_capita: float
     mobile_subscriptions_per_capita: float
-    press_freedom_index: float
-    happiness_index: float
 
 
 @dataclass
 class WasteAndPollution(NatureOutput):
-    volume: float
-    structure: float
-    recycling_rate: float
-    impact_on_biodiversity: float
+    co2_emissions_per_capita: float
+    phosphorus_discharge_per_capita: float
+    nitrogen_discharge_per_capita: float
+    blue_water_per_capita: float
+    ehanpp_per_capita: float
+    ecological_footprint_per_capita: float
+    material_footprint_per_capita: float

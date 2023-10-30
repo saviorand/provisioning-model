@@ -11,6 +11,7 @@ class MediaStructure:
     voice_and_accountability_index: float
     media_freedom_index: float
     tv_consumption_share: float
+    press_freedom_index: float
     
 
 @dataclass

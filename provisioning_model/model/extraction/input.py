@@ -7,14 +7,8 @@ from dataclasses import dataclass
 # dynamics of consumption, what is growing and what declines
 
 # important: stock vs fund distinction
-
 @dataclass
-class EnergyUse:
-    pass
-
-
-@dataclass
-class Employment:
+class WorkerFund:
     informal_employment: float
     unemployment: float
     average_working_hours: float
@@ -24,10 +18,15 @@ class Employment:
 
 
 @dataclass
-class ResourceUse:
+class CapitalFund:
     pass
 
 
 @dataclass
-class CapitalUse:
+class EnergyStock:
+    pass
+
+
+@dataclass
+class ResourceStock:
     pass

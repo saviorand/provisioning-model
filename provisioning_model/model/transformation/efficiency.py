@@ -1,9 +1,9 @@
 from dataclasses import dataclass
 
 
-# efficiency of turning resources into output
+# technical efficiency
 # degree of planning
-# resource intensity
+# energy and resource intensity
 
 @dataclass
 class Efficiency:

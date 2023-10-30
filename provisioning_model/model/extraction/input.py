@@ -6,6 +6,8 @@ from dataclasses import dataclass
 # composition, e.g. energy sources
 # dynamics of consumption, what is growing and what declines
 
+# important: stock vs fund distinction
+
 @dataclass
 class EnergyUse:
     pass

@@ -3,7 +3,7 @@ from PIL import Image
 
 
 def save_erdantic_diagram(diagram: erd.EntityRelationshipDiagram, img_title: str):
-    output_path = f'../output/{img_title}.png'
+    output_path = f'../../output/{img_title}.png'
     diagram.draw(out=output_path)
 
     return output_path

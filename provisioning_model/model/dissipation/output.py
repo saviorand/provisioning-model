@@ -51,12 +51,8 @@ class HumanDevelopment(PeopleOutput):
 
 
 @dataclass
-class ImpactOnEcosystems(NatureOutput):
-    pass
-
-
-@dataclass
 class WasteAndPollution(NatureOutput):
     volume: float
     structure: float
     recycling_rate: float
+    impact_on_biodiversity: float

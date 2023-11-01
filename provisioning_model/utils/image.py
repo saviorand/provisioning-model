@@ -38,7 +38,7 @@ def concatenate_images_with_centered_below(img_paths, bottom_img_path, output_pa
 
     # Concatenate images
     total_width = sum(img.width for img in images)
-    concatenated_img = Image.new('RGB', (total_width, max_height))
+    concatenated_img = Image.new('RGBA', (total_width, max_height))
 
     x_offset = 0
     for img in images:
@@ -52,7 +52,7 @@ def concatenate_images_with_centered_below(img_paths, bottom_img_path, output_pa
 
     # Create a new canvas that can fit the horizontally concatenated images and the bottom image
     new_total_height = max_height + bottom_image.height
-    final_img = Image.new('RGB', (total_width, new_total_height))
+    final_img = Image.new('RGBA', (total_width, new_total_height))
     final_img.paste(concatenated_img, (0, 0))
 
     # Center the bottom image horizontally and paste it below the concatenated images

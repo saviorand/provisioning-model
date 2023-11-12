@@ -3499,56 +3499,56 @@ Year,Country,mfootprint
 2017,Indonesia,6.4796
 2018,Indonesia,6.6621
 2019,Indonesia,6.7671
-1970,Iran,6.5781
-1971,Iran,7.0323
-1972,Iran,7.3515
-1973,Iran,7.856
-1974,Iran,8.2157
-1975,Iran,8.4184
-1976,Iran,9.6051
-1977,Iran,9.5847
-1978,Iran,9.8763
-1979,Iran,7.9232
-1980,Iran,6.7032
-1981,Iran,6.3754
-1982,Iran,7.0086
-1983,Iran,7.2326
-1984,Iran,7.257
-1985,Iran,7.2345
-1986,Iran,6.3605
-1987,Iran,6.39
-1988,Iran,6.2927
-1989,Iran,6.3442
-1990,Iran,7.2494
-1991,Iran,7.5906
-1992,Iran,7.6656
-1993,Iran,7.2291
-1994,Iran,6.9727
-1995,Iran,7.7864
-1996,Iran,7.8783
-1997,Iran,7.771
-1998,Iran,7.9781
-1999,Iran,7.6136
-2000,Iran,7.8562
-2001,Iran,8.4826
-2002,Iran,8.3808
-2003,Iran,9.336
-2004,Iran,10.3118
-2005,Iran,9.2944
-2006,Iran,10.9406
-2007,Iran,12.2828
-2008,Iran,11.3769
-2009,Iran,12.5454
-2010,Iran,12.4359
-2011,Iran,12.896
-2012,Iran,14.0928
-2013,Iran,12.063
-2014,Iran,11.8784
-2015,Iran,11.0603
-2016,Iran,10.8965
-2017,Iran,10.9588
-2018,Iran,12.5339
-2019,Iran,13.1628
+1970,"Iran, Islamic Rep.",6.5781
+1971,"Iran, Islamic Rep.",7.0323
+1972,"Iran, Islamic Rep.",7.3515
+1973,"Iran, Islamic Rep.",7.856
+1974,"Iran, Islamic Rep.",8.2157
+1975,"Iran, Islamic Rep.",8.4184
+1976,"Iran, Islamic Rep.",9.6051
+1977,"Iran, Islamic Rep.",9.5847
+1978,"Iran, Islamic Rep.",9.8763
+1979,"Iran, Islamic Rep.",7.9232
+1980,"Iran, Islamic Rep.",6.7032
+1981,"Iran, Islamic Rep.",6.3754
+1982,"Iran, Islamic Rep.",7.0086
+1983,"Iran, Islamic Rep.",7.2326
+1984,"Iran, Islamic Rep.",7.257
+1985,"Iran, Islamic Rep.",7.2345
+1986,"Iran, Islamic Rep.",6.3605
+1987,"Iran, Islamic Rep.",6.39
+1988,"Iran, Islamic Rep.",6.2927
+1989,"Iran, Islamic Rep.",6.3442
+1990,"Iran, Islamic Rep.",7.2494
+1991,"Iran, Islamic Rep.",7.5906
+1992,"Iran, Islamic Rep.",7.6656
+1993,"Iran, Islamic Rep.",7.2291
+1994,"Iran, Islamic Rep.",6.9727
+1995,"Iran, Islamic Rep.",7.7864
+1996,"Iran, Islamic Rep.",7.8783
+1997,"Iran, Islamic Rep.",7.771
+1998,"Iran, Islamic Rep.",7.9781
+1999,"Iran, Islamic Rep.",7.6136
+2000,"Iran, Islamic Rep.",7.8562
+2001,"Iran, Islamic Rep.",8.4826
+2002,"Iran, Islamic Rep.",8.3808
+2003,"Iran, Islamic Rep.",9.336
+2004,"Iran, Islamic Rep.",10.3118
+2005,"Iran, Islamic Rep.",9.2944
+2006,"Iran, Islamic Rep.",10.9406
+2007,"Iran, Islamic Rep.",12.2828
+2008,"Iran, Islamic Rep.",11.3769
+2009,"Iran, Islamic Rep.",12.5454
+2010,"Iran, Islamic Rep.",12.4359
+2011,"Iran, Islamic Rep.",12.896
+2012,"Iran, Islamic Rep.",14.0928
+2013,"Iran, Islamic Rep.",12.063
+2014,"Iran, Islamic Rep.",11.8784
+2015,"Iran, Islamic Rep.",11.0603
+2016,"Iran, Islamic Rep.",10.8965
+2017,"Iran, Islamic Rep.",10.9588
+2018,"Iran, Islamic Rep.",12.5339
+2019,"Iran, Islamic Rep.",13.1628
 1970,Iraq,4.6203
 1971,Iraq,4.7963
 1972,Iraq,4.2763
@@ -7799,56 +7799,56 @@ Year,Country,mfootprint
 2017,United Kingdom,18.197
 2018,United Kingdom,18.0095
 2019,United Kingdom,17.8517
-1970,United States of America,26.8484
-1971,United States of America,27.4313
-1972,United States of America,28.0127
-1973,United States of America,29.2655
-1974,United States of America,28.6718
-1975,United States of America,26.6204
-1976,United States of America,26.6595
-1977,United States of America,27.2885
-1978,United States of America,28.3467
-1979,United States of America,29.0009
-1980,United States of America,27.1516
-1981,United States of America,26.1656
-1982,United States of America,24.9894
-1983,United States of America,24.6733
-1984,United States of America,26.3331
-1985,United States of America,27.1665
-1986,United States of America,27.1423
-1987,United States of America,28.0477
-1988,United States of America,28.2087
-1989,United States of America,27.7912
-1990,United States of America,28.3398
-1991,United States of America,27.3224
-1992,United States of America,28.0955
-1993,United States of America,28.7249
-1994,United States of America,30.7806
-1995,United States of America,30.056
-1996,United States of America,31.0298
-1997,United States of America,32.0678
-1998,United States of America,34.2105
-1999,United States of America,34.119
-2000,United States of America,34.2357
-2001,United States of America,33.9208
-2002,United States of America,33.4899
-2003,United States of America,33.2835
-2004,United States of America,35.5514
-2005,United States of America,38.0736
-2006,United States of America,37.24
-2007,United States of America,35.2307
-2008,United States of America,32.6764
-2009,United States of America,29.0639
-2010,United States of America,28.5588
-2011,United States of America,28.268
-2012,United States of America,28.5168
-2013,United States of America,28.0947
-2014,United States of America,28.2333
-2015,United States of America,28.3347
-2016,United States of America,28.0607
-2017,United States of America,28.1194
-2018,United States of America,29.1416
-2019,United States of America,29.6526
+1970,United States,26.8484
+1971,United States,27.4313
+1972,United States,28.0127
+1973,United States,29.2655
+1974,United States,28.6718
+1975,United States,26.6204
+1976,United States,26.6595
+1977,United States,27.2885
+1978,United States,28.3467
+1979,United States,29.0009
+1980,United States,27.1516
+1981,United States,26.1656
+1982,United States,24.9894
+1983,United States,24.6733
+1984,United States,26.3331
+1985,United States,27.1665
+1986,United States,27.1423
+1987,United States,28.0477
+1988,United States,28.2087
+1989,United States,27.7912
+1990,United States,28.3398
+1991,United States,27.3224
+1992,United States,28.0955
+1993,United States,28.7249
+1994,United States,30.7806
+1995,United States,30.056
+1996,United States,31.0298
+1997,United States,32.0678
+1998,United States,34.2105
+1999,United States,34.119
+2000,United States,34.2357
+2001,United States,33.9208
+2002,United States,33.4899
+2003,United States,33.2835
+2004,United States,35.5514
+2005,United States,38.0736
+2006,United States,37.24
+2007,United States,35.2307
+2008,United States,32.6764
+2009,United States,29.0639
+2010,United States,28.5588
+2011,United States,28.268
+2012,United States,28.5168
+2013,United States,28.0947
+2014,United States,28.2333
+2015,United States,28.3347
+2016,United States,28.0607
+2017,United States,28.1194
+2018,United States,29.1416
+2019,United States,29.6526
 1970,Uruguay,11.6034
 1971,Uruguay,11.7221
 1972,Uruguay,11.929
@@ -7999,56 +7999,56 @@ Year,Country,mfootprint
 2017,Venezuela,16.0145
 2018,Venezuela,9.6882
 2019,Venezuela,9.6008
-1970,Viet Nam,1.5999
-1971,Viet Nam,1.6207
-1972,Viet Nam,1.5274
-1973,Viet Nam,1.5627
-1974,Viet Nam,1.5584
-1975,Viet Nam,1.5087
-1976,Viet Nam,1.6545
-1977,Viet Nam,1.6525
-1978,Viet Nam,1.6389
-1979,Viet Nam,1.6598
-1980,Viet Nam,1.6676
-1981,Viet Nam,1.6511
-1982,Viet Nam,1.7301
-1983,Viet Nam,1.7609
-1984,Viet Nam,1.8083
-1985,Viet Nam,1.801
-1986,Viet Nam,1.8263
-1987,Viet Nam,2.515
-1988,Viet Nam,2.0813
-1989,Viet Nam,2.068
-1990,Viet Nam,2.0549
-1991,Viet Nam,2.0959
-1992,Viet Nam,2.3667
-1993,Viet Nam,2.4162
-1994,Viet Nam,2.5806
-1995,Viet Nam,2.8424
-1996,Viet Nam,2.9911
-1997,Viet Nam,3.1373
-1998,Viet Nam,3.4101
-1999,Viet Nam,3.521
-2000,Viet Nam,3.8326
-2001,Viet Nam,4.1975
-2002,Viet Nam,5.9324
-2003,Viet Nam,6.7721
-2004,Viet Nam,6.9633
-2005,Viet Nam,7.6932
-2006,Viet Nam,7.801
-2007,Viet Nam,8.1714
-2008,Viet Nam,8.0363
-2009,Viet Nam,8.8881
-2010,Viet Nam,8.6569
-2011,Viet Nam,8.725
-2012,Viet Nam,8.5082
-2013,Viet Nam,7.8006
-2014,Viet Nam,9.8502
-2015,Viet Nam,10.0261
-2016,Viet Nam,8.0916
-2017,Viet Nam,8.1608
-2018,Viet Nam,8.1175
-2019,Viet Nam,8.5249
+1970,Vietnam,1.5999
+1971,Vietnam,1.6207
+1972,Vietnam,1.5274
+1973,Vietnam,1.5627
+1974,Vietnam,1.5584
+1975,Vietnam,1.5087
+1976,Vietnam,1.6545
+1977,Vietnam,1.6525
+1978,Vietnam,1.6389
+1979,Vietnam,1.6598
+1980,Vietnam,1.6676
+1981,Vietnam,1.6511
+1982,Vietnam,1.7301
+1983,Vietnam,1.7609
+1984,Vietnam,1.8083
+1985,Vietnam,1.801
+1986,Vietnam,1.8263
+1987,Vietnam,2.515
+1988,Vietnam,2.0813
+1989,Vietnam,2.068
+1990,Vietnam,2.0549
+1991,Vietnam,2.0959
+1992,Vietnam,2.3667
+1993,Vietnam,2.4162
+1994,Vietnam,2.5806
+1995,Vietnam,2.8424
+1996,Vietnam,2.9911
+1997,Vietnam,3.1373
+1998,Vietnam,3.4101
+1999,Vietnam,3.521
+2000,Vietnam,3.8326
+2001,Vietnam,4.1975
+2002,Vietnam,5.9324
+2003,Vietnam,6.7721
+2004,Vietnam,6.9633
+2005,Vietnam,7.6932
+2006,Vietnam,7.801
+2007,Vietnam,8.1714
+2008,Vietnam,8.0363
+2009,Vietnam,8.8881
+2010,Vietnam,8.6569
+2011,Vietnam,8.725
+2012,Vietnam,8.5082
+2013,Vietnam,7.8006
+2014,Vietnam,9.8502
+2015,Vietnam,10.0261
+2016,Vietnam,8.0916
+2017,Vietnam,8.1608
+2018,Vietnam,8.1175
+2019,Vietnam,8.5249
 1970,West Asia,12.4145
 1971,West Asia,13.0758
 1972,West Asia,12.8681

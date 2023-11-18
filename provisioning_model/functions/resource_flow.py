@@ -41,7 +41,8 @@ def get_country_data(df, outcome_df, realm_df, mat_flows_df, country, year):
 
     normalized_data = normalize_series(data, world_mean, world_std,
                                        ["agriculture", "industry", "services", "grosscapital", "unemployed", "wealth",
-                                        "gini", "voice", "femaleminister"])
+                                        "gini", "voice", "femaleminister", "ecirank", "exports", "resourcerents",
+                                        "concentration"])
     normalized_outcomes = normalize_series(outcomes, world_mean_outcomes,
                                            world_std_outcomes, ["lifeexpectancy", "schoolenr"])
     normalized_realms = normalize_series(realms, world_mean_realms, world_std_realms,
@@ -50,7 +51,7 @@ def get_country_data(df, outcome_df, realm_df, mat_flows_df, country, year):
                                             world_std_mat_flows, ["mfootprint"])
     normalized_energy = normalize_series(data, world_mean_energy, world_std_energy, ["energy"])
 
-    agriculture, industry, services, grosscapital, unemployed, wealth, gini, voice, femaleminister = normalized_data.values()
+    agriculture, industry, services, grosscapital, unemployed, wealth, gini, voice, femaleminister, eci, exports, resourcerents, concentration = normalized_data.values()
     lifeexpectancy, education = normalized_outcomes.values()
     govconsum, marketcap, houseconsum = normalized_realms.values()
     energy = normalized_energy["energy"]
@@ -72,7 +73,11 @@ def get_country_data(df, outcome_df, realm_df, mat_flows_df, country, year):
         "marketcap": marketcap,
         "houseconsum": houseconsum,
         "energy": energy,
-        "mfootprint": mfootprint
+        "mfootprint": mfootprint,
+        "eci": eci,
+        "exports": exports,
+        "resourcerents": resourcerents,
+        "concentration": concentration
     }
 
 

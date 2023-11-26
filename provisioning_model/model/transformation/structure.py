@@ -11,17 +11,17 @@ class IndustralSector:
 
 @dataclass
 class Agriculture(IndustralSector):
-    pass
+    agriculture_in_gdp: float
 
 
 @dataclass
 class Industry(IndustralSector):
-    pass
+    industry_in_gdp: float
 
 
 @dataclass
 class Services(IndustralSector):
-    pass
+    services_in_gdp: float
 
 
 @dataclass
@@ -67,6 +67,7 @@ class StateRealm(ProvisioningRealm):
 
 @dataclass
 class MarketRealm(ProvisioningRealm):
+    market_capitalization_in_gdp: float
     market_concentration: float
     corporate_tax_rate: float
     lobbying_expenditure_in_gdp: float

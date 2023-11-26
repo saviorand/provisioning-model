@@ -76,7 +76,7 @@ class MarketRealm(ProvisioningRealm):
 
 @dataclass
 class HouseholdRealm(ProvisioningRealm):
-    pass
+    household_consumption_in_gdp: float
 
 
 @dataclass

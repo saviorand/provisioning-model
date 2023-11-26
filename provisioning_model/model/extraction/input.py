@@ -24,7 +24,7 @@ class CapitalFund:
 
 @dataclass
 class EnergyStock:
-    pass
+    energy_use: float
 
 
 @dataclass

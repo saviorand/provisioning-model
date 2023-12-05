@@ -26,6 +26,10 @@ class NeedSatisfaction(PeopleOutput):
     nutrition: float  # from GoodLife, kilocalories per capita per day
     sanitation: float  # from GoodLife, percentage of population with access to improved sanitation
     income: float  # from GoodLife, percentage of population who earn above $1.90 per day
+    life_satisfaction: float  # from GoodLife, [0-10] Cantril scale
+    healthy_life_expectancy: float  # from GoodLife, years of healthy life
+    education: float  # from GoodLife, percentage enrolment in secondary school
+    social_support: float  # from GoodLife, percentage of population with friends or family they can depend on
 
 
 @dataclass
@@ -36,16 +40,6 @@ class Accumulation(CapitalOutput):
     corporate_profits_in_gdp: float
     patent_applications_per_capita: float
     trademark_applications_per_capita: float
-
-
-@dataclass
-class HumanDevelopment(PeopleOutput):
-    life_satisfaction: float  # from GoodLife, [0-10] Cantril scale
-    healthy_life_expectancy: float  # from GoodLife, years of healthy life
-    education: float  # from GoodLife, percentage enrolment in secondary school
-    social_support: float  # from GoodLife, percentage of population with friends or family they can depend on
-    internet_users_per_capita: float
-    mobile_subscriptions_per_capita: float
 
 
 @dataclass

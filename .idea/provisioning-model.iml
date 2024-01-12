@@ -6,5 +6,7 @@
     </content>
     <orderEntry type="jdk" jdkName="provisioning-model" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="provisioning-web" />
+    <orderEntry type="module" module-name="provisioning-pipeline" />
   </component>
 </module>

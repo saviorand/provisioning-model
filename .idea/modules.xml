@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/provisioning-model.iml" filepath="$PROJECT_DIR$/.idea/provisioning-model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../provisioning-pipeline/.idea/provisioning-pipeline.iml" filepath="$PROJECT_DIR$/../provisioning-pipeline/.idea/provisioning-pipeline.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../provisioning-web/.idea/provisioning-web.iml" filepath="$PROJECT_DIR$/../provisioning-web/.idea/provisioning-web.iml" />
     </modules>
   </component>
 </project>

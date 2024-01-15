@@ -1,0 +1,811 @@
+sic_code,sic_description,nace_description,nace_num,nace_3digit,nace_2digit,foundational
+1110,"Growing of cereals (except rice), leguminous crops and oil seeds","0111 Growing of cereals (except rice), leguminous crops and oil seeds ",0111,A111,A01,Material
+1120,Growing of rice,0112 Growing of rice ,0112,A112,A01,Material
+1130,"Growing of vegetables and melons, roots and tubers","0113 Growing of vegetables and melons, roots and tubers ",0113,A113,A01,Material
+1140,Growing of sugar cane,0114 Growing of sugar cane ,0114,A114,A01,Material
+1150,Growing of tobacco,0115 Growing of tobacco ,0115,A115,A01,Material
+1160,Growing of fibre crops,0116 Growing of fibre crops ,0116,A116,A01,Material
+1190,Growing of other non-perennial crops,0119 Growing of other non-perennial crops ,0119,A119,A01,Material
+1210,Growing of grapes,0121 Growing of grapes ,0121,A121,A01,Material
+1220,Growing of tropical and subtropical fruits,0122 Growing of tropical and subtropical fruits ,0122,A122,A01,Material
+1230,Growing of citrus fruits,0123 Growing of citrus fruits ,0123,A123,A01,Material
+1240,Growing of pome fruits and stone fruits,0124 Growing of pome fruits and stone fruits ,0124,A124,A01,Material
+1250,Growing of other tree and bush fruits and nuts,0125 Growing of other tree and bush fruits and nuts ,0125,A125,A01,Material
+1260,Growing of oleaginous fruits,0126 Growing of oleaginous fruits ,0126,A126,A01,Material
+1270,Growing of beverage crops,0127 Growing of beverage crops ,0127,A127,A01,Material
+1280,"Growing of spices, aromatic, drug and pharmaceutical crops","0128 Growing of spices, aromatic, drug and pharmaceutical crops ",0128,A128,A01,Material
+1290,Growing of other perennial crops,0129 Growing of other perennial crops ,0129,A129,A01,Material
+1300,Plant propagation,0130 Plant propagation ,0130,A130,A01,Material
+1410,Raising of dairy cattle,0141 Raising of dairy cattle ,0141,A141,A01,Material
+1420,Raising of other cattle and buffaloes,0142 Raising of other cattle and buffaloes ,0142,A142,A01,Material
+1430,Raising of horses and other equines,0143 Raising of horses and other equines ,0143,A143,A01,Material
+1440,Raising of camels and camelids,0144 Raising of camels and camelids ,0144,A144,A01,Material
+1450,Raising of sheep and  goats,0145 Raising of sheep and goats ,0145,A145,A01,Material
+1460,Raising of swine/pigs,0146 Raising of swine/pigs ,0146,A146,A01,Material
+1470,Raising of poultry,0147 Raising of poultry ,0147,A147,A01,Material
+1490,Raising of other animals,0149 Raising of other animals ,0149,A149,A01,Material
+1500,Mixed farming,0150 Mixed farming ,0150,A150,A01,Material
+1610,Support activities for crop production,0161 Support activities for crop production ,0161,A161,A01,Material
+,,0162 Support activities for animal production ,0162,A162,A01,Material
+1621,Farm animal boarding and care,,,,,Material
+1629,Support activities for animal production (other than farm animal boarding and care) n.e.c.,,,,,Material
+1630,Post-harvest crop activities,0163 Post-harvest crop activities ,0163,A163,A01,Material
+1640,Seed processing for propagation,0164 Seed processing for propagation ,0164,A164,A01,Material
+1700,"Hunting, trapping and related service activities","0170 Hunting, trapping and related service activities ",0170,A170,A01,Other
+2100,Silviculture and other forestry activities,0210 Silviculture and other forestry activities ,0210,A210,A02,Overlooked
+2200,Logging,0220 Logging ,0220,A220,A02,Overlooked
+2300,Gathering of wild growing non-wood products,0230 Gathering of wild growing non-wood products ,0230,A230,A02,Overlooked
+2400,Support services to forestry,0240 Support services to forestry ,0240,A240,A02,Overlooked
+3110,Marine fishing,0311 Marine fishing ,0311,A311,A03,Material
+3120,Freshwater fishing,0312 Freshwater fishing ,0312,A312,A03,Material
+3210,Marine aquaculture,0321 Marine aquaculture ,0321,A321,A03,Material
+3220,Freshwater aquaculture,0322 Freshwater aquaculture ,0322,A322,A03,Material
+,,0510 Mining of hard coal ,0510,B510,B05,Material
+5101,Deep coal mines,,,,,Material
+5102,Open cast coal working,,,,,Material
+5200,Mining of lignite,0520 Mining of lignite ,0520,B520,B05,Material
+6100,Extraction of crude petroleum,0610 Extraction of crude petroleum ,0610,B610,B06,Material
+6200,Extraction of natural gas,0620 Extraction of natural gas ,0620,B620,B06,Material
+7100,Mining of iron ores,0710 Mining of iron ores ,0710,B710,B07,Other
+7210,Mining of uranium and thorium ores,0721 Mining of uranium and thorium ores ,0721,B721,B07,Other
+7290,Mining of other non-ferrous metal ores,0729 Mining of other non-ferrous metal ores ,0729,B729,B07,Other
+8110,"Quarrying of ornamental and building stone, limestone, gypsum, chalk and slate","0811 Quarrying of ornamental and building stone, limestone, gypsum, chalk and slate ",0811,B811,B08,Overlooked
+8120,Operation of gravel and sand pits; mining of clays and kaolin,0812 Operation of gravel and sand pits; mining of clays and kaolin ,0812,B812,B08,Overlooked
+8910,Mining of chemical and fertilizer minerals,0891 Mining of chemical and fertiliser minerals ,0891,B891,B08,Overlooked
+8920,Extraction of peat,0892 Extraction of peat ,0892,B892,B08,Overlooked
+8930,Extraction of salt,0893 Extraction of salt ,0893,B893,B08,Overlooked
+8990,Other mining and quarrying n.e.c.,0899 Other mining and quarrying n.e.c. ,0899,B899,B08,Overlooked
+9100,Support activities for petroleum and natural gas extraction,0910 Support activities for petroleum and natural gas extraction ,0910,B910,B09,Material
+9900,Support activities for other mining and quarrying,0990 Support activities for other mining and quarrying ,0990,B990,B09,Overlooked
+10110,Processing and preserving of meat,1011 Processing and preserving of meat ,1011,C011,C10,Material
+10120,Processing and preserving of poultry meat,1012 Processing and preserving of poultry meat ,1012,C012,C10,Material
+10130,Production of meat and poultry meat products,1013 Production of meat and poultry meat products ,1013,C013,C10,Material
+10200,"Processing and preserving of fish, crustaceans and molluscs","1020 Processing and preserving of fish, crustaceans and molluscs ",1020,C020,C10,Material
+10310,Processing and preserving of potatoes,1031 Processing and preserving of potatoes ,1031,C031,C10,Material
+10320,Manufacture of fruit and vegetable juice,1032 Manufacture of fruit and vegetable juice ,1032,C032,C10,Material
+10390,Other processing and preserving of fruit and vegetables,1039 Other processing and preserving of fruit and vegetables ,1039,C039,C10,Material
+10410,Manufacture of oils and fats,1041 Manufacture of oils and fats ,1041,C041,C10,Material
+10420,Manufacture of margarine and similar edible fats,1042 Manufacture of margarine and similar edible fats ,1042,C042,C10,Material
+,,1051 Operation of dairies and cheese making ,1051,C051,C10,Material
+10511,Liquid milk and cream production,,,,,Material
+10512,Butter and cheese production,,,,,Material
+10519,Manufacture of other milk products,,,,,Material
+10520,Manufacture of ice cream,1052 Manufacture of ice cream ,1052,C052,C10,Material
+10611,Grain milling,1061 Manufacture of grain mill products ,1061,C061,C10,Material
+10612,Manufacture of breakfast cereals and cereals-based food,1062 Manufacture of starches and starch products ,1062,C062,C10,Material
+10620,Manufacture of starches and starch products,,,,,Material
+10710,Manufacture of bread; manufacture of fresh pastry goods and cakes,1071 Manufacture of bread; manufacture of fresh pastry goods and cakes ,1071,C071,C10,Material
+10720,Manufacture of rusks and biscuits; manufacture of preserved pastry goods and cakes,1072 Manufacture of rusks and biscuits; manufacture of preserved pastry goods and cakes ,1072,C072,C10,Material
+10730,"Manufacture of macaroni, noodles, couscous and similar farinaceous products","1073 Manufacture of macaroni, noodles, couscous and similar farinaceous products ",1073,C073,C10,Material
+10810,Manufacture of sugar,1081 Manufacture of sugar ,1081,C081,C10,Material
+,,"1082 Manufacture of cocoa, chocolate and sugar confectionery ",1082,C082,C10,Material
+10821,Manufacture of cocoa and chocolate confectionery,,,,,Material
+10822,Manufacture of sugar confectionery,,,,,Material
+,,1083 Processing of tea and coffee ,1083,C083,C10,Material
+10831,Tea processing,,,,,Material
+10832,Production of coffee and coffee substitutes,,,,,Material
+10840,Manufacture of condiments and seasonings,1084 Manufacture of condiments and seasonings ,1084,C084,C10,Material
+10850,Manufacture of prepared meals and dishes,1085 Manufacture of prepared meals and dishes ,1085,C085,C10,Material
+10860,Manufacture of homogenized food preparations and dietetic food,1086 Manufacture of homogenised food preparations and dietetic food ,1086,C086,C10,Material
+10890,Manufacture of other food products n.e.c.,1089 Manufacture of other food products n.e.c. ,1089,C089,C10,Material
+10910,Manufacture of prepared feeds for farm animals,1091 Manufacture of prepared feeds for farm animals ,1091,C091,C10,Material
+10920,Manufacture of prepared pet foods,1092 Manufacture of prepared pet foods ,1092,C092,C10,Material
+11010,"Distilling, rectifying and blending of spirits","1101 Distilling, rectifying and blending of spirits ",1101,C101,C11,Material
+11020,Manufacture of wine from grape,1102 Manufacture of wine from grape ,1102,C102,C11,Material
+11030,Manufacture of cider and other fruit wines,1103 Manufacture of cider and other fruit wines ,1103,C103,C11,Material
+11040,Manufacture of other non-distilled fermented beverages,1104 Manufacture of other non-distilled fermented beverages ,1104,C104,C11,Material
+11050,Manufacture of beer,1105 Manufacture of beer ,1105,C105,C11,Material
+11060,Manufacture of malt,1106 Manufacture of malt ,1106,C106,C11,Material
+11070,Manufacture of soft drinks; production of mineral waters and other bottled waters,1107 Manufacture of soft drinks; production of mineral waters and other bottled waters ,1107,C107,C11,Material
+12000,Manufacture of tobacco products,1200 Manufacture of tobacco products ,1200,C200,C12,Other
+13100,Preparation and spinning of textile fibres,1310 Preparation and spinning of textile fibres ,1310,C310,C13,Overlooked
+13200,Weaving of textiles,1320 Weaving of textiles ,1320,C320,C13,Overlooked
+13300,Finishing of textiles,1330 Finishing of textiles ,1330,C330,C13,Overlooked
+13910,Manufacture of knitted and crocheted fabrics,1391 Manufacture of knitted and crocheted fabrics ,1391,C391,C13,Overlooked
+,,"1392 Manufacture of made-up textile articles, except apparel ",1392,C392,C13,Overlooked
+13921,Manufacture of soft furnishings,,,,,Overlooked
+13922,"manufacture of canvas goods, sacks, etc.",,,,,Overlooked
+13923,manufacture of household textiles,,,,,Overlooked
+,,1393 Manufacture of carpets and rugs ,1393,C393,C13,Overlooked
+13931,Manufacture of woven or tufted carpets and rugs,,,,,Overlooked
+13939,Manufacture of other carpets and rugs,,,,,Overlooked
+13940,"Manufacture of cordage, rope, twine and netting","1394 Manufacture of cordage, rope, twine and netting ",1394,C394,C13,Overlooked
+13950,"Manufacture of non-wovens and articles made from non-wovens, except apparel","1395 Manufacture of non-wovens and articles made from non-wovens, except apparel ",1395,C395,C13,Overlooked
+13960,Manufacture of other technical and industrial textiles,1396 Manufacture of other technical and industrial textiles ,1396,C396,C13,Overlooked
+13990,Manufacture of other textiles n.e.c.,1399 Manufacture of other textiles n.e.c. ,1399,C399,C13,Overlooked
+14110,Manufacture of leather clothes,1411 Manufacture of leather clothes ,1411,C411,C14,Overlooked
+14120,Manufacture of workwear,1412 Manufacture of workwear ,1412,C412,C14,Overlooked
+,,1413 Manufacture of other outerwear ,1413,C413,C14,Overlooked
+14131,Manufacture of other men's outerwear,,,,,Overlooked
+14132,Manufacture of other women's outerwear,,,,,Overlooked
+,,1414 Manufacture of underwear ,1414,C414,C14,Overlooked
+14141,Manufacture of men's underwear,,,,,Overlooked
+14142,Manufacture of women's underwear,,,,,Overlooked
+14190,Manufacture of other wearing apparel and accessories n.e.c.,1419 Manufacture of other wearing apparel and accessories ,1419,C419,C14,Overlooked
+14200,Manufacture of articles of fur,1420 Manufacture of articles of fur ,1420,C420,C14,Overlooked
+14310,Manufacture of knitted and crocheted hosiery,1431 Manufacture of knitted and crocheted hosiery ,1431,C431,C14,Overlooked
+14390,Manufacture of other knitted and crocheted apparel,1439 Manufacture of other knitted and crocheted apparel ,1439,C439,C14,Overlooked
+15110,Tanning and dressing of leather; dressing and dyeing of fur,1511 Tanning and dressing of leather; dressing and dyeing of fur ,1511,C511,C15,Overlooked
+15120,"Manufacture of luggage, handbags and the like, saddlery and harness","1512 Manufacture of luggage, handbags and the like, saddlery and harness ",1512,C512,C15,Overlooked
+15200,Manufacture of footwear,1520 Manufacture of footwear ,1520,C520,C15,Overlooked
+16100,Sawmilling and planing of wood,1610 Sawmilling and planing of wood ,1610,C610,C16,Overlooked
+16210,Manufacture of veneer sheets and wood-based panels,1621 Manufacture of veneer sheets and wood-based panels ,1621,C621,C16,Overlooked
+16220,Manufacture of assembled parquet floors,1622 Manufacture of assembled parquet floors ,1622,C622,C16,Overlooked
+16230,Manufacture of other builders' carpentry and joinery,1623 Manufacture of other builders' carpentry and joinery ,1623,C623,C16,Overlooked
+16240,Manufacture of wooden containers,1624 Manufacture of wooden containers ,1624,C624,C16,Overlooked
+16290,"Manufacture of other products of wood; manufacture of articles of cork, straw and plaiting materials","1629 Manufacture of other products of wood; manufacture of articles of cork, straw and plaiting materials ",1629,C629,C16,Overlooked
+17110,Manufacture of pulp,1711 Manufacture of pulp ,1711,C711,C17,Overlooked
+17120,Manufacture of paper and paperboard,1712 Manufacture of paper and paperboard ,1712,C712,C17,Overlooked
+,,1721 Manufacture of corrugated paper and paperboard and of containers of paper and paperboard ,1721,C721,C17,Overlooked
+17211,"Manufacture of corrugated paper and paperboard, sacks and bags",,,,,Overlooked
+17219,Manufacture of other paper and paperboard containers,,,,,Overlooked
+17220,Manufacture of household and sanitary goods and of toilet requisites,1722 Manufacture of household and sanitary goods and of toilet requisites ,1722,C722,C17,Overlooked
+17230,Manufacture of paper stationery,1723 Manufacture of paper stationery ,1723,C723,C17,Overlooked
+17240,Manufacture of wallpaper,1724 Manufacture of wallpaper ,1724,C724,C17,Overlooked
+17290,Manufacture of other articles of paper and paperboard n.e.c.,1729 Manufacture of other articles of paper and paperboard ,1729,C729,C17,Overlooked
+18110,Printing of newspapers,1811 Printing of newspapers ,1811,C811,C18,Overlooked
+,,1812 Other printing ,1812,C812,C18,Overlooked
+18121,Manufacture of printed labels,,,,,Overlooked
+,,1813 Pre-press and pre-media services ,1813,C813,C18,Overlooked
+,,1814 Binding and related services ,1814,C814,C18,Overlooked
+,,1820 Reproduction of recorded media ,1820,C820,C18,Overlooked
+18129,Printing n.e.c.,,,,,Overlooked
+18130,Pre-press and pre-media services,,,,,Overlooked
+18140,Binding and related services,,,,,Overlooked
+18201,Reproduction of sound recording,,,,,Other
+18202,Reproduction of video recording,,,,,Other
+18203,Reproduction of computer media,,,,,Other
+19100,Manufacture of coke oven products,1910 Manufacture of coke oven products ,1910,C910,C19,Other
+,,1920 Manufacture of refined petroleum products ,1920,C920,C19,Other
+19201,Mineral oil refining,,,,,Other
+19209,Other treatment of petroleum products (excluding petrochemicals manufacture),,,,,Other
+20110,Manufacture of industrial gases,2011 Manufacture of industrial gases ,2011,C011,C20,Other
+20120,Manufacture of dyes and pigments,2012 Manufacture of dyes and pigments ,2012,C012,C20,Other
+20130,Manufacture of other inorganic basic chemicals,2013 Manufacture of other inorganic basic chemicals ,2013,C013,C20,Other
+20140,Manufacture of other organic basic chemicals,2014 Manufacture of other organic basic chemicals ,2014,C014,C20,Other
+20150,Manufacture of fertilizers and nitrogen compounds,2015 Manufacture of fertilisers and nitrogen compounds ,2015,C015,C20,Material
+20160,Manufacture of plastics in primary forms,2016 Manufacture of plastics in primary forms ,2016,C016,C20,Other
+20170,Manufacture of synthetic rubber in primary forms,2017 Manufacture of synthetic rubber in primary forms ,2017,C017,C20,Other
+20200,Manufacture of pesticides and other agrochemical products,2020 Manufacture of pesticides and other agrochemical products ,2020,C020,C20,Other
+,,"2030 Manufacture of paints, varnishes and similar coatings, printing ink and mastics ",2030,C030,C20,Other
+20301,"Manufacture of paints, varnishes and similar coatings, mastics and sealants",,,,,Other
+20302,Manufacture of printing ink,,,,,Other
+,,"2041 Manufacture of soap and detergents, cleaning and polishing preparations ",2041,C041,C20,Overlooked
+20411,Manufacture of soap and detergents,,,,,Overlooked
+20412,Manufacture of cleaning and polishing preparations,,,,,Overlooked
+20420,Manufacture of perfumes and toilet preparations,2042 Manufacture of perfumes and toilet preparations ,2042,C042,C20,Overlooked
+20510,Manufacture of explosives,2051 Manufacture of explosives ,2051,C051,C20,Other
+20520,Manufacture of glues,2052 Manufacture of glues ,2052,C052,C20,Other
+20530,Manufacture of essential oils,2053 Manufacture of essential oils ,2053,C053,C20,Other
+20590,Manufacture of other chemical products n.e.c.,2059 Manufacture of other chemical products n.e.c. ,2059,C059,C20,Other
+20600,Manufacture of man-made fibres,2060 Manufacture of man-made fibres ,2060,C060,C20,Other
+21100,Manufacture of basic pharmaceutical products,2110 Manufacture of basic pharmaceutical products ,2110,C110,C21,Other
+21200,Manufacture of pharmaceutical preparations,2120 Manufacture of pharmaceutical preparations ,2120,C120,C21,Other
+22110,Manufacture of rubber tyres and tubes; retreading and rebuilding of rubber tyres,2211 Manufacture of rubber tyres and tubes; retreading and rebuilding of rubber tyres ,2211,C211,C22,Other
+22190,Manufacture of other rubber products,2219 Manufacture of other rubber products ,2219,C219,C22,Other
+22210,"Manufacture of plastic plates, sheets, tubes and profiles","2221 Manufacture of plastic plates, sheets, tubes and profiles ",2221,C221,C22,Other
+22220,Manufacture of plastic packing goods,2222 Manufacture of plastic packing goods ,2222,C222,C22,Other
+22230,Manufacture of builders  ware of plastic,2223 Manufacture of buildersÆ ware of plastic ,2223,C223,C22,Other
+22290,Manufacture of other plastic products,2229 Manufacture of other plastic products ,2229,C229,C22,Other
+23110,Manufacture of flat glass,2311 Manufacture of flat glass ,2311,C311,C23,Other
+23120,Shaping and processing of flat glass,2312 Shaping and processing of flat glass ,2312,C312,C23,Other
+23130,Manufacture of hollow glass,2313 Manufacture of hollow glass ,2313,C313,C23,Other
+23140,Manufacture of glass fibres,2314 Manufacture of glass fibres ,2314,C314,C23,Other
+23190,"Manufacture and processing of other glass, including technical glassware","2319 Manufacture and processing of other glass, including technical glassware ",2319,C319,C23,Other
+23200,Manufacture of refractory products,2320 Manufacture of refractory products ,2320,C320,C23,Other
+23310,Manufacture of ceramic tiles and flags,2331 Manufacture of ceramic tiles and flags ,2331,C331,C23,Overlooked
+23320,"Manufacture of bricks, tiles and construction products, in baked clay","2332 Manufacture of bricks, tiles and construction products, in baked clay ",2332,C332,C23,Overlooked
+23410,Manufacture of ceramic household and ornamental articles,2341 Manufacture of ceramic household and ornamental articles ,2341,C341,C23,Overlooked
+23420,Manufacture of ceramic sanitary fixtures,2342 Manufacture of ceramic sanitary fixtures ,2342,C342,C23,Overlooked
+23430,Manufacture of ceramic insulators and insulating fittings,2343 Manufacture of ceramic insulators and insulating fittings ,2343,C343,C23,Overlooked
+23440,Manufacture of other technical ceramic products,2344 Manufacture of other technical ceramic products ,2344,C344,C23,Overlooked
+23490,Manufacture of other ceramic products n.e.c.,2349 Manufacture of other ceramic products ,2349,C349,C23,Overlooked
+23510,Manufacture of cement,2351 Manufacture of cement ,2351,C351,C23,Overlooked
+23520,Manufacture of lime and plaster,2352 Manufacture of lime and plaster ,2352,C352,C23,Overlooked
+23610,Manufacture of concrete products for construction purposes,2361 Manufacture of concrete products for construction purposes ,2361,C361,C23,Overlooked
+23620,Manufacture of plaster products for construction purposes,2362 Manufacture of plaster products for construction purposes ,2362,C362,C23,Overlooked
+23630,Manufacture of ready-mixed concrete,2363 Manufacture of ready-mixed concrete ,2363,C363,C23,Overlooked
+23640,Manufacture of mortars,2364 Manufacture of mortars ,2364,C364,C23,Overlooked
+23650,Manufacture of fibre cement,2365 Manufacture of fibre cement ,2365,C365,C23,Overlooked
+23690,"Manufacture of other articles of concrete, plaster and cement","2369 Manufacture of other articles of concrete, plaster and cement ",2369,C369,C23,Overlooked
+23700,"Cutting, shaping and finishing of stone","2370 Cutting, shaping and finishing of stone ",2370,C370,C23,Other
+23910,Production of abrasive products,2391 Production of abrasive products ,2391,C391,C23,Other
+23990,Manufacture of other non-metallic mineral products n.e.c.,2399 Manufacture of other non-metallic mineral products n.e.c. ,2399,C399,C23,Other
+24100,Manufacture of basic iron and steel and of ferro-alloys,2410 Manufacture of basic iron and steel and of ferro-alloys ,2410,C410,C24,Other
+24200,"Manufacture of tubes, pipes, hollow profiles and related fittings, of steel","2420 Manufacture of tubes, pipes, hollow profiles and related fittings, of steel ",2420,C420,C24,Other
+24310,Cold drawing of bars,2431 Cold drawing of bars ,2431,C431,C24,Other
+24320,Cold rolling of narrow strip,2432 Cold rolling of narrow strip ,2432,C432,C24,Other
+24330,Cold forming or folding,2433 Cold forming or folding ,2433,C433,C24,Other
+24340,Cold drawing of wire,2434 Cold drawing of wire ,2434,C434,C24,Other
+24410,Precious metals production,2441 Precious metals production ,2441,C441,C24,Other
+24420,Aluminium production,2442 Aluminium production ,2442,C442,C24,Other
+24430,"Lead, zinc and tin production","2443 Lead, zinc and tin production ",2443,C443,C24,Other
+24440,Copper production,2444 Copper production ,2444,C444,C24,Other
+24450,Other non-ferrous metal production,2445 Other non-ferrous metal production ,2445,C445,C24,Other
+24460,Processing of nuclear fuel,2446 Processing of nuclear fuel ,2446,C446,C24,Other
+24510,Casting of iron,2451 Casting of iron ,2451,C451,C24,Other
+24520,Casting of steel,2452 Casting of steel ,2452,C452,C24,Other
+24530,Casting of light metals,2453 Casting of light metals ,2453,C453,C24,Other
+24540,Casting of other non-ferrous metals,2454 Casting of other non-ferrous metals ,2454,C454,C24,Other
+25110,Manufacture of metal structures and parts of structures,2511 Manufacture of metal structures and parts of structures ,2511,C511,C25,Other
+25120,Manufacture of doors and windows of metal,2512 Manufacture of doors and windows of metal ,2512,C512,C25,Other
+25210,Manufacture of central heating radiators and boilers,2521 Manufacture of central heating radiators and boilers ,2521,C521,C25,Overlooked
+25290,"Manufacture of other tanks, reservoirs and containers of metal","2529 Manufacture of other tanks, reservoirs and containers of metal ",2529,C529,C25,Other
+25300,"Manufacture of steam generators, except central heating hot water boilers","2530 Manufacture of steam generators, except central heating hot water boilers ",2530,C530,C25,Other
+25400,Manufacture of weapons and ammunition,2540 Manufacture of weapons and ammunition ,2540,C540,C25,Other
+25500,"Forging, pressing, stamping and roll-forming of metal; powder metallurgy","2550 Forging, pressing, stamping and roll-forming of metal; powder metallurgy ",2550,C550,C25,Other
+25610,Treatment and coating of metals,2561 Treatment and coating of metals ,2561,C561,C25,Other
+25620,Machining,2562 Machining ,2562,C562,C25,Other
+25710,Manufacture of cutlery,2571 Manufacture of cutlery ,2571,C571,C25,Other
+25720,Manufacture of locks and hinges,2572 Manufacture of locks and hinges ,2572,C572,C25,Other
+25730,Manufacture of tools,2573 Manufacture of tools ,2573,C573,C25,Other
+25910,Manufacture of steel drums and similar containers,2591 Manufacture of steel drums and similar containers ,2591,C591,C25,Other
+25920,Manufacture of light metal packaging,2592 Manufacture of light metal packaging ,2592,C592,C25,Other
+25930,"Manufacture of wire products, chain and springs","2593 Manufacture of wire products, chain and springs ",2593,C593,C25,Other
+25940,Manufacture of fasteners and screw machine products,2594 Manufacture of fasteners and screw machine products ,2594,C594,C25,Other
+25990,Manufacture of other fabricated metal products n.e.c.,2599 Manufacture of other fabricated metal products n.e.c. ,2599,C599,C25,Other
+26110,Manufacture of electronic components,2611 Manufacture of electronic components ,2611,C611,C26,Other
+26120,Manufacture of loaded electronic boards,2612 Manufacture of loaded electronic boards ,2612,C612,C26,Other
+26200,Manufacture of computers and peripheral equipment,2620 Manufacture of computers and peripheral equipment ,2620,C620,C26,Other
+,,2630 Manufacture of communication equipment ,2630,C630,C26,Other
+26301,Manufacture of telegraph and telephone apparatus and equipment,,,,,Other
+26309,"Manufacture of communication equipment other than telegraph, and telephone apparatus and equipment",,,,,Other
+26400,Manufacture of consumer electronics,2640 Manufacture of consumer electronics ,2640,C640,C26,Other
+,,"2651 Manufacture of instruments and appliances for measuring, testing and navigation ",2651,C651,C26,Other
+26511,"Manufacture of electronic measuring, testing etc. equipment, not for industrial process control",,,,,Other
+26512,Manufacture of electronic industrial process control equipment,,,,,Other
+26513,"Manufacture of non-electronic measuring, testing etc. equipment, not for industrial process control",,,,,Other
+26514,Manufacture of non-electronic industrial process control equipment,,,,,Other
+26520,Manufacture of watches and clocks,2652 Manufacture of watches and clocks ,2652,C652,C26,Other
+26600,"Manufacture of irradiation, electromedical and electrotherapeutic equipment","2660 Manufacture of irradiation, electromedical and electrotherapeutic equipment ",2660,C660,C26,Other
+,,2670 Manufacture of optical instruments and photographic equipment ,2670,C670,C26,Other
+26701,Manufacture of optical precision instruments,,,,,Other
+26702,Manufacture of photographic and cinematographic equipment,,,,,Other
+26800,Manufacture of magnetic and optical media,2680 Manufacture of magnetic and optical media ,2680,C680,C26,Other
+27110,"Manufacture of electric motors, generators and transformers","2711 Manufacture of electric motors, generators and transformers ",2711,C711,C27,Other
+27120,Manufacture of electricity distribution and control apparatus,2712 Manufacture of electricity distribution and control apparatus ,2712,C712,C27,Material
+27200,Manufacture of batteries and accumulators,2720 Manufacture of batteries and accumulators ,2720,C720,C27,Other
+27310,Manufacture of fibre optic cables,2731 Manufacture of fibre optic cables ,2731,C731,C27,Other
+27320,Manufacture of other electronic and electric wires and cables,2732 Manufacture of other electronic and electric wires and cables ,2732,C732,C27,Other
+27330,Manufacture of wiring devices,2733 Manufacture of wiring devices ,2733,C733,C27,Other
+27400,Manufacture of electric lighting equipment,2740 Manufacture of electric lighting equipment ,2740,C740,C27,Other
+27510,Manufacture of electric domestic appliances,2751 Manufacture of electric domestic appliances ,2751,C751,C27,Overlooked
+27520,Manufacture of non-electric domestic appliances,2752 Manufacture of non-electric domestic appliances ,2752,C752,C27,Overlooked
+27900,Manufacture of other electrical equipment,2790 Manufacture of other electrical equipment ,2790,C790,C27,Other
+28110,"Manufacture of engines and turbines, except aircraft, vehicle and cycle engines","2811 Manufacture of engines and turbines, except aircraft, vehicle and cycle engines ",2811,C811,C28,Other
+28120,Manufacture of fluid power equipment,2812 Manufacture of fluid power equipment ,2812,C812,C28,Other
+,,2813 Manufacture of other pumps and compressors ,2813,C813,C28,Other
+28131,Manufacture of pumps,,,,,Other
+28132,Manufacture of compressors,,,,,Other
+28140,Manufacture of taps and valves,2814 Manufacture of other taps and valves ,2814,C814,C28,Other
+28150,"Manufacture of bearings, gears, gearing and driving elements","2815 Manufacture of bearings, gears, gearing and driving elements ",2815,C815,C28,Other
+28210,"Manufacture of ovens, furnaces and furnace burners","2821 Manufacture of ovens, furnaces and furnace burners ",2821,C821,C28,Other
+28220,Manufacture of lifting and handling equipment,2822 Manufacture of lifting and handling equipment ,2822,C822,C28,Other
+28230,Manufacture of office machinery and equipment (except computers and peripheral equipment),2823 Manufacture of office machinery and equipment (except computers and peripheral equipment) ,2823,C823,C28,Other
+28240,Manufacture of power-driven hand tools,2824 Manufacture of power-driven hand tools ,2824,C824,C28,Other
+28250,Manufacture of non-domestic cooling and ventilation equipment,2825 Manufacture of non-domestic cooling and ventilation equipment ,2825,C825,C28,Other
+28290,Manufacture of other general-purpose machinery n.e.c.,2829 Manufacture of other general-purpose machinery n.e.c. ,2829,C829,C28,Other
+,,2830 Manufacture of agricultural and forestry machinery ,2830,C830,C28,Other
+28301,Manufacture of agricultural tractors,,,,,Other
+28302,Manufacture of agricultural and forestry machinery other than tractors,,,,,Other
+28410,Manufacture of metal forming machinery,2841 Manufacture of metal forming machinery ,2841,C841,C28,Other
+28490,Manufacture of other machine tools,2849 Manufacture of other machine tools ,2849,C849,C28,Other
+28910,Manufacture of machinery for metallurgy,2891 Manufacture of machinery for metallurgy ,2891,C891,C28,Other
+,,"2892 Manufacture of machinery for mining, quarrying and construction ",2892,C892,C28,Other
+28921,Manufacture of machinery for mining,,,,,Other
+28922,Manufacture of earthmoving equipment,,,,,Other
+28923,Manufacture of equipment for concrete crushing and screening and roadworks,,,,,Other
+28930,"Manufacture of machinery for food, beverage and tobacco processing","2893 Manufacture of machinery for food, beverage and tobacco processing ",2893,C893,C28,Other
+28940,"Manufacture of machinery for textile, apparel and leather production","2894 Manufacture of machinery for textile, apparel and leather production ",2894,C894,C28,Other
+28950,Manufacture of machinery for paper and paperboard production,2895 Manufacture of machinery for paper and paperboard production ,2895,C895,C28,Other
+28960,Manufacture of plastics and rubber machinery,2896 Manufacture of plastics and rubber machinery ,2896,C896,C28,Other
+28990,Manufacture of other special-purpose machinery n.e.c.,2899 Manufacture of other special-purpose machinery n.e.c. ,2899,C899,C28,Other
+29100,Manufacture of motor vehicles,2910 Manufacture of motor vehicles ,2910,C910,C29,Other
+,,2920 Manufacture of bodies (coachwork) for motor vehicles; manufacture of trailers and semi-trailers ,2920,C920,C29,Other
+29201,Manufacture of bodies (coachwork) for motor vehicles (except caravans),,,,,Other
+29202,Manufacture of trailers and semi-trailers,,,,,Other
+29203,Manufacture of caravans,,,,,Other
+29310,Manufacture of electrical and electronic equipment for motor vehicles and their engines,2931 Manufacture of electrical and electronic equipment for motor vehicles ,2931,C931,C29,Other
+29320,Manufacture of other parts and accessories for motor vehicles,2932 Manufacture of other parts and accessories for motor vehicles ,2932,C932,C29,Other
+30110,Building of ships and floating structures,3011 Building of ships and floating structures ,3011,C011,C30,Other
+30120,Building of pleasure and sporting boats,3012 Building of pleasure and sporting boats ,3012,C012,C30,Other
+30200,Manufacture of railway locomotives and rolling stock,3020 Manufacture of railway locomotives and rolling stock ,3020,C020,C30,Material
+30300,Manufacture of air and spacecraft and related machinery,3030 Manufacture of air and spacecraft and related machinery ,3030,C030,C30,Other
+30400,Manufacture of military fighting vehicles,3040 Manufacture of military fighting vehicles ,3040,C040,C30,Other
+30910,Manufacture of motorcycles,3091 Manufacture of motorcycles ,3091,C091,C30,Other
+30920,Manufacture of bicycles and invalid carriages,3092 Manufacture of bicycles and invalid carriages ,3092,C092,C30,Other
+30990,Manufacture of other transport equipment n.e.c.,3099 Manufacture of other transport equipment n.e.c. ,3099,C099,C30,Other
+31010,Manufacture of office and shop furniture,3101 Manufacture of office and shop furniture ,3101,C101,C31,Overlooked
+31020,Manufacture of kitchen furniture,3102 Manufacture of kitchen furniture ,3102,C102,C31,Overlooked
+31030,Manufacture of mattresses,3103 Manufacture of mattresses ,3103,C103,C31,Overlooked
+31090,Manufacture of other furniture,3109 Manufacture of other furniture ,3109,C109,C31,Overlooked
+32110,Striking of coins,3211 Striking of coins ,3211,C211,C32,Other
+32120,Manufacture of jewellery and related articles,3212 Manufacture of jewellery and related articles ,3212,C212,C32,Other
+32130,Manufacture of imitation jewellery and related articles,3213 Manufacture of imitation jewellery and related articles ,3213,C213,C32,Other
+32200,Manufacture of musical instruments,3220 Manufacture of musical instruments ,3220,C220,C32,Other
+32300,Manufacture of sports goods,3230 Manufacture of sports goods ,3230,C230,C32,Other
+,,3240 Manufacture of games and toys ,3240,C240,C32,Other
+32401,Manufacture of professional and arcade games and toys,,,,,Other
+32409,"Manufacture of other games and toys, n.e.c.",,,,,Other
+32500,Manufacture of medical and dental instruments and supplies,3250 Manufacture of medical and dental instruments and supplies ,3250,C250,C32,Other
+32910,Manufacture of brooms and brushes,3291 Manufacture of brooms and brushes ,3291,C291,C32,Other
+32990,Other manufacturing n.e.c.,3299 Other manufacturing n.e.c. ,3299,C299,C32,Other
+33110,Repair of fabricated metal products,3311 Repair of fabricated metal products ,3311,C311,C33,Other
+33120,Repair of machinery,3312 Repair of machinery ,3312,C312,C33,Other
+33130,Repair of electronic and optical equipment,3313 Repair of electronic and optical equipment ,3313,C313,C33,Other
+33140,Repair of electrical equipment,3314 Repair of electrical equipment ,3314,C314,C33,Overlooked
+33150,Repair and maintenance of ships and boats,3315 Repair and maintenance of ships and boats ,3315,C315,C33,Material
+33160,Repair and maintenance of aircraft and spacecraft,3316 Repair and maintenance of aircraft and spacecraft ,3316,C316,C33,Material
+33170,Repair and maintenance of other transport equipment n.e.c.,3317 Repair and maintenance of other transport equipment ,3317,C317,C33,Material
+33190,Repair of other equipment,3319 Repair of other equipment ,3319,C319,C33,Other
+33200,Installation of industrial machinery and equipment,3320 Installation of industrial machinery and equipment ,3320,C320,C33,Other
+35110,Production of electricity,3511 Production of electricity ,3511,D511,D35,Material
+35120,Transmission of electricity,3512 Transmission of electricity ,3512,D512,D35,Material
+35130,Distribution of electricity,3513 Distribution of electricity ,3513,D513,D35,Material
+35140,Trade of electricity,3514 Trade of electricity ,3514,D514,D35,Material
+35210,Manufacture of gas,3521 Manufacture of gas ,3521,D521,D35,Material
+35220,Distribution of gaseous fuels through mains,3522 Distribution of gaseous fuels through mains ,3522,D522,D35,Material
+35230,Trade of gas through mains,3523 Trade of gas through mains ,3523,D523,D35,Material
+35300,Steam and air conditioning supply,3530 Steam and air conditioning supply ,3530,D530,D35,Material
+36000,"Water collection, treatment and supply","3600 Water collection, treatment and supply ",3600,E600,E36,Material
+37000,Sewerage,3700 Sewerage ,3700,E700,E37,Material
+38110,Collection of non-hazardous waste,3811 Collection of non-hazardous waste ,3811,E811,E38,Material
+38120,Collection of hazardous waste,3812 Collection of hazardous waste ,3812,E812,E38,Material
+38210,Treatment and disposal of non-hazardous waste,3821 Treatment and disposal of non-hazardous waste ,3821,E821,E38,Material
+38220,Treatment and disposal of hazardous waste,3822 Treatment and disposal of hazardous waste ,3822,E822,E38,Material
+38310,Dismantling of wrecks,3831 Dismantling of wrecks ,3831,E831,E38,Other
+38320,Recovery of sorted materials,3832 Recovery of sorted materials ,3832,E832,E38,Other
+39000,Remediation activities and other waste management services,3900 Remediation activities and other waste management services ,3900,E900,E39,Other
+41100,Development of building projects,4110 Development of building projects ,4110,F110,F41,Other
+,,4120 Construction of residential and non-residential buildings ,4120,F120,F41,Overlooked
+41201,Construction of commercial buildings,,,,,Other
+41202,Construction of domestic buildings,,,,,Overlooked
+42110,Construction of roads and motorways,4211 Construction of roads and motorways ,4211,F211,F42,Material
+42120,Construction of railways and underground railways,4212 Construction of railways and underground railways ,4212,F212,F42,Material
+42130,Construction of bridges and tunnels,4213 Construction of bridges and tunnels ,4213,F213,F42,Material
+42210,Construction of utility projects for fluids,4221 Construction of utility projects for fluids ,4221,F221,F42,Material
+42220,Construction of utility projects for electricity and telecommunications,4222 Construction of utility projects for electricity and telecommunications ,4222,F222,F42,Material
+42910,Construction of water projects,4291 Construction of water projects ,4291,F291,F42,Material
+42990,Construction of other civil engineering projects n.e.c.,4299 Construction of other civil engineering projects n.e.c. ,4299,F299,F42,Material
+43110,Demolition,4311 Demolition ,4311,F311,F43,Other
+43120,Site preparation,4312 Site preparation ,4312,F312,F43,Other
+43130,Test drilling and boring,4313 Test drilling and boring ,4313,F313,F43,Other
+43210,Electrical installation,4321 Electrical installation ,4321,F321,F43,Overlooked
+43220,"Plumbing, heat and air-conditioning installation","4322 Plumbing, heat and air-conditioning installation ",4322,F322,F43,Overlooked
+43290,Other construction installation,4329 Other construction installation ,4329,F329,F43,Overlooked
+43310,Plastering,4331 Plastering ,4331,F331,F43,Overlooked
+43320,Joinery installation,4332 Joinery installation ,4332,F332,F43,Overlooked
+43330,Floor and wall covering,4333 Floor and wall covering ,4333,F333,F43,Overlooked
+,,4334 Painting and glazing ,4334,F334,F43,Overlooked
+43341,Painting,,,,,Overlooked
+43342,Glazing,,,,,Overlooked
+43390,Other building completion and finishing,4339 Other building completion and finishing ,4339,F339,F43,Overlooked
+43910,Roofing activities,4391 Roofing activities ,4391,F391,F43,Overlooked
+,,4399 Other specialised construction activities n.e.c. ,4399,F399,F43,Overlooked
+43991,Scaffold erection,,,,,Overlooked
+43999,Other specialised construction activities n.e.c.,,,,,Overlooked
+45111,Sale of new cars and light motor vehicles,4511 Sale of cars and light motor vehicles ,4511,G511,G45,Material
+45112,Sale of used cars and light motor vehicles,,,,,Material
+45190,Sale of other motor vehicles,4519 Sale of other motor vehicles ,4519,G519,G45,Material
+45200,Maintenance and repair of motor vehicles,4520 Maintenance and repair of motor vehicles ,4520,G520,G45,Material
+45310,Wholesale trade of motor vehicle parts and accessories,4531 Wholesale trade of motor vehicle parts and accessories ,4531,G531,G45,Material
+45320,Retail trade of motor vehicle parts and accessories,4532 Retail trade of motor vehicle parts and accessories ,4532,G532,G45,Material
+45400,"Sale, maintenance and repair of motorcycles and related parts and accessories","4540 Sale, maintenance and repair of motorcycles and related parts and accessories ",4540,G540,G45,Material
+46110,"Agents selling agricultural raw materials, livestock, textile raw materials and semi-finished goods","4611 Agents involved in the sale of agricultural raw materials, live animals, textile raw materials and semi-finished goods ",4611,G611,G46,Other
+46120,"Agents involved in the sale of fuels, ores, metals and industrial chemicals","4612 Agents involved in the sale of fuels, ores, metals and industrial chemicals ",4612,G612,G46,Other
+46130,Agents involved in the sale of timber and building materials,4613 Agents involved in the sale of timber and building materials ,4613,G613,G46,Other
+46140,"Agents involved in the sale of machinery, industrial equipment, ships and aircraft","4614 Agents involved in the sale of machinery, industrial equipment, ships and aircraft ",4614,G614,G46,Other
+46150,"Agents involved in the sale of furniture, household goods, hardware and ironmongery","4615 Agents involved in the sale of furniture, household goods, hardware and ironmongery ",4615,G615,G46,Other
+46160,"Agents involved in the sale of textiles, clothing, fur, footwear and leather goods","4616 Agents involved in the sale of textiles, clothing, fur, footwear and leather goods ",4616,G616,G46,Other
+46170,"Agents involved in the sale of food, beverages and tobacco","4617 Agents involved in the sale of food, beverages and tobacco ",4617,G617,G46,Other
+46180,Agents specialized in the sale of other particular products,4618 Agents specialised in the sale of other particular products ,4618,G618,G46,Other
+46190,Agents involved in the sale of a variety of goods,4619 Agents involved in the sale of a variety of goods ,4619,G619,G46,Other
+46210,"Wholesale of grain, unmanufactured tobacco, seeds and animal feeds","4621 Wholesale of grain, unmanufactured tobacco, seeds and animal feeds ",4621,G621,G46,Material
+46220,Wholesale of flowers and plants,4622 Wholesale of flowers and plants ,4622,G622,G46,Overlooked
+46230,Wholesale of live animals,4623 Wholesale of live animals ,4623,G623,G46,Material
+46240,"Wholesale of hides, skins and leather","4624 Wholesale of hides, skins and leather ",4624,G624,G46,Material
+46310,Wholesale of fruit and vegetables,4631 Wholesale of fruit and vegetables ,4631,G631,G46,Material
+46320,Wholesale of meat and meat products,4632 Wholesale of meat and meat products ,4632,G632,G46,Material
+46330,"Wholesale of dairy products, eggs and edible oils and fats","4633 Wholesale of dairy products, eggs and edible oils and fats ",4633,G633,G46,Material
+,,4634 Wholesale of beverages ,4634,G634,G46,Material
+46341,"Wholesale of fruit and vegetable juices, mineral water and soft drinks",,,,,Material
+46342,"Wholesale of wine, beer, spirits and other alcoholic beverages",,,,,Material
+46350,Wholesale of tobacco products,4635 Wholesale of tobacco products ,4635,G635,G46,Other
+46360,Wholesale of sugar and chocolate and sugar confectionery,4636 Wholesale of sugar and chocolate and sugar confectionery ,4636,G636,G46,Other
+46370,"Wholesale of coffee, tea, cocoa and spices","4637 Wholesale of coffee, tea, cocoa and spices ",4637,G637,G46,Other
+46380,"Wholesale of other food, including fish, crustaceans and molluscs","4638 Wholesale of other food, including fish, crustaceans and molluscs ",4638,G638,G46,Other
+46390,"Non-specialised wholesale of food, beverages and tobacco","4639 Non-specialised wholesale of food, beverages and tobacco ",4639,G639,G46,Other
+46410,Wholesale of textiles,4641 Wholesale of textiles ,4641,G641,G46,Overlooked
+46420,Wholesale of clothing and footwear,4642 Wholesale of clothing and footwear ,4642,G642,G46,Overlooked
+,,4643 Wholesale of electrical household appliances ,4643,G643,G46,Overlooked
+46431,"Wholesale of audio tapes, records, CDs and video tapes and the equipment on which these are played",,,,,Other
+46439,"Wholesale of radio, television goods & electrical household appliances (other than records, tapes, CD's & video tapes and the equipment used for playing them)",,,,,Overlooked
+46440,Wholesale of china and glassware and cleaning materials,4644 Wholesale of china and glassware and cleaning materials ,4644,G644,G46,Overlooked
+46450,Wholesale of perfume and cosmetics,4645 Wholesale of perfume and cosmetics ,4645,G645,G46,Other
+46460,Wholesale of pharmaceutical goods,4646 Wholesale of pharmaceutical goods ,4646,G646,G46,Other
+46470,"Wholesale of furniture, carpets and lighting equipment","4647 Wholesale of furniture, carpets and lighting equipment ",4647,G647,G46,Overlooked
+46480,Wholesale of watches and jewellery,4648 Wholesale of watches and jewellery ,4648,G648,G46,Other
+,,4649 Wholesale of other household goods ,4649,G649,G46,Other
+46491,Wholesale of musical instruments,,,,,Other
+46499,Wholesale of household goods (other than musical instruments) n.e.c.,,,,,Overlooked
+46510,"Wholesale of computers, computer peripheral equipment and software","4651 Wholesale of computers, computer peripheral equipment and software ",4651,G651,G46,Other
+46520,Wholesale of electronic and telecommunications equipment and parts,4652 Wholesale of electronic and telecommunications equipment and parts ,4652,G652,G46,Other
+46610,"Wholesale of agricultural machinery, equipment and supplies","4661 Wholesale of agricultural machinery, equipment and supplies ",4661,G661,G46,Other
+46620,Wholesale of machine tools,4662 Wholesale of machine tools ,4662,G662,G46,Other
+46630,"Wholesale of mining, construction and civil engineering machinery","4663 Wholesale of mining, construction and civil engineering machinery ",4663,G663,G46,Other
+46640,Wholesale of machinery for the textile industry and of sewing and knitting machines,4664 Wholesale of machinery for the textile industry and of sewing and knitting machines ,4664,G664,G46,Other
+46650,Wholesale of office furniture,4665 Wholesale of office furniture ,4665,G665,G46,Overlooked
+46660,Wholesale of other office machinery and equipment,4666 Wholesale of other office machinery and equipment ,4666,G666,G46,Other
+46690,Wholesale of other machinery and equipment,4669 Wholesale of other machinery and equipment ,4669,G669,G46,Other
+,,"4671 Wholesale of solid, liquid and gaseous fuels and related products ",4671,G671,G46,Other
+46711,Wholesale of petroleum and petroleum products,,,,,Other
+46719,Wholesale of other fuels and related products,,,,,Other
+46720,Wholesale of metals and metal ores,4672 Wholesale of metals and metal ores ,4672,G672,G46,Other
+46730,"Wholesale of wood, construction materials and sanitary equipment","4673 Wholesale of wood, construction materials and sanitary equipment ",4673,G673,G46,Overlooked
+46740,"Wholesale of hardware, plumbing and heating equipment and supplies","4674 Wholesale of hardware, plumbing and heating equipment and supplies ",4674,G674,G46,Overlooked
+46750,Wholesale of chemical products,4675 Wholesale of chemical products ,4675,G675,G46,Other
+46760,Wholesale of other intermediate products,4676 Wholesale of other intermediate products ,4676,G676,G46,Other
+46770,Wholesale of waste and scrap,4677 Wholesale of waste and scrap ,4677,G677,G46,Other
+46900,Non-specialised wholesale trade,4690 Non-specialised wholesale trade ,4690,G690,G46,Other
+47110,"Retail sale in non-specialised stores with food, beverages or tobacco predominating","4711 Retail sale in non-specialised stores with food, beverages or tobacco predominating ",4711,G711,G47,Material
+47190,Other retail sale in non-specialised stores,4719 Other retail sale in non-specialised stores ,4719,G719,G47,Other
+47210,Retail sale of fruit and vegetables in specialised stores,4721 Retail sale of fruit and vegetables in specialised stores ,4721,G721,G47,Material
+47220,Retail sale of meat and meat products in specialised stores,4722 Retail sale of meat and meat products in specialised stores ,4722,G722,G47,Material
+47230,"Retail sale of fish, crustaceans and molluscs in specialised stores","4723 Retail sale of fish, crustaceans and molluscs in specialised stores ",4723,G723,G47,Material
+47240,"Retail sale of bread, cakes, flour confectionery and sugar confectionery in specialised stores","4724 Retail sale of bread, cakes, flour confectionery and sugar confectionery in specialised stores ",4724,G724,G47,Material
+47250,Retail sale of beverages in specialised stores,4725 Retail sale of beverages in specialised stores ,4725,G725,G47,Material
+47260,Retail sale of tobacco products in specialised stores,4726 Retail sale of tobacco products in specialised stores ,4726,G726,G47,Other
+47290,Other retail sale of food in specialised stores,4729 Other retail sale of food in specialised stores ,4729,G729,G47,Material
+47300,Retail sale of automotive fuel in specialised stores,4730 Retail sale of automotive fuel in specialised stores ,4730,G730,G47,Material
+47410,"Retail sale of computers, peripheral units and software in specialised stores","4741 Retail sale of computers, peripheral units and software in specialised stores ",4741,G741,G47,Other
+,,4742 Retail sale of telecommunications equipment in specialised stores ,4742,G742,G47,Material
+47421,Retail sale of mobile telephones,,,,#VALUE!,Material
+47429,Retail sale of telecommunications equipment other than mobile telephones,,,,#VALUE!,Material
+47430,Retail sale of audio and video equipment in specialised stores,4743 Retail sale of audio and video equipment in specialised stores ,4743,G743,G47,Other
+47510,Retail sale of textiles in specialised stores,4751 Retail sale of textiles in specialised stores ,4751,G751,G47,Overlooked
+47520,"Retail sale of hardware, paints and glass in specialised stores","4752 Retail sale of hardware, paints and glass in specialised stores ",4752,G752,G47,Overlooked
+47530,"Retail sale of carpets, rugs, wall and floor coverings in specialised stores","4753 Retail sale of carpets, rugs, wall and floor coverings in specialised stores ",4753,G753,G47,Overlooked
+47540,Retail sale of electrical household appliances in specialised stores,4754 Retail sale of electrical household appliances in specialised stores ,4754,G754,G47,Overlooked
+,,"4759 Retail sale of furniture, lighting equipment and other household articles in specialised stores ",4759,G759,G47,Overlooked
+47591,Retail sale of musical instruments and scores,,,,,Other
+47599,"Retail of furniture, lighting, and similar (not musical instruments or scores) in specialised store",,,,,Overlooked
+47610,Retail sale of books in specialised stores,4761 Retail sale of books in specialised stores ,4761,G761,G47,Other
+47620,Retail sale of newspapers and stationery in specialised stores,4762 Retail sale of newspapers and stationery in specialised stores ,4762,G762,G47,Other
+47630,Retail sale of music and video recordings in specialised stores,4763 Retail sale of music and video recordings in specialised stores ,4763,G763,G47,Other
+47640,"Retail sale of sports goods, fishing gear, camping goods, boats and bicycles",4764 Retail sale of sporting equipment in specialised stores ,4764,G764,G47,Other
+47650,Retail sale of games and toys in specialised stores,4765 Retail sale of games and toys in specialised stores ,4765,G765,G47,Other
+47710,Retail sale of clothing in specialised stores,4771 Retail sale of clothing in specialised stores ,4771,G771,G47,Overlooked
+,,4772 Retail sale of footwear and leather goods in specialised stores ,4772,G772,G47,Overlooked
+47721,Retail sale of footwear in specialised stores,,,,,Overlooked
+47722,Retail sale of leather goods in specialised stores,,,,,Other
+47730,Dispensing chemist in specialised stores,4773 Dispensing chemist in specialised stores ,4773,G773,G47,Providential
+,,4774 Retail sale of medical and orthopaedic goods in specialised stores ,4774,G774,G47,Overlooked
+47741,Retail sale of hearing aids,,,,,Overlooked
+47749,Retail sale of medical and orthopaedic goods in specialised stores (not incl. hearing aids) n.e.c.,,,,,Overlooked
+47750,Retail sale of cosmetic and toilet articles in specialised stores,4775 Retail sale of cosmetic and toilet articles in specialised stores ,4775,G775,G47,Other
+47760,"Retail sale of flowers, plants, seeds, fertilizers, pet animals and pet food in specialised stores","4776 Retail sale of flowers, plants, seeds, fertilisers, pet animals and pet food in specialised stores ",4776,G776,G47,Overlooked
+47770,Retail sale of watches and jewellery in specialised stores,4777 Retail sale of watches and jewellery in specialised stores ,4777,G777,G47,Other
+,,4778 Other retail sale of new goods in specialised stores ,4778,G778,G47,Other
+47781,Retail sale in commercial art galleries,,,,,Other
+47782,Retail sale by opticians,,,,,Providential
+47789,Other retail sale of new goods in specialised stores (not commercial art galleries and opticians),,,,,Other
+,,4779 Retail sale of second-hand goods in stores ,4779,G779,G47,Other
+,,"4781 Retail sale via stalls and markets of food, beverages and tobacco products ",4781,G781,G47,Other
+,,"4782 Retail sale via stalls and markets of textiles, clothing and footwear ",4782,G782,G47,Other
+,,4789 Retail sale via stalls and markets of other goods ,4789,G789,G47,Other
+47791,Retail sale of antiques including antique books in stores,4791 Retail sale via mail order houses or via Internet ,4791,G791,G47,Other
+,,"4799 Other retail sale not in stores, stalls or markets ",4799,G799,G47,Overlooked
+47799,Retail sale of other second-hand goods in stores (not incl. antiques),,,,,Other
+47810,"Retail sale via stalls and markets of food, beverages and tobacco products",,,,,Material
+47820,"Retail sale via stalls and markets of textiles, clothing and footwear",,,,,Overlooked
+47890,Retail sale via stalls and markets of other goods,,,,,Other
+47910,Retail sale via mail order houses or via Internet,,,,,Other
+47990,"Other retail sale not in stores, stalls or markets",,,,,Other
+49100,"Passenger rail transport, interurban","4910 Passenger rail transport, interurban ",4910,H910,H49,Material
+49200,Freight rail transport,4920 Freight rail transport ,4920,H920,H49,Material
+,,4931 Urban and suburban passenger land transport ,4931,H931,H49,Material
+49311,"Urban and suburban passenger railway transportation by underground, metro and similar systems",,,,,Material
+49319,"Other urban, suburban or metropolitan passenger land transport (not underground, metro or similar)",,,,,Material
+49320,Taxi operation,4932 Taxi operation ,4932,H932,H49,Material
+49390,Other passenger land transport,4939 Other passenger land transport n.e.c. ,4939,H939,H49,Material
+49410,Freight transport by road,4941 Freight transport by road ,4941,H941,H49,Material
+49420,Removal services,4942 Removal services ,4942,H942,H49,Material
+49500,Transport via pipeline,4950 Transport via pipeline ,4950,H950,H49,Material
+50100,Sea and coastal passenger water transport,5010 Sea and coastal passenger water transport ,5010,H010,H50,Overlooked
+50200,Sea and coastal freight water transport,5020 Sea and coastal freight water transport ,5020,H020,H50,Material
+50300,Inland passenger water transport,5030 Inland passenger water transport ,5030,H030,H50,Material
+50400,Inland freight water transport,5040 Inland freight water transport ,5040,H040,H50,Material
+51101,Scheduled passenger air transport,5110 Passenger air transport ,5110,H110,H51,Overlooked
+51102,Non-scheduled passenger air transport,,,,,Overlooked
+51210,Freight air transport,5121 Freight air transport ,5121,H121,H51,Material
+51220,Space transport,5122 Space transport ,5122,H122,H51,Other
+,,5210 Warehousing and storage ,5210,H210,H52,Other
+52101,Operation of warehousing and storage facilities for water transport activities,,,,,Material
+52102,Operation of warehousing and storage facilities for air transport activities,,,,,Material
+52103,Operation of warehousing and storage facilities for land transport activities,,,,,Material
+,,5221 Service activities incidental to land transportation ,5221,H221,H52,Material
+,,5222 Service activities incidental to water transportation ,5222,H222,H52,Material
+52211,Operation of rail freight terminals,,,,,Material
+52212,Operation of rail passenger facilities at railway stations,,,,,Material
+52213,Operation of bus and coach passenger facilities at bus and coach stations,,,,,Material
+52219,"Other service activities incidental to land transportation, n.e.c.",,,,,Material
+52220,Service activities incidental to water transportation,,,,,Material
+52230,Service activities incidental to air transportation,5223 Service activities incidental to air transportation ,5223,H223,H52,Material
+,,5224 Cargo handling ,5224,H224,H52,Material
+52241,Cargo handling for water transport activities,,,,,Material
+52242,Cargo handling for air transport activities,,,,,Material
+52243,Cargo handling for land transport activities,,,,,Material
+52290,Other transportation support activities,5229 Other transportation support activities ,5229,H229,H52,Material
+53100,Postal activities under universal service obligation,5310 Postal activities under universal service obligation ,5310,H310,H53,Material
+,,5320 Other postal and courier activities ,5320,H320,H53,Other
+53201,Licensed carriers,,,,,Other
+53202,Unlicensed carrier,,,,,Other
+55100,Hotels and similar accommodation,5510 Hotels and similar accommodation ,5510,I510,I55,Overlooked
+,,5520 Holiday and other short-stay accommodation ,5520,I520,I55,Overlooked
+55201,Holiday centres and villages,,,,,Overlooked
+55202,Youth hostels,,,,,Overlooked
+55209,Other holiday and other collective accommodation,,,,,Overlooked
+55300,"Recreational vehicle parks, trailer parks and camping grounds","5530 Camping grounds, recreational vehicle parks and trailer parks ",5530,I530,I55,Overlooked
+55900,Other accommodation,5590 Other accommodation ,5590,I590,I55,Overlooked
+,,5610 Restaurants and mobile food service activities ,5610,I610,I56,Overlooked
+56101,Licensed restaurants,,,,,Overlooked
+56102,Unlicensed restaurants and cafes,,,,,Overlooked
+56103,Take-away food shops and mobile food stands,,,,,Overlooked
+56210,Event catering activities,5621 Event catering activities ,5621,I621,I56,Overlooked
+56290,Other food services,5629 Other food service activities ,5629,I629,I56,Overlooked
+,,5630 Beverage serving activities ,5630,I630,I56,Overlooked
+56301,Licensed clubs,,,,,Overlooked
+56302,Public houses and bars,,,,,Overlooked
+58110,Book publishing,5811 Book publishing ,5811,J811,J58,Other
+58120,Publishing of directories and mailing lists,5812 Publishing of directories and mailing lists ,5812,J812,J58,Other
+58130,Publishing of newspapers,5813 Publishing of newspapers ,5813,J813,J58,Other
+,,5814 Publishing of journals and periodicals ,5814,J814,J58,Other
+58141,Publishing of learned journals,,,,,Other
+58142,Publishing of  consumer and business journals and periodicals,,,,,Other
+58190,Other publishing activities,5819 Other publishing activities ,5819,J819,J58,Other
+58210,Publishing of computer games,5821 Publishing of computer games ,5821,J821,J58,Other
+58290,Other software publishing,5829 Other software publishing ,5829,J829,J58,Other
+,,"5911 Motion picture, video and television programme production activities ",5911,J911,J59,Other
+59111,Motion picture production activities,,,,,Other
+59112,Video production activities,,,,,Other
+59113,Television programme production activities,,,,,Other
+59120,"Motion picture, video and television programme post-production activities","5912 Motion picture, video and television programme post-production activities ",5912,J912,J59,Other
+59131,Motion picture distribution activities,,,,,Other
+59132,Video distribution activities,,,,,Other
+59133,Television programme distribution activities,,,,,Other
+59140,Motion picture projection activities,5914 Motion picture projection activities ,5914,J914,J59,Other
+59200,Sound recording and music publishing activities,5920 Sound recording and music publishing activities ,5920,J920,J59,Other
+60100,Radio broadcasting,6010 Radio broadcasting ,6010,J010,J60,Other
+60200,Television programming and broadcasting activities,6020 Television programming and broadcasting activities ,6020,J020,J60,Other
+61100,Wired telecommunications activities,6110 Wired telecommunications activities ,6110,J110,J61,Material
+61200,Wireless telecommunications activities,6120 Wireless telecommunications activities ,6120,J120,J61,Material
+61300,Satellite telecommunications activities,6130 Satellite telecommunications activities ,6130,J130,J61,Material
+61900,Other telecommunications activities,6190 Other telecommunications activities ,6190,J190,J61,Material
+,,6201 Computer programming activities ,6201,J201,J62,Other
+62011,Ready-made interactive leisure and entertainment software development,,,,,Other
+62012,Business and domestic software development,,,,,Other
+62020,Information technology consultancy activities,6202 Computer consultancy activities ,6202,J202,J62,Other
+62030,Computer facilities management activities,6203 Computer facilities management activities ,6203,J203,J62,Other
+62090,Other information technology service activities,6209 Other information technology and computer service activities ,6209,J209,J62,Other
+63110,"Data processing, hosting and related activities","6311 Data processing, hosting and related activities ",6311,J311,J63,Other
+63120,Web portals,6312 Web portals ,6312,J312,J63,Other
+63910,News agency activities,6391 News agency activities ,6391,J391,J63,Other
+63990,Other information service activities n.e.c.,6399 Other information service activities n.e.c. ,6399,J399,J63,Other
+64110,Central banking,6411 Central banking ,6411,K411,K64,Other
+,,6419 Other monetary intermediation ,6419,K419,K64,Material
+64191,Banks,,,,,Material
+64192,Building societies,,,,,Material
+,,6420 Activities of holding companies ,6420,K420,K64,Other
+64201,Activities of agricultural holding companies,,,,,Other
+64202,Activities of production holding companies,,,,,Other
+64203,Activities of construction holding companies,,,,,Other
+64204,Activities of distribution holding companies,,,,,Other
+64205,Activities of financial services holding companies,,,,,Other
+64209,Activities of other holding companies n.e.c.,,,,,Other
+,,"6430 Trusts, funds and similar financial entities ",6430,K430,K64,Other
+64301,Activities of investment trusts,,,,,Other
+64302,Activities of unit trusts,,,,,Other
+64303,Activities of venture and development capital companies,,,,,Other
+64304,Activities of open-ended investment companies,,,,,Other
+64305,Activities of property unit trusts,,,,,Other
+64306,Activities of real estate investment trusts,,,,,Other
+64910,Financial leasing,6491 Financial leasing ,6491,K491,K64,Other
+,,6492 Other credit granting ,6492,K492,K64,Other
+64921,Credit granting by non-deposit taking finance houses and other specialist consumer credit grantors,,,,,Other
+64922,Activities of mortgage finance companies,,,,,Other
+64929,Other credit granting n.e.c.,,,,,Other
+,,"6499 Other financial service activities, except insurance and pension funding n.e.c. ",6499,K499,K64,Other
+64991,Security dealing on own account,,,,,Other
+64992,Factoring,,,,,Other
+64999,Financial intermediation not elsewhere classified,,,,,Other
+65110,Life insurance,6511 Life insurance ,6511,K511,K65,Other
+65120,Non-life insurance,6512 Non-life insurance ,6512,K512,K65,Other
+,,6520 Reinsurance ,6520,K520,K65,Other
+65201,Life reinsurance,,,,,Other
+65202,Non-life reinsurance,,,,,Other
+65300,Pension funding,6530 Pension funding ,6530,K530,K65,Other
+66110,Administration of financial markets,6611 Administration of financial markets ,6611,K611,K66,Other
+66120,Security and commodity contracts dealing activities,6612 Security and commodity contracts brokerage ,6612,K612,K66,Other
+66190,Activities auxiliary to financial intermediation n.e.c.,"6619 Other activities auxiliary to financial services, except insurance and pension funding ",6619,K619,K66,Other
+66210,Risk and damage evaluation,6621 Risk and damage evaluation ,6621,K621,K66,Other
+66220,Activities of insurance agents and brokers,6622 Activities of insurance agents and brokers ,6622,K622,K66,Other
+66290,Other activities auxiliary to insurance and pension funding,6629 Other activities auxiliary to insurance and pension funding ,6629,K629,K66,Other
+66300,Fund management activities,6630 Fund management activities ,6630,K630,K66,Other
+68100,Buying and selling of own real estate,6810 Buying and selling of own real estate ,6810,L810,L68,Other
+,,6820 Renting and operating of own or leased real estate ,6820,L820,L68,Other
+68201,Renting and operating of Housing Association real estate,,,,,Other
+68202,Letting and operating of conference and exhibition centres,,,,,Other
+68209,Other letting and operating of own or leased real estate,,,,,Other
+68310,Real estate agencies,6831 Real estate agencies ,6831,L831,L68,Overlooked
+68320,Management of real estate on a fee or contract basis,6832 Management of real estate on a fee or contract basis ,6832,L832,L68,Other
+,,6910 Legal activities ,6910,M910,M69,Other
+69101,Barristers at law,,,,,Other
+69102,Solicitors,,,,,Other
+69109,Activities of patent and copyright agents; other legal activities n.e.c.,,,,,Other
+,,"6920 Accounting, bookkeeping and auditing activities; tax consultancy ",6920,M920,M69,Other
+69201,Accounting and auditing activities,,,,,Other
+69202,Bookkeeping activities,,,,,Other
+69203,Tax consultancy,,,,,Other
+70100,Activities of head offices,7010 Activities of head offices ,7010,M010,M70,Other
+70210,Public relations and communications activities,7021 Public relations and communication activities ,7021,M021,M70,Other
+,,7022 Business and other management consultancy activities ,7022,M022,M70,Other
+70221,Financial management,,,,,Other
+70229,Management consultancy activities other than financial management,,,,,Other
+71111,Architectural activities,7111 Architectural activities ,7111,M111,M71,Other
+,,7112 Engineering activities and related technical consultancy ,7112,M112,M71,Other
+71112,Urban planning and landscape architectural activities,,,,,Other
+71121,Engineering design activities for industrial process and production,,,,,Other
+71122,Engineering related scientific and technical consulting activities,,,,,Other
+71129,Other engineering activities,,,,,Other
+71200,Technical testing and analysis,7120 Technical testing and analysis ,7120,M120,M71,Other
+72110,Research and experimental development on biotechnology,7211 Research and experimental development on biotechnology ,7211,M211,M72,Other
+72190,Other research and experimental development on natural sciences and engineering,7219 Other research and experimental development on natural sciences and engineering ,7219,M219,M72,Other
+72200,Research and experimental development on social sciences and humanities,7220 Research and experimental development on social sciences and humanities ,7220,M220,M72,Other
+73110,Advertising agencies,7311 Advertising agencies ,7311,M311,M73,Other
+73120,Media representation services,7312 Media representation ,7312,M312,M73,Other
+73200,Market research and public opinion polling,7320 Market research and public opinion polling ,7320,M320,M73,Other
+74100,specialised design activities,7410 Specialised design activities ,7410,M410,M74,Other
+,,7420 Photographic activities ,7420,M420,M74,Other
+74201,Portrait photographic activities,,,,,Other
+74202,Other specialist photography,,,,,Other
+74203,Film processing,,,,,Other
+74209,Photographic activities not elsewhere classified,,,,,Other
+74300,Translation and interpretation activities,7430 Translation and interpretation activities ,7430,M430,M74,Other
+,,"7490 Other professional, scientific and technical activities n.e.c. ",7490,M490,M74,Other
+74901,Environmental consulting activities,,,,,Other
+74902,Quantity surveying activities,,,,,Other
+74909,"Other professional, scientific and technical activities n.e.c.",,,,,Other
+74990,Non-trading company,,,,,Other
+75000,Veterinary activities,7500 Veterinary activities ,7500,M500,M75,Overlooked
+77110,Renting and leasing of cars and light motor vehicles,7711 Renting and leasing of cars and light motor vehicles ,7711,N711,N77,Other
+77120,Renting and leasing of trucks and other heavy vehicles,7712 Renting and leasing of trucks ,7712,N712,N77,Other
+77210,Renting and leasing of recreational and sports goods,7721 Renting and leasing of recreational and sports goods ,7721,N721,N77,Other
+77220,Renting of video tapes and disks,7722 Renting of video tapes and disks ,7722,N722,N77,Other
+,,7729 Renting and leasing of other personal and household goods ,7729,N729,N77,Other
+77291,Renting and leasing of media entertainment equipment,,,,,Other
+77299,Renting and leasing of other personal and household goods,,,,,Other
+77310,Renting and leasing of agricultural machinery and equipment,7731 Renting and leasing of agricultural machinery and equipment ,7731,N731,N77,Other
+77320,Renting and leasing of construction and civil engineering machinery and equipment,7732 Renting and leasing of construction and civil engineering machinery and equipment ,7732,N732,N77,Other
+77330,Renting and leasing of office machinery and equipment (including computers),7733 Renting and leasing of office machinery and equipment (including computers) ,7733,N733,N77,Other
+,,7734 Renting and leasing of water transport equipment ,7734,N734,N77,Other
+,,7735 Renting and leasing of air transport equipment ,7735,N735,N77,Other
+,,"7739 Renting and leasing of other machinery, equipment and tangible goods n.e.c. ",7739,N739,N77,Other
+,,"7740 Leasing of intellectual property and similar products, except copyrighted works ",7740,N740,N77,Other
+77341,Renting and leasing of passenger water transport equipment,,,,,Other
+77342,Renting and leasing of freight water transport equipment,,,,,Other
+77351,Renting and leasing of air passenger transport equipment,,,,,Other
+77352,Renting and leasing of freight air transport equipment,,,,,Other
+77390,"Renting and leasing of other machinery, equipment and tangible goods n.e.c.",,,,,Other
+77400,"Leasing of intellectual property and similar products, except copyright works",,,,,Other
+,,7810 Activities of employment placement agencies ,7810,N810,N78,Other
+78101,"Motion picture, television and other theatrical casting activities",,,,,Other
+78109,Other activities of employment placement agencies,,,,,Other
+78200,Temporary employment agency activities,7820 Temporary employment agency activities ,7820,N820,N78,Other
+78300,Human resources provision and management of human resources functions,7830 Other human resources provision ,7830,N830,N78,Other
+79110,Travel agency activities,7911 Travel agency activities ,7911,N911,N79,Overlooked
+79120,Tour operator activities,7912 Tour operator activities ,7912,N912,N79,Overlooked
+,,7990 Other reservation service and related activities ,7990,N990,N79,Overlooked
+79901,Activities of tourist guides,,,,,Overlooked
+79909,Other reservation service activities n.e.c.,,,,,Other
+80100,Private security activities,8010 Private security activities ,8010,N010,N80,Other
+80200,Security systems service activities,8020 Security systems service activities ,8020,N020,N80,Other
+80300,Investigation activities,8030 Investigation activities ,8030,N030,N80,Other
+81100,Combined facilities support activities,8110 Combined facilities support activities ,8110,N110,N81,Other
+81210,General cleaning of buildings,8121 General cleaning of buildings ,8121,N121,N81,Other
+,,8122 Other building and industrial cleaning activities ,8122,N122,N81,Other
+81221,Window cleaning services,,,,,Other
+81222,Specialised cleaning services,,,,,Other
+81223,Furnace and chimney cleaning services,,,,,Other
+81229,Other building and industrial cleaning activities,8129 Other cleaning activities ,8129,N129,N81,Other
+81291,Disinfecting and exterminating services,,,,,Other
+81299,Other cleaning services,,,,,Other
+81300,Landscape service activities,8130 Landscape service activities ,8130,N130,N81,Other
+82110,Combined office administrative service activities,8211 Combined office administrative service activities ,8211,N211,N82,Other
+82190,"Photocopying, document preparation and other specialised office support activities","8219 Photocopying, document preparation and other specialised office support activities ",8219,N219,N82,Other
+82200,Activities of call centres,8220 Activities of call centres ,8220,N220,N82,Other
+,,8230 Organisation of conventions and trade shows ,8230,N230,N82,Other
+82301,Activities of exhibition and fair organisers,,,,,Other
+82302,Activities of conference organisers,,,,,Other
+,,8291 Activities of collection agencies and credit bureaus ,8291,N291,N82,Other
+82911,Activities of collection agencies,,,,,Other
+82912,Activities of credit bureaus,,,,,Other
+82920,Packaging activities,8292 Packaging activities ,8292,N292,N82,Other
+82990,Other business support service activities n.e.c.,8299 Other business support service activities n.e.c. ,8299,N299,N82,Other
+84110,General public administration activities,8411 General public administration activities ,8411,O411,O84,Providential
+84120,"Regulation of health care, education, cultural and other social services, not incl. social security","8412 Regulation of the activities of providing health care, education, cultural services and other social services, excluding social security ",8412,O412,O84,Providential
+84130,Regulation of and contribution to more efficient operation of businesses,8413 Regulation of and contribution to more efficient operation of businesses ,8413,O413,O84,Providential
+84210,Foreign affairs,8421 Foreign affairs ,8421,O421,O84,Providential
+84220,Defence activities,8422 Defence activities ,8422,O422,O84,Providential
+84230,Justice and judicial activities,8423 Justice and judicial activities ,8423,O423,O84,Providential
+84240,Public order and safety activities,8424 Public order and safety activities ,8424,O424,O84,Providential
+84250,Fire service activities,8425 Fire service activities ,8425,O425,O84,Providential
+84300,Compulsory social security activities,8430 Compulsory social security activities ,8430,O430,O84,Providential
+85100,Pre-primary education,8510 Pre-primary education ,8510,P510,P85,Providential
+85200,Primary education,8520 Primary education ,8520,P520,P85,Providential
+85310,General secondary education,8531 General secondary education ,8531,P531,P85,Providential
+85320,Technical and vocational secondary education,8532 Technical and vocational secondary education ,8532,P532,P85,Providential
+85410,Post-secondary non-tertiary education,8541 Post-secondary non-tertiary education ,8541,P541,P85,Providential
+,,8542 Tertiary education ,8542,P542,P85,Providential
+85421,First-degree level higher education,,,,,Providential
+85422,Post-graduate level higher education,,,,,Providential
+85510,Sports and recreation education,8551 Sports and recreation education ,8551,P551,P85,Providential
+85520,Cultural education,8552 Cultural education ,8552,P552,P85,Providential
+85530,Driving school activities,8553 Driving school activities ,8553,P553,P85,Providential
+85590,Other education n.e.c.,8559 Other education n.e.c. ,8559,P559,P85,Providential
+85600,Educational support services,8560 Educational support activities ,8560,P560,P85,Providential
+86101,Hospital activities,8610 Hospital activities ,8610,Q610,Q86,Providential
+86102,Medical nursing home activities,,,,,Providential
+86210,General medical practice activities,8621 General medical practice activities ,8621,Q621,Q86,Providential
+86220,Specialists medical practice activities,8622 Specialist medical practice activities ,8622,Q622,Q86,Providential
+86230,Dental practice activities,8623 Dental practice activities ,8623,Q623,Q86,Providential
+86900,Other human health activities,8690 Other human health activities ,8690,Q690,Q86,Providential
+87100,Residential nursing care facilities,8710 Residential nursing care activities ,8710,Q710,Q87,Providential
+87200,"Residential care activities for learning difficulties, mental health and substance abuse","8720 Residential care activities for mental retardation, mental health and substance abuse ",8720,Q720,Q87,Providential
+87300,Residential care activities for the elderly and disabled,8730 Residential care activities for the elderly and disabled ,8730,Q730,Q87,Providential
+87900,Other residential care activities n.e.c.,8790 Other residential care activities ,8790,Q790,Q87,Providential
+88100,Social work activities without accommodation for the elderly and disabled,8810 Social work activities without accommodation for the elderly and disabled ,8810,Q810,Q88,Providential
+88910,Child day-care activities,8891 Child day-care activities ,8891,Q891,Q88,Providential
+88990,Other social work activities without accommodation n.e.c.,8899 Other social work activities without accommodation n.e.c. ,8899,Q899,Q88,Providential
+90010,Performing arts,9001 Performing arts ,9001,R001,R90,Other
+90020,Support activities to performing arts,9002 Support activities to performing arts ,9002,R002,R90,Other
+90030,Artistic creation,9003 Artistic creation ,9003,R003,R90,Other
+90040,Operation of arts facilities,9004 Operation of arts facilities ,9004,R004,R90,Other
+91011,Library activities,9101 Library and archives activities ,9101,R101,R91,Overlooked
+91012,Archives activities,,,,,Other
+91020,Museums activities,9102 Museums activities ,9102,R102,R91,Overlooked
+91030,Operation of historical sites and buildings and similar visitor attractions,9103 Operation of historical sites and buildings and similar visitor attractions ,9103,R103,R91,Overlooked
+91040,Botanical and zoological gardens and nature reserves activities,9104 Botanical and zoological gardens and nature reserves activities ,9104,R104,R91,Overlooked
+92000,Gambling and betting activities,9200 Gambling and betting activities ,9200,R200,R92,Other
+93110,Operation of sports facilities,9311 Operation of sports facilities ,9311,R311,R93,Overlooked
+93120,Activities of sport clubs,9312 Activities of sport clubs ,9312,R312,R93,Overlooked
+93130,Fitness facilities,9313 Fitness facilities ,9313,R313,R93,Overlooked
+,,9319 Other sports activities ,9319,R319,R93,Overlooked
+93191,Activities of racehorse owners,,,,,Other
+93199,Other sports activities,,,,,Overlooked
+93210,Activities of amusement parks and theme parks,9321 Activities of amusement parks and theme parks ,9321,R321,R93,Overlooked
+93290,Other amusement and recreation activities n.e.c.,9329 Other amusement and recreation activities ,9329,R329,R93,Overlooked
+94110,Activities of business and employers membership organizations,9411 Activities of business and employers membership organisations ,9411,S411,S94,Other
+94120,Activities of professional membership organizations,9412 Activities of professional membership organisations ,9412,S412,S94,Other
+94200,Activities of trade unions,9420 Activities of trade unions ,9420,S420,S94,Other
+94910,Activities of religious organizations,9491 Activities of religious organisations ,9491,S491,S94,Other
+94920,Activities of political organizations,9492 Activities of political organisations ,9492,S492,S94,Other
+94990,Activities of other membership organizations n.e.c.,9499 Activities of other membership organisations n.e.c. ,9499,S499,S94,Other
+95110,Repair of computers and peripheral equipment,9511 Repair of computers and peripheral equipment ,9511,S511,S95,Other
+95120,Repair of communication equipment,9512 Repair of communication equipment ,9512,S512,S95,Other
+95210,Repair of consumer electronics,9521 Repair of consumer electronics ,9521,S521,S95,Overlooked
+95220,Repair of household appliances and home and garden equipment,9522 Repair of household appliances and home and garden equipment ,9522,S522,S95,Overlooked
+95230,Repair of footwear and leather goods,9523 Repair of footwear and leather goods ,9523,S523,S95,Overlooked
+95240,Repair of furniture and home furnishings,9524 Repair of furniture and home furnishings ,9524,S524,S95,Overlooked
+95250,"Repair of watches, clocks and jewellery","9525 Repair of watches, clocks and jewellery ",9525,S525,S95,Overlooked
+95290,Repair of personal and household goods n.e.c.,9529 Repair of other personal and household goods ,9529,S529,S95,Overlooked
+96010,Washing and (dry-)cleaning of textile and fur products,9601 Washing and (dry-)cleaning of textile and fur products ,9601,S601,S96,Overlooked
+96020,Hairdressing and other beauty treatment,9602 Hairdressing and other beauty treatment ,9602,S602,S96,Overlooked
+96030,Funeral and related activities,9603 Funeral and related activities ,9603,S603,S96,Overlooked
+96040,Physical well-being activities,9604 Activities of physical well-being institutes ,9604,S604,S96,Other
+96090,Other service activities n.e.c.,9609 Other personal service activities n.e.c. ,9609,S609,S96,Other
+97000,Activities of households as employers of domestic personnel,9700 Activities of households as employers of domestic personnel ,9700,T700,T97,Other
+98000,Residents property management,,,,,Other
+98100,Undifferentiated goods-producing activities of private households for own use,9810 Undifferentiated goods-producing activities of private households for own use ,9810,T810,T98,Other
+98200,Undifferentiated service-producing activities of private households for own use,9820 Undifferentiated service-producing activities of private households for own use ,9820,T820,T98,Other
+99000,Activities of extraterritorial organizations and bodies,9900 Activities of extraterritorial organisations and bodies ,9900,U900,U99,Other
+99999,Dormant Company,,,,,Other

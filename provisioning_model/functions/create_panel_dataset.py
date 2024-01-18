@@ -1,7 +1,46 @@
 import pandas as pd
-import seaborn as sns
-from scipy import stats
+import numpy as np
+# import seaborn as sns
+# from scipy import stats
 
+
+def calculate_shares(df, value_col):
+    """
+    Calculate the share of each category in a value column.
+    :param df: the input DataFrame
+    :param value_col: the column containing the values to calculate the share of
+    :return: a DataFrame with the share of each category in a value column
+    """
+    # Group by 'geo', 'TIME_PERIOD', and 'final_foundational' and sum the specified value column
+    grouped = df.groupby(['geo', 'TIME_PERIOD', 'final_foundational'])[value_col].sum().reset_index()
+
+    # Calculate total value for each country-year combination
+    total_values = df.groupby(['geo', 'TIME_PERIOD'])[value_col].sum().reset_index()
+    total_values.rename(columns={value_col: 'total_value'}, inplace=True)
+
+    # Merge and calculate share
+    merged = pd.merge(grouped, total_values, on=['geo', 'TIME_PERIOD'])
+    merged['share'] = merged[value_col] / merged['total_value']
+
+    # Pivot the table to get categories as columns
+    pivot_table = merged.pivot_table(index=['geo', 'TIME_PERIOD'], columns='final_foundational', values='share', fill_value=0).reset_index()
+
+    return pivot_table
+
+def standardize_data(input_data) -> np.ndarray:
+    """
+    Standardize data by subtracting the mean and dividing by the standard deviation.
+    :param input_data: a numpy array of data
+    :return: numpy array of standardized data
+    """
+    # Calculate mean and standard deviation, ignoring NaNs
+    mean = np.nanmean(input_data)
+    std_dev = np.nanstd(input_data)
+
+    # Standardize data
+    output_data = (input_data - mean) / std_dev
+
+    return output_data
 
 def remove_cols_with_few_observations(df, threshold_country=75, threshold_year=75):
     """

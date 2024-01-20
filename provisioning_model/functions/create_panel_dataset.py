@@ -1,9 +1,54 @@
 import pandas as pd
 import numpy as np
-# import seaborn as sns
-# from scipy import stats
+import pandas as pd
+import re
 
+def clean_and_transform_wdi_outcomes(df, value_name):
+    """
+    Apply the transformations to the given dataframe and return the cleaned dataframe.
+    The dataframe will be reshaped to have columns "Year", "Country.Code", "Country.Name", and "value_name".
+    """
+    # Extract columns that match the pattern 'XXXX [YRXXXX]' for year
+    year_columns = [col for col in df.columns if re.match(r"\d{4} \[YR\d{4}\]", col)]
 
+    df_melted = df.melt(id_vars=["Country Name", "Country Code", "Series Name", "Series Code"],
+                        value_vars=year_columns,
+                        var_name="Year",
+                        value_name=value_name)
+
+    # Extract the year from the "Year" column
+    df_melted["Year"] = df_melted["Year"].str.extract("(\d{4})").astype(int)
+
+    # Drop unnecessary columns
+    df_melted.drop(columns=["Series Code", "Series Name"], inplace=True)
+
+    # Rename the columns
+    df_melted.rename(columns={
+        "Country Name": "Country.Name",
+        "Country Code": "Country.Code",
+    }, inplace=True)
+
+    # Sort the dataframe by country_code and then year
+    df_melted.sort_values(by=["Country.Name", "Year"], inplace=True)
+
+    # Reorder columns
+    df_melted = df_melted[["Year", "Country.Code", "Country.Name", value_name]]
+
+    # Remove rows where country code is NA
+    df_melted = df_melted.dropna(subset=["Country.Code"])
+
+    # Replace ".." with NaN
+    df_melted[value_name].replace("..", pd.NA, inplace=True)
+
+    # Check if the column's dtype is 'object'
+    if df_melted[value_name].dtype == 'object':
+        # Convert columns with object dtype that contain numeric data to numeric columns
+        num_col = pd.to_numeric(df_melted[value_name], errors='coerce')
+        # Check if the column isn't all NaN (which would indicate it was a non-numeric column)
+        if not num_col.isna().all():
+            df_melted[value_name] = num_col
+
+    return df_melted
 def calculate_shares(df, value_col):
     """
     Calculate the share of each category in a value column.

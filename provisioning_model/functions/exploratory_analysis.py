@@ -2,6 +2,105 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+import plotly.express as px
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
+from scipy.stats import linregress
+
+def draw_heatmap(df, time_col, country_col, energy_col, time_ticks):
+    fig = px.density_heatmap(df, x=country_col, y=time_col, z=energy_col,
+                             color_continuous_scale='Viridis',
+                             title="Energy Usage by Country Over Time")
+    fig.update_layout(yaxis=dict(categoryorder='total ascending'))
+    fig.update_yaxes(tickvals=time_ticks)
+    return fig
+
+def create_scatter_plots_twodim_with_fit(df, time_col, cols, outcome_col):
+    years = sorted(df[time_col].unique())  # Sort years in ascending order
+    colors = ['red', 'green', 'blue', 'purple']
+    line_color = 'black'  # Distinct color for the regression line
+    subplot_titles = []
+    for year in years:
+        year_title = [f"Year: {year}, {cols[0]}"] + [f"{var}" for var in cols[1:]]
+        subplot_titles.extend(year_title)
+    fig = make_subplots(rows=len(years), cols=len(cols), subplot_titles=subplot_titles,
+                        horizontal_spacing=0.09)
+    for i, year in enumerate(years):
+        for j, var in enumerate(cols):
+            df_year = df[df[time_col] == year]
+            x = df_year[var]
+            y = df_year[outcome_col]
+            valid_indices = ~np.isnan(x) & ~np.isnan(y)
+            x = x[valid_indices]
+            y = y[valid_indices]
+            fig.add_trace(go.Scatter(x=x, y=y, mode='markers', name=var, marker_color=colors[j]),
+                          row=i+1, col=j+1)
+            if len(x) > 1:
+                try:
+                    slope, intercept, _, _, _ = linregress(x, y)
+                    line_x = np.linspace(min(x), max(x), 100)
+                    line_y = slope * line_x + intercept
+                    fig.add_trace(go.Scatter(x=line_x, y=line_y, mode='lines', name=f'Fit {var}', line=dict(color=line_color)),
+                                  row=i+1, col=j+1)
+                except Exception as e:
+                    print(f"Error in linear regression calculation for {var} in {year}: {e}")
+    fig.update_layout(height=800, width=1000, title_text=f"y-axis: {outcome_col}, x-axis: foundational type % share", showlegend=False)
+    return fig
+
+
+def create_scatter_plots_twodim(df, time_col, cols, outcome_col):
+    years = df[time_col].unique()
+    colors = ['red', 'green', 'blue', 'purple']
+    fig = make_subplots(rows=4, cols=len(years), subplot_titles=[f"{year}" for year in years],
+                        vertical_spacing=0.09)
+    fig = make_subplots(rows=4, cols=len(years), subplot_titles=[f"Year: {year}" for year in years])
+    for i, var in enumerate(cols):
+        for j, year in enumerate(years):
+            df_year = df[df['TIME_PERIOD'] == year]
+            fig.add_trace(go.Scatter(x=df_year[var], y=df_year[outcome_col], mode='markers', name=var, marker_color=colors[i]),
+                          row=i+1, col=j+1)
+    fig.update_layout(height=800, width=1000, title_text="Scatter Plots Grid", showlegend=False)
+    return fig
+
+
+def create_scatter_plots_grid(df, time_col, cols, time_periods):
+    """
+    Creates and displays a grid of scatter plots.
+
+    This function uses Plotly to create a grid of scatter plots based on the specified columns of the DataFrame.
+
+    Parameters:
+    df (DataFrame): A Pandas DataFrame that contains the data to be plotted.
+    time_col (str): The name of the column in the DataFrame to use for the x-axis.
+    cols (list): A list of column names from the DataFrame to be plotted. Each column will also be used for the hover text.
+    time_periods (list): A list of time periods to be used as tick values on the x-axis.
+
+    Note:
+    The function currently supports creating up to a 2x2 grid of plots.
+    """
+    if len(cols) > 4:
+        raise ValueError("Maximum of 4 columns can be plotted in a 2x2 grid.")
+
+    time_period_col = df[time_col]
+    fig = make_subplots(rows=2, cols=2, subplot_titles=cols[:4])
+
+    for i, col in enumerate(cols[:4]):
+        row_num = i // 2 + 1
+        col_num = i % 2 + 1
+        fig.add_trace(go.Scatter(x=time_period_col, y=df[col], mode='markers', name=col, hovertext=df['geo']), row=row_num, col=col_num)
+        fig.update_xaxes(tickvals=time_periods, row=row_num, col=col_num)
+
+    fig.update_layout(height=600, width=800, showlegend=False)
+    fig.show()
+
+
+def plot_overlayed_histograms(df, cols, title):
+    fig = go.Figure()
+    for col in cols:
+        fig.add_trace(go.Histogram(x=df[col], name=col))
+    fig.update_layout(barmode='overlay', title_text=title)
+    fig.update_traces(opacity=0.55, hoverinfo='all')
+    fig.show()
 
 
 def create_summary_df(
@@ -36,15 +135,15 @@ def create_summary_df(
     )
 
     for col in variables:
-        sub_df = df[["Country.Name", "Year", col]].dropna()
+        sub_df = df[["geo", "TIME_PERIOD", col]].dropna()
 
         observations = len(sub_df)
-        year_start = sub_df["Year"].min() if not sub_df.empty else None
-        year_end = sub_df["Year"].max() if not sub_df.empty else None
-        num_countries = sub_df["Country.Name"].nunique() if not sub_df.empty else 0
-        num_years = sub_df["Year"].nunique() if not sub_df.empty else 0
+        year_start = sub_df["TIME_PERIOD"].min() if not sub_df.empty else None
+        year_end = sub_df["TIME_PERIOD"].max() if not sub_df.empty else None
+        num_countries = sub_df["geo"].nunique() if not sub_df.empty else 0
+        num_years = sub_df["TIME_PERIOD"].nunique() if not sub_df.empty else 0
 
-        available_countries = set(sub_df["Country.Name"])
+        available_countries = set(sub_df["geo"])
         missing_countries = list(set(countries) - available_countries)
 
         summary_df.loc[col] = [

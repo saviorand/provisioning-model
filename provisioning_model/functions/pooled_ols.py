@@ -35,6 +35,9 @@ def analyze_regression_results(model_results, assumptions):
     Parameters:
     model_results: The results of a fitted OLS model.
     assumptions: A dictionary containing analysis assumptions such as p-value thresholds.
+
+    Returns:
+    dict: A dictionary containing goodness-of-fit measures.
     """
 
     print("Analysis of Regression Results:")
@@ -84,6 +87,17 @@ def analyze_regression_results(model_results, assumptions):
             f"The residual errors are auto-correlated at lags {significant_lags_str}, implying a general miss-specification of the regression model.")
     else:
         print("No significant autocorrelation detected in the residual errors.")
+
+    goodness_of_fit_measures = {
+        'adj_r_squared': adj_r_squared,
+        'log_likelihood': model_results.llf,
+        'AIC': model_results.aic,
+        # 'p_value_normality': p_value_normality,
+        # 'p_value_het': p_value_het,
+        # 'p_value_corr': p_value_corr,
+        # 'significant_lags': significant_lags
+    }
+    return goodness_of_fit_measures
 
 
 def pooled_ols_reg(regression_df, y_variable, x_variables, interaction_terms=[]):

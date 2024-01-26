@@ -3,6 +3,31 @@ import statsmodels.api as sm
 from scipy.stats import shapiro, spearmanr
 from statsmodels.stats.diagnostic import het_breuschpagan, acorr_ljungbox
 
+
+def create_balanced_panel(df, years):
+    """
+    Creates a balanced panel DataFrame including only the countries
+    that have observations for all the specified years and only for those years.
+
+    Parameters:
+    df (pandas.DataFrame): The input DataFrame.
+    years (list): A list of years.
+
+    Returns:
+    pandas.DataFrame: A balanced panel DataFrame.
+    """
+    # Filter the DataFrame for the specified years
+    df_filtered_years = df[df['TIME_PERIOD'].isin(years)]
+
+    # Group by country and check if each has the same number of unique years as the length of the years list
+    valid_countries = df_filtered_years.groupby('geo').filter(lambda x: x['TIME_PERIOD'].nunique() == len(years))['geo'].unique()
+
+    # Filter the DataFrame for these valid countries
+    balanced_panel_df = df_filtered_years[df_filtered_years['geo'].isin(valid_countries)]
+
+    return balanced_panel_df
+
+
 def analyze_regression_results(model_results, assumptions):
     """
     Analyze the regression results and print the outcomes.
@@ -28,22 +53,26 @@ def analyze_regression_results(model_results, assumptions):
     # F-test for Joint Significance
     f_pvalue = model_results.f_pvalue
     if f_pvalue < assumptions['p_value_threshold']:
-        print(f"The F-test indicates that the parameter coefficients are jointly significant at p < {assumptions['p_value_threshold']}.")
+        print(
+            f"The F-test indicates that the parameter coefficients are jointly significant at p < {assumptions['p_value_threshold']}.")
 
     # Normality of Residuals
     w, p_value_normality = shapiro(model_results.resid)
     if p_value_normality < assumptions['p_value_threshold']:
-        print("The residual errors of the model are not normally distributed, implying that the standard errors and confidence intervals associated with the model’s predictions may not be entirely reliable.")
+        print(
+            "The residual errors of the model are not normally distributed, implying that the standard errors and confidence intervals associated with the model’s predictions may not be entirely reliable.")
 
     # Heteroskedasticity Test
     bp_test_stat, p_value_het, _, _ = het_breuschpagan(model_results.resid, model_results.model.exog)
     if p_value_het < assumptions['p_value_threshold']:
-        print("The residual errors are heteroskedastic, implying that results of t-test for parameter significance, the corresponding confidence intervals for the parameter estimates, and the results of the F-test are not entirely reliable.")
+        print(
+            "The residual errors are heteroskedastic, implying that results of t-test for parameter significance, the corresponding confidence intervals for the parameter estimates, and the results of the F-test are not entirely reliable.")
 
     # Correlation of Residuals with Response Variable
     _, p_value_corr = spearmanr(model_results.resid, model_results.model.endog)
     if p_value_corr < assumptions['p_value_threshold']:
-        print("The residual errors are correlated with the response variable y, which means the model may have left out important regression variables.")
+        print(
+            "The residual errors are correlated with the response variable y, which means the model may have left out important regression variables.")
 
     # Autocorrelation in Residuals
     autocorr_results = acorr_ljungbox(model_results.resid, lags=[1, 2, 3], return_df=True)
@@ -51,10 +80,10 @@ def analyze_regression_results(model_results, assumptions):
 
     if significant_lags:
         significant_lags_str = ', '.join(map(str, significant_lags))
-        print(f"The residual errors are auto-correlated at lags {significant_lags_str}, implying a general miss-specification of the regression model.")
+        print(
+            f"The residual errors are auto-correlated at lags {significant_lags_str}, implying a general miss-specification of the regression model.")
     else:
         print("No significant autocorrelation detected in the residual errors.")
-
 
 
 def pooled_ols_reg(regression_df, y_variable, x_variables, interaction_terms=[]):

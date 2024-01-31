@@ -1,7 +1,12 @@
+import math
 import numpy as np
+import pandas as pd
 import statsmodels.api as sm
+import statsmodels.formula.api as smf
+# from linearmodels.panel import PanelOLS, RandomEffects
 from scipy.stats import shapiro, spearmanr
 from statsmodels.stats.diagnostic import het_breuschpagan, acorr_ljungbox
+from termcolor import colored
 
 
 def create_balanced_panel(df, years):
@@ -16,13 +21,11 @@ def create_balanced_panel(df, years):
     Returns:
     pandas.DataFrame: A balanced panel DataFrame.
     """
-    # Filter the DataFrame for the specified years
     df_filtered_years = df[df['TIME_PERIOD'].isin(years)]
 
     # Group by country and check if each has the same number of unique years as the length of the years list
     valid_countries = df_filtered_years.groupby('geo').filter(lambda x: x['TIME_PERIOD'].nunique() == len(years))['geo'].unique()
 
-    # Filter the DataFrame for these valid countries
     balanced_panel_df = df_filtered_years[df_filtered_years['geo'].isin(valid_countries)]
 
     return balanced_panel_df
@@ -62,20 +65,23 @@ def analyze_regression_results(model_results, assumptions):
     # Normality of Residuals
     w, p_value_normality = shapiro(model_results.resid)
     if p_value_normality < assumptions['p_value_threshold']:
-        print(
-            "The residual errors of the model are not normally distributed, implying that the standard errors and confidence intervals associated with the model’s predictions may not be entirely reliable.")
+        print(colored('The residual errors of the model are not normally distributed', 'red'))
+    else:
+        print(colored('The residual errors are normally distributed', 'green'))
 
     # Heteroskedasticity Test
     bp_test_stat, p_value_het, _, _ = het_breuschpagan(model_results.resid, model_results.model.exog)
     if p_value_het < assumptions['p_value_threshold']:
-        print(
-            "The residual errors are heteroskedastic, implying that results of t-test for parameter significance, the corresponding confidence intervals for the parameter estimates, and the results of the F-test are not entirely reliable.")
+        print(colored('The residual errors are heteroskedastic', 'red'))
+    else:
+        print(colored('The residual errors are homoskedastic', 'green'))
 
     # Correlation of Residuals with Response Variable
     _, p_value_corr = spearmanr(model_results.resid, model_results.model.endog)
     if p_value_corr < assumptions['p_value_threshold']:
-        print(
-            "The residual errors are correlated with the response variable y, which means the model may have left out important regression variables.")
+        print(colored('The residual errors are correlated with the response variable y', 'red'))
+    else:
+        print(colored('The residual errors are not correlated with the response variable y', 'green'))
 
     # Autocorrelation in Residuals
     autocorr_results = acorr_ljungbox(model_results.resid, lags=[1, 2, 3], return_df=True)
@@ -83,10 +89,9 @@ def analyze_regression_results(model_results, assumptions):
 
     if significant_lags:
         significant_lags_str = ', '.join(map(str, significant_lags))
-        print(
-            f"The residual errors are auto-correlated at lags {significant_lags_str}, implying a general miss-specification of the regression model.")
+        print(colored(f"The residual errors are auto-correlated at lags {significant_lags_str}.", 'red'))
     else:
-        print("No significant autocorrelation detected in the residual errors.")
+        print(colored('No significant autocorrelation detected in the residual errors.', 'green'))
 
     goodness_of_fit_measures = {
         'adj_r_squared': adj_r_squared,
@@ -135,3 +140,58 @@ def pooled_ols_reg(regression_df, y_variable, x_variables, interaction_terms=[])
 
     pooled_olsr_model = sm.OLS(endog=pooled_y, exog=pooled_x)
     return pooled_olsr_model.fit()
+
+
+def regression_model(regression_df, y_variable, x_variables, model_type='pooled_ols', interaction_terms=[], time_effects=False, unit_col_name='geo',  time_col_name='TIME_PERIOD'):
+    """
+    Perform a regression analysis.
+
+    Parameters:
+    regression_df (DataFrame): The dataframe containing the data.
+    y_variable (str): The dependent variable.
+    x_variables (list): The independent variables.
+    model_type (str): Type of model ('pooled_ols' or 'fixed_effects').
+    interaction_terms (list of tuples): Optional interaction terms.
+    unit_col_name (str): The column name for unit (entity) in fixed effects model.
+
+    Returns:
+    RegressionResults: The fitted model's results.
+    """
+     # Pooled OLS Regression
+    if model_type == 'pooled_ols':
+        pooled_x = regression_df[x_variables].replace([np.inf, -np.inf], np.nan).dropna()
+        pooled_y = regression_df[y_variable].replace([np.inf, -np.inf], np.nan).dropna()
+        pooled_y = pooled_y[pooled_y.index.isin(pooled_x.index)]
+        pooled_x = pooled_x[pooled_x.index.isin(pooled_y.index)]
+        pooled_x = sm.add_constant(pooled_x)
+
+        if interaction_terms:
+            for term in interaction_terms:
+                if all(item in pooled_x.columns for item in term):
+                    pooled_x[':'.join(term)] = np.prod([pooled_x[item] for item in term], axis=0)
+                else:
+                    raise ValueError(f"Interaction term {term} is not valid")
+
+        model = sm.OLS(endog=pooled_y, exog=pooled_x)
+        return model.fit()
+
+    # Fixed Effects Regression
+    elif model_type == 'fixed_effects':
+        if unit_col_name is None:
+            raise ValueError("unit_col_name is required for fixed effects model")
+
+        # Create dummies for fixed effects
+        dummies = pd.get_dummies(regression_df[unit_col_name], drop_first=True)
+        regression_df_with_dummies = regression_df.join(dummies)
+
+        # Ensure the independent variables list does not include the unit_col_name
+        x_variables = [var for var in x_variables if var != unit_col_name]
+
+        # Build the regression formula
+        fe_expr = f'{y_variable} ~ {" + ".join(x_variables)}'
+        for dummy in dummies.columns[:-1]:  # Exclude the last dummy
+            fe_expr += f' + {dummy}'
+        
+        # Fit the fixed effects model
+        fe_model = smf.ols(formula=fe_expr, data=regression_df_with_dummies)
+        return fe_model.fit()

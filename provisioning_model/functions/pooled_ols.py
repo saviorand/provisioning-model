@@ -269,11 +269,16 @@ def regression_model_statsmodels(
             # Add a constant to the independent variables, if not already included
             re_X = sm.add_constant(re_X, prepend=False)
 
-            # Aligning X and y, in case there are missing values
-            non_missing_indices = re_y.dropna().index
-            re_X_aligned = re_X.loc[non_missing_indices]
-            re_y_aligned = re_y.dropna()
+            # Ensure no NaN values in re_X and re_y before alignment
+            re_X.dropna(inplace=True)
+            re_y.dropna(inplace=True)
 
+            # Aligning X and y based on non-missing indices - might not be necessary if both are already cleaned
+            non_missing_indices = re_y.index.intersection(re_X.index)
+            re_X_aligned = re_X.loc[non_missing_indices]
+            re_y_aligned = re_y.loc[non_missing_indices]
+
+            # Fit the model
             re_model = sm.OLS(endog=re_y_aligned, exog=re_X_aligned)
             re_model_results = re_model.fit()
             return re_model_results

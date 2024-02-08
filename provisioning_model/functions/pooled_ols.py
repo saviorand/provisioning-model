@@ -58,63 +58,63 @@ def analyze_regression_results(model_results, assumptions, model_name="OLS"):
     dict: A dictionary containing goodness-of-fit measures.
     """
 
-    print("Analysis of Regression Results:")
+    # print("Analysis of Regression Results:")
 
     # Adjusted R-squared
     adj_r_squared = model_results.rsquared_adj
-    print(f"Adjusted R-squared is around {adj_r_squared:.2%}.")
+    # print(f"Adjusted R-squared is around {adj_r_squared:.2%}.")
 
     # Significance of Model Coefficients
     p_values = model_results.pvalues
     significant_pvalues = p_values[p_values < assumptions["p_value_threshold"]]
-    if not significant_pvalues.empty:
-        print(
-            f"The following coefficients are significant at p < {assumptions['p_value_threshold']}:"
-        )
-        print(significant_pvalues)
+    # if not significant_pvalues.empty:
+    #     print(
+    #         f"The following coefficients are significant at p < {assumptions['p_value_threshold']}:"
+    #     )
+    #     print(significant_pvalues)
 
     # F-test for Joint Significance
     f_pvalue = model_results.f_pvalue
-    if f_pvalue < assumptions["p_value_threshold"]:
-        print(
-            f"The F-test indicates that the parameter coefficients are jointly significant at p < {assumptions['p_value_threshold']}."
-        )
+    # if f_pvalue < assumptions["p_value_threshold"]:
+    #     print(
+    #         f"The F-test indicates that the parameter coefficients are jointly significant at p < {assumptions['p_value_threshold']}."
+    #     )
 
     # Normality of Residuals
     w, p_value_normality = shapiro(model_results.resid)
-    if p_value_normality < assumptions["p_value_threshold"]:
-        print(
-            colored(
-                "The residual errors of the model are not normally distributed", "red"
-            )
-        )
-    else:
-        print(colored("The residual errors are normally distributed", "green"))
+    # if p_value_normality < assumptions["p_value_threshold"]:
+    #     print(
+    #         colored(
+    #             "The residual errors of the model are not normally distributed", "red"
+    #         )
+    #     )
+    # else:
+    #     print(colored("The residual errors are normally distributed", "green"))
 
     # Heteroskedasticity Test
     bp_test_stat, p_value_het, _, _ = het_breuschpagan(
         model_results.resid, model_results.model.exog
     )
-    if p_value_het < assumptions["p_value_threshold"]:
-        print(colored("The residual errors are heteroskedastic", "red"))
-    else:
-        print(colored("The residual errors are homoskedastic", "green"))
+    # if p_value_het < assumptions["p_value_threshold"]:
+    #     print(colored("The residual errors are heteroskedastic", "red"))
+    # else:
+    #     print(colored("The residual errors are homoskedastic", "green"))
 
     # Correlation of Residuals with Response Variable
     _, p_value_corr = spearmanr(model_results.resid, model_results.model.endog)
-    if p_value_corr < assumptions["p_value_threshold"]:
-        print(
-            colored(
-                "The residual errors are correlated with the response variable y", "red"
-            )
-        )
-    else:
-        print(
-            colored(
-                "The residual errors are not correlated with the response variable y",
-                "green",
-            )
-        )
+    # if p_value_corr < assumptions["p_value_threshold"]:
+    #     print(
+    #         colored(
+    #             "The residual errors are correlated with the response variable y", "red"
+    #         )
+    #     )
+    # else:
+    #     print(
+    #         colored(
+    #             "The residual errors are not correlated with the response variable y",
+    #             "green",
+    #         )
+    #     )
 
     # Autocorrelation in Residuals
     autocorr_results = acorr_ljungbox(
@@ -124,21 +124,21 @@ def analyze_regression_results(model_results, assumptions, model_name="OLS"):
         autocorr_results["lb_pvalue"] < assumptions["p_value_threshold"]
     ].tolist()
 
-    if significant_lags:
-        significant_lags_str = ", ".join(map(str, significant_lags))
-        print(
-            colored(
-                f"The residual errors are auto-correlated at lags {significant_lags_str}.",
-                "red",
-            )
-        )
-    else:
-        print(
-            colored(
-                "No significant autocorrelation detected in the residual errors.",
-                "green",
-            )
-        )
+    # if significant_lags:
+    #     significant_lags_str = ", ".join(map(str, significant_lags))
+    #     print(
+    #         colored(
+    #             f"The residual errors are auto-correlated at lags {significant_lags_str}.",
+    #             "red",
+    #         )
+    #     )
+    # else:
+    #     print(
+    #         colored(
+    #             "No significant autocorrelation detected in the residual errors.",
+    #             "green",
+    #         )
+    #     )
 
     goodness_of_fit_measures = {
         "model_name": model_name,
@@ -179,10 +179,10 @@ def regression_model_statsmodels(
     #         "green",
     #     )
     # )
-    heading = Markdown(
-        f"### {model_type} with {y_variable} as the dependent variable and {x_variables} as independent variables. statsmodels method"
-    )
-    display(heading)
+    # heading = Markdown(
+    #     f"### {model_type} with {y_variable} as the dependent variable and {x_variables} as independent variables. statsmodels method"
+    # )
+    # display(heading)
 
     for var in [y_variable] + x_variables:
         if var not in regression_df.columns:
@@ -310,10 +310,10 @@ def regression_model_linearmodels(
     RegressionResults: The fitted model's results.
     """
 
-    heading = Markdown(
-        f"### {model_type} with {y_variable} as the dependent variable and {x_variables} as independent variables. linearmodels method ###"
-    )
-    display(heading)
+    # heading = Markdown(
+    #     f"### {model_type} with {y_variable} as the dependent variable and {x_variables} as independent variables. linearmodels method ###"
+    # )
+    # display(heading)
 
     dataset = regression_df.copy()
     dataset = dataset.set_index(["geo", "TIME_PERIOD"])
@@ -361,7 +361,7 @@ def analyze_linearmodels_regression_results(
     dict: A dictionary containing goodness-of-fit measures.
     """
 
-    print("Analysis of Regression Results:")
+    # print("Analysis of Regression Results:")
 
     fittedvals = model_results.predict().fitted_values
     residuals = model_results.resids
@@ -378,31 +378,31 @@ def analyze_linearmodels_regression_results(
 
     # 3A. Homoskedasticity
     # 3A.1 Residuals-Plot for growing Variance Detection
-    fig, ax = plt.subplots()
-    ax.scatter(fittedvals, residuals, color="blue")
-    ax.axhline(0, color="r", ls="--")
-    ax.set_xlabel("Predicted Values", fontsize=15)
-    ax.set_ylabel("Residuals", fontsize=15)
-    ax.set_title("Homoskedasticity Test", fontsize=30)
-    plt.show()
+    # fig, ax = plt.subplots()
+    # ax.scatter(fittedvals, residuals, color="blue")
+    # ax.axhline(0, color="r", ls="--")
+    # ax.set_xlabel("Predicted Values", fontsize=15)
+    # ax.set_ylabel("Residuals", fontsize=15)
+    # ax.set_title("Homoskedasticity Test", fontsize=30)
+    # plt.show()
 
     # 3A.2 White-Test
     # pooled_OLS_dataset = pd.concat([dataset, residuals_pooled_OLS], axis=1)
     exog = sm.tools.tools.add_constant(x_variables).fillna(0)
-    white_test_results = het_white(residuals, exog)
+    # white_test_results = het_white(residuals, exog)
 
     labels = ["LM-Stat", "LM p-val", "F-Stat", "F p-val"]
-    print("White-Test:", dict(zip(labels, white_test_results)))
+    # print("White-Test:", dict(zip(labels, white_test_results)))
 
     # 3A.3 Breusch-Pagan-Test
-    breusch_pagan_test_results = het_breuschpagan(residuals, exog)
+    # breusch_pagan_test_results = het_breuschpagan(residuals, exog)
     labels = ["LM-Stat", "LM p-val", "F-Stat", "F p-val"]
-    print("Breusch-Pagan-Test:", dict(zip(labels, breusch_pagan_test_results)))
+    # print("Breusch-Pagan-Test:", dict(zip(labels, breusch_pagan_test_results)))
 
     # 3.B Non-Autocorrelation
     # Durbin-Watson-Test
     durbin_watson_test_results = durbin_watson(residuals)
-    print("Durbin-Watson-Test:", durbin_watson_test_results)
+    # print("Durbin-Watson-Test:", durbin_watson_test_results)
 
     goodness_of_fit_measures = {
         "model_name": model_name,

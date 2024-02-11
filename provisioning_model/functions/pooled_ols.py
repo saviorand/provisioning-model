@@ -61,7 +61,12 @@ def analyze_regression_results(model_results, assumptions, model_name="OLS"):
     # print("Analysis of Regression Results:")
 
     # Adjusted R-squared
-    adj_r_squared = model_results.rsquared_adj
+    if isinstance(
+        model_results, sm.regression.mixed_linear_model.MixedLMResultsWrapper
+    ):
+        adj_r_squared = None
+    else:
+        adj_r_squared = model_results.rsquared_adj
     # print(f"Adjusted R-squared is around {adj_r_squared:.2%}.")
 
     # Significance of Model Coefficients
@@ -74,14 +79,14 @@ def analyze_regression_results(model_results, assumptions, model_name="OLS"):
     #     print(significant_pvalues)
 
     # F-test for Joint Significance
-    f_pvalue = model_results.f_pvalue
+    # f_pvalue = model_results.f_pvalue
     # if f_pvalue < assumptions["p_value_threshold"]:
     #     print(
     #         f"The F-test indicates that the parameter coefficients are jointly significant at p < {assumptions['p_value_threshold']}."
     #     )
 
     # Normality of Residuals
-    w, p_value_normality = shapiro(model_results.resid)
+    # w, p_value_normality = shapiro(model_results.resid)
     # if p_value_normality < assumptions["p_value_threshold"]:
     #     print(
     #         colored(
@@ -92,16 +97,16 @@ def analyze_regression_results(model_results, assumptions, model_name="OLS"):
     #     print(colored("The residual errors are normally distributed", "green"))
 
     # Heteroskedasticity Test
-    bp_test_stat, p_value_het, _, _ = het_breuschpagan(
-        model_results.resid, model_results.model.exog
-    )
+    # bp_test_stat, p_value_het, _, _ = het_breuschpagan(
+    #     model_results.resid, model_results.model.exog
+    # )
     # if p_value_het < assumptions["p_value_threshold"]:
     #     print(colored("The residual errors are heteroskedastic", "red"))
     # else:
     #     print(colored("The residual errors are homoskedastic", "green"))
 
     # Correlation of Residuals with Response Variable
-    _, p_value_corr = spearmanr(model_results.resid, model_results.model.endog)
+    # _, p_value_corr = spearmanr(model_results.resid, model_results.model.endog)
     # if p_value_corr < assumptions["p_value_threshold"]:
     #     print(
     #         colored(
@@ -117,12 +122,12 @@ def analyze_regression_results(model_results, assumptions, model_name="OLS"):
     #     )
 
     # Autocorrelation in Residuals
-    autocorr_results = acorr_ljungbox(
-        model_results.resid, lags=[1, 2, 3], return_df=True
-    )
-    significant_lags = autocorr_results.index[
-        autocorr_results["lb_pvalue"] < assumptions["p_value_threshold"]
-    ].tolist()
+    # autocorr_results = acorr_ljungbox(
+    #     model_results.resid, lags=[1, 2, 3], return_df=True
+    # )
+    # significant_lags = autocorr_results.index[
+    #     autocorr_results["lb_pvalue"] < assumptions["p_value_threshold"]
+    # ].tolist()
 
     # if significant_lags:
     #     significant_lags_str = ", ".join(map(str, significant_lags))
@@ -145,6 +150,7 @@ def analyze_regression_results(model_results, assumptions, model_name="OLS"):
         "adj_r_squared": adj_r_squared,
         "log_likelihood": model_results.llf,
         "AIC": model_results.aic,
+        "coefs": model_results.params,
         # 'p_value_normality': p_value_normality,
         # 'p_value_het': p_value_het,
         # 'p_value_corr': p_value_corr,
@@ -188,10 +194,16 @@ def regression_model_statsmodels(
         if var not in regression_df.columns:
             raise ValueError(f"{var} is not in the DataFrame")
 
-    pooled_x = regression_df[x_variables].replace([np.inf, -np.inf], np.nan).dropna()
-    pooled_y = regression_df[y_variable].replace([np.inf, -np.inf], np.nan).dropna()
-    pooled_y = pooled_y[pooled_y.index.isin(pooled_x.index)]
-    pooled_x = pooled_x[pooled_x.index.isin(pooled_y.index)]
+    # pooled_x = regression_df[x_variables].replace([np.inf, -np.inf], np.nan).dropna()
+    # pooled_y = regression_df[y_variable].replace([np.inf, -np.inf], np.nan).dropna()
+    # pooled_y = pooled_y[pooled_y.index.isin(pooled_x.index)]
+    # pooled_x = pooled_x[pooled_x.index.isin(pooled_y.index)]
+
+    # pooled_x = sm.add_constant(pooled_x)
+
+    regression_df = regression_df.replace([np.inf, -np.inf], np.nan).dropna()
+    pooled_y = regression_df[y_variable]
+    pooled_x = regression_df[x_variables]
 
     pooled_x = sm.add_constant(pooled_x)
 
@@ -210,28 +222,53 @@ def regression_model_statsmodels(
     if model_type == "pooled_ols":
         return pooled_olsr_model_results
 
+    if model_type == "mixed_effects":
+        print(regression_df[y_variable].shape)
+        print(regression_df[x_variables].shape)
+        print(regression_df["geo"].shape)
+        print(regression_df["geo"].unique())
+        print(regression_df["geo"].value_counts())
+        print(regression_df.isnull().sum())
+
+        me_model = sm.MixedLM(
+            pooled_y,
+            pooled_x,
+            groups=regression_df["geo"],
+            # exog_re=regression_df["TIME_PERIOD"], # this doesn't converge
+        )
+        return me_model.fit(method=["lbfgs"])
+
     elif model_type == "fixed_effects" or model_type == "random_effects":
         unit_names = regression_df["geo"].unique()
-        n = len(unit_names)
-        # print("Number of groups=" + str(n))
-        T = regression_df.shape[0] / n
-        # print("Number of time periods per group=" + str(T))
-        N = n * T
-        # print("Total number of observations=" + str(N))
-        k = len(x_variables) + 1
-        # print("Number of regression variables=" + str(k))
+        n = len(unit_names)  # print("Number of groups=" + str(n))
+        T = (
+            regression_df.shape[0] / n
+        )  # print("Number of time periods per group=" + str(T))
+        N = n * T  # print("Total number of observations=" + str(N))
+        k = len(x_variables) + 1  # print("Number of regression variables=" + str(k))
 
         dummies = pd.get_dummies(regression_df["geo"], drop_first=True)
-        regression_df_with_dummies = regression_df.join(dummies)
-
-        x_variables = [var for var in x_variables if var != "geo"]
-
+        regression_df_demeaned = regression_df.groupby("geo").transform(
+            lambda x: x - x.mean()
+        )
+        regression_df_demeaned_with_dummies = pd.concat(
+            [regression_df_demeaned, dummies], axis=1
+        )
         fe_expr = f'{y_variable} ~ {" + ".join(x_variables)}'
         for dummy in dummies.columns[:-1]:  # Exclude the last dummy
             fe_expr += f" + {dummy}"
 
-        fe_model = smf.ols(formula=fe_expr, data=regression_df_with_dummies)
+        fe_model = smf.ols(formula=fe_expr, data=regression_df_demeaned_with_dummies)
         fe_model_results = fe_model.fit()
+
+        # fe_model = sm.OLS(
+        #     endog=regression_df_demeaned_with_dummies[y_variable],
+        #     exog=sm.add_constant(
+        #         regression_df_demeaned_with_dummies[x_variables + list(dummies.columns)]
+        #     ),
+        # )
+
+        # fe_model_results = fe_model.fit()
 
         if model_type == "random_effects":
             # Get $\sigma^2_\epsilon$ and $\sigma^2_{pooled}$ from the fixed effects model.
@@ -329,18 +366,20 @@ def regression_model_linearmodels(
             else:
                 raise ValueError(f"Interaction term {term} is not valid")
 
-    # Pooled OLS Regression
-    if model_type == "pooled_ols":
-        pooled_model = PooledOLS(endog, exog)
-        return pooled_model.fit(cov_type="clustered", cluster_entity=True)
-
-    elif model_type == "fixed_effects":
-        fe_model = PanelOLS(endog, exog, entity_effects=True)
-        return fe_model.fit()
+    # Adjust model fitting based on specified effects
+    if model_type == "fixed_effects":
+        fe_model = PanelOLS(endog, exog, entity_effects=True, time_effects=time_effects)
+        return fe_model.fit(cov_type="clustered", cluster_entity=True)
 
     elif model_type == "random_effects":
+        # Note: RandomEffects model in linearmodels doesn't directly support time_effects
         re_model = RandomEffects(endog, exog)
-        return re_model.fit()
+        return re_model.fit(cov_type="clustered", cluster_entity=True)
+
+    # Pooled OLS can also be adjusted, but typically does not include fixed effects directly
+    elif model_type == "pooled_ols":
+        pooled_model = PooledOLS(endog, exog)
+        return pooled_model.fit(cov_type="clustered", cluster_entity=True)
 
 
 def analyze_linearmodels_regression_results(
@@ -409,5 +448,6 @@ def analyze_linearmodels_regression_results(
         "adj_r_squared": adjusted_r_squared,
         "log_likelihood": model_results.loglik,
         "AIC": None,  # TODO
+        "coefs": model_results.params,
     }
     return goodness_of_fit_measures

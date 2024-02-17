@@ -1,1 +1,1 @@
- IEA (2024), "Energy and carbon decomposition data", IEA Energy Efficiency Indicators (database), https://doi.org/10.1787/e3538a5c-en (accessed on 20 January 2024).
+IEA (2024), "Energy and carbon decomposition data", IEA Energy Efficiency Indicators (database), https://doi.org/10.1787/e3538a5c-en (accessed on 20 January 2024).

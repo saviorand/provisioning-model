@@ -17,6 +17,20 @@ def custom_log_transform(value, min_value, max_value):
     return np.log(value + offset)
 
 
+def remove_outliers(outliers_to_remove, df, countries_to_remove=None):
+    df_no_outliers = df.copy()
+    for outlier in outliers_to_remove:
+        df_no_outliers = df_no_outliers[~((df_no_outliers['geo'] == outlier['geo']) & (df_no_outliers['TIME_PERIOD'] == outlier['TIME_PERIOD']))]
+    for country in countries_to_remove:
+        df_no_outliers = df_no_outliers[df_no_outliers['geo'] != country]
+    
+    # Print the number of rows before and after outlier removal
+    print('Number of rows in df: {}'.format(len(df)))
+    print('Number of rows in df_no_outliers: {}'.format(len(df_no_outliers)))
+    
+    # Return the modified dataframes
+    return df_no_outliers
+
 def clean_and_transform_wdi(df, value_name):
     """
     Apply the transformations to the given dataframe and return the cleaned dataframe.

@@ -223,13 +223,6 @@ def regression_model_statsmodels(
         return pooled_olsr_model_results
 
     if model_type == "mixed_effects":
-        print(regression_df[y_variable].shape)
-        print(regression_df[x_variables].shape)
-        print(regression_df["geo"].shape)
-        print(regression_df["geo"].unique())
-        print(regression_df["geo"].value_counts())
-        print(regression_df.isnull().sum())
-
         me_model = sm.MixedLM(
             pooled_y,
             pooled_x,

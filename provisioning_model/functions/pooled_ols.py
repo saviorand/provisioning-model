@@ -18,32 +18,32 @@ from termcolor import colored
 from IPython.display import display, Markdown
 
 
-def create_balanced_panel(df, years):
-    """
-    Creates a balanced panel DataFrame including only the countries
-    that have observations for all the specified years and only for those years.
+def create_balanced_panel(df, years, dependent_variable, independent_variables, balanced=False):
+    # Step 1: Filter by selected years
+    df_filtered = df[df['TIME_PERIOD'].isin(years)]
 
-    Parameters:
-    df (pandas.DataFrame): The input DataFrame.
-    years (list): A list of years.
+    # Step 2: Drop rows with NaN in dependent or any independent variable
+    columns_to_check = [dependent_variable] + independent_variables
+    df_filtered = df_filtered.dropna(subset=columns_to_check)
 
-    Returns:
-    pandas.DataFrame: A balanced panel DataFrame.
-    """
-    df_filtered_years = df[df["TIME_PERIOD"].isin(years)]
+    if balanced:
+        # Check for each country if it has observations for all years and variables
+        # Group by 'geo' and filter groups
+        def check_group(group):
+            # For each year, check if there are any missing observations for the required variables
+            for year in years:
+                year_group = group[group['TIME_PERIOD'] == year]
+                if year_group.empty or year_group[columns_to_check].isnull().values.any():
+                    return False
+            return True
 
-    # Group by country and check if each has the same number of unique years as the length of the years list
-    valid_countries = (
-        df_filtered_years.groupby("geo")
-        .filter(lambda x: x["TIME_PERIOD"].nunique() == len(years))["geo"]
-        .unique()
-    )
+        # Apply the check to each group and filter countries based on completeness
+        valid_countries = df_filtered.groupby('geo').filter(check_group)['geo'].unique()
 
-    balanced_panel_df = df_filtered_years[
-        df_filtered_years["geo"].isin(valid_countries)
-    ]
+        # Filter the DataFrame to only include these countries
+        df_filtered = df_filtered[df_filtered['geo'].isin(valid_countries)]
 
-    return balanced_panel_df
+    return df_filtered
 
 
 def analyze_regression_results(model_results, assumptions, model_name="OLS"):
@@ -62,7 +62,7 @@ def analyze_regression_results(model_results, assumptions, model_name="OLS"):
 
     # Adjusted R-squared
     if isinstance(
-        model_results, sm.regression.mixed_linear_model.MixedLMResultsWrapper
+            model_results, sm.regression.mixed_linear_model.MixedLMResultsWrapper
     ):
         adj_r_squared = None
     else:
@@ -160,11 +160,11 @@ def analyze_regression_results(model_results, assumptions, model_name="OLS"):
 
 
 def regression_model_statsmodels(
-    regression_df,
-    y_variable,
-    x_variables,
-    model_type="pooled_ols",
-    interaction_terms=[],
+        regression_df,
+        y_variable,
+        x_variables,
+        model_type="pooled_ols",
+        interaction_terms=[],
 ):
     """
     Perform a pooled OLS regression.
@@ -235,7 +235,7 @@ def regression_model_statsmodels(
         unit_names = regression_df["geo"].unique()
         n = len(unit_names)  # print("Number of groups=" + str(n))
         T = (
-            regression_df.shape[0] / n
+                regression_df.shape[0] / n
         )  # print("Number of time periods per group=" + str(T))
         N = n * T  # print("Total number of observations=" + str(N))
         k = len(x_variables) + 1  # print("Number of regression variables=" + str(k))
@@ -318,12 +318,12 @@ def regression_model_statsmodels(
 
 
 def regression_model_linearmodels(
-    regression_df,
-    y_variable,
-    x_variables,
-    model_type="pooled_ols",
-    interaction_terms=[],
-    time_effects=False,
+        regression_df,
+        y_variable,
+        x_variables,
+        model_type="pooled_ols",
+        interaction_terms=[],
+        time_effects=False,
 ):
     """
     Perform a regression analysis.
@@ -376,11 +376,11 @@ def regression_model_linearmodels(
 
 
 def analyze_linearmodels_regression_results(
-    model_results,
-    assumptions,
-    model_name="PanelOLS",
-    x_variables=None,
-    model_type="pooled_ols",
+        model_results,
+        assumptions,
+        model_name="PanelOLS",
+        x_variables=None,
+        model_type="pooled_ols",
 ):
     """
     Analyze the regression results from linearmodels and print the outcomes.

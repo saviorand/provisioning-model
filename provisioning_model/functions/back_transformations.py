@@ -66,9 +66,14 @@ def predict_with_back_transform(
     first_non_energy_processed = (
         False  # Flag to track processing of the first non-energy variable
     )
+    z_values = None
+    z_values_energy = None
     for var in predictor_variable_names:
-        if var != "energy":
+        if var == "energy":
+            z_values_energy = data_transformed[var]
+        else:
             if not first_non_energy_processed:
+                z_values = data_transformed[var]
                 # Apply specific logic only to the first non-energy variable
                 if case == "LOW":
                     data_transformed[var] = data_transformed[var][
@@ -114,6 +119,59 @@ def predict_with_back_transform(
     else:
         predicted_y = model.predict(exog_transformed)
 
+    marginal_effects_df, marginal_effects_df_energy = None, None
+    if len(predictor_variable_names) != 1:
+        if isinstance(model, sm.regression.linear_model.RegressionResultsWrapper):
+            vcov_matrix = model.cov_params()
+        else:
+            vcov_matrix = model.cov
+
+        beta1 = model.params[predictor_variable_names[0]]
+        beta2 = model.params[predictor_variable_names[1]]
+        beta3 = model.params[f'{predictor_variable_names[0]}:{predictor_variable_names[1]}']
+
+        beta1_var = vcov_matrix.loc[predictor_variable_names[0], predictor_variable_names[0]]
+        beta2_var = vcov_matrix.loc[predictor_variable_names[1], predictor_variable_names[1]]
+        beta3_var = vcov_matrix.loc[f'{predictor_variable_names[0]}:{predictor_variable_names[1]}', f'{predictor_variable_names[0]}:{predictor_variable_names[1]}']
+
+        beta1_beta3_cov = vcov_matrix.loc[predictor_variable_names[0], f'{predictor_variable_names[0]}:{predictor_variable_names[1]}']
+        beta2_beta3_cov = vcov_matrix.loc[predictor_variable_names[1], f'{predictor_variable_names[0]}:{predictor_variable_names[1]}']
+
+        marginal_effects = []
+        for z_value in z_values:
+            marginal_effect = beta1 + z_value * beta3
+            marginal_effects.append(marginal_effect)
+        marginal_effects_energy = []
+        for z_value_energy in z_values_energy:
+            marginal_effect_energy = beta2 + z_value_energy * beta3
+            marginal_effects_energy.append(marginal_effect_energy)
+
+        marginal_effects_se = []
+        for z_value in z_values:
+            marginal_effect_var = beta1_var + (z_value ** 2) * beta3_var + 2 * z_value * beta1_beta3_cov
+            marginal_effect_se = marginal_effect_var ** 0.5  # Square root of variance to get standard error
+            marginal_effects_se.append(marginal_effect_se)
+        marginal_effects_se_energy = []
+        for z_value_energy in z_values_energy:
+            marginal_effect_energy_var = beta2_var + (z_value_energy ** 2) * beta3_var + 2 * z_value_energy * beta2_beta3_cov
+            marginal_effect_energy_se = marginal_effect_energy_var ** 0.5
+            marginal_effects_se_energy.append(marginal_effect_energy_se)
+
+        marginal_effects_df = pd.DataFrame(
+            {
+                "z_value": z_values,
+                "marginal_effects": marginal_effects,
+                "marginal_effects_se": marginal_effects_se,
+            }
+        )
+        marginal_effects_df_energy = pd.DataFrame(
+            {
+                "z_value": z_values_energy,
+                "marginal_effects": marginal_effects_energy,
+                "marginal_effects_se": marginal_effects_se_energy,
+            }
+        )
+
     # Optionally back-transform the predicted y
     if back_transform_y:
         predicted_y_array = inverse_back_transform(
@@ -152,4 +210,4 @@ def predict_with_back_transform(
         by=predictor_variable_names[0]
     )
 
-    return sorted_df_with_predictors
+    return sorted_df_with_predictors, marginal_effects_df, marginal_effects_df_energy

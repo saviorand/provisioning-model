@@ -1,6 +1,8 @@
 import math
 import numpy as np
+import numpy.linalg as la
 import pandas as pd
+from scipy import stats
 import matplotlib.pyplot as plt
 import statsmodels.api as sm
 import statsmodels.formula.api as smf
@@ -13,10 +15,21 @@ from statsmodels.stats.diagnostic import (
     het_white,
     het_breuschpagan,
 )
+from linearmodels.panel.results import compare
 from statsmodels.stats.stattools import durbin_watson
 from termcolor import colored
 from IPython.display import display, Markdown
 
+def hausman(fe, re):
+    b = fe.params
+    B = re.params
+    v_b = fe.cov
+    v_B = re.cov
+    df = b[np.abs(b) < 1e8].size
+    chi2 = np.dot((b - B).T, la.inv(v_b - v_B).dot(b - B))
+
+    pval = stats.chi2.sf(chi2, df)
+    return chi2, df, pval
 
 def create_balanced_panel(df, years, dependent_variable, independent_variables, balanced=False):
     # Step 1: Filter by selected years
@@ -359,20 +372,34 @@ def regression_model_linearmodels(
             else:
                 raise ValueError(f"Interaction term {term} is not valid")
 
-    # Adjust model fitting based on specified effects
-    if model_type == "fixed_effects":
+    pooled_model = PooledOLS(endog, exog)
+    res_pooled = pooled_model.fit(cov_type="clustered", cluster_entity=True)
+
+    if model_type == "pooled_ols":
+        return {"model": res_pooled, "type": "pooled_ols"}
+
+    if model_type == "fixed_effects" or model_type == "random_effects":
         fe_model = PanelOLS(endog, exog, entity_effects=True, time_effects=time_effects)
-        return fe_model.fit(cov_type="clustered", cluster_entity=True)
-
-    elif model_type == "random_effects":
-        # Note: RandomEffects model in linearmodels doesn't directly support time_effects
+        res_fe = fe_model.fit(cov_type="clustered", cluster_entity=True)
         re_model = RandomEffects(endog, exog)
-        return re_model.fit(cov_type="clustered", cluster_entity=True)
+        res_re = re_model.fit(cov_type="clustered", cluster_entity=True)
 
-    # Pooled OLS can also be adjusted, but typically does not include fixed effects directly
-    elif model_type == "pooled_ols":
-        pooled_model = PooledOLS(endog, exog)
-        return pooled_model.fit(cov_type="clustered", cluster_entity=True)
+        hausman_results = hausman(res_fe, res_re)
+        # print('chi-Squared: ' + str(hausman_results[0]))
+        # print('degrees of freedom: ' + str(hausman_results[1]))
+
+        if model_type == "fixed_effects":
+            # confirm the hypothesis that fixed effect is better than pooled OLS
+            # res_fe_f_statistic = compare([res_fe, res_pooled]).f_statistic
+            res_fe_f_statistic = res_fe.f_pooled
+            return {"model": res_fe, "type": "fixed_effects", "f-statistic": res_fe_f_statistic, "hausman_test": hausman_results}
+
+        elif model_type == "random_effects":
+            # Note: RandomEffects model in linearmodels doesn't directly support time_effects
+            # confirm the hypothesis that random effect is better than pooled OLS with Breusch-Pagan LM test
+            breusch_pagan_test_results = het_breuschpagan(res_re.resids, exog)
+            labels = ["LM-Stat", "LM p-val", "F-Stat", "F p-val"]
+            return {"model": res_re, "type": "random_effects", "breusch_pagan_test": dict(zip(labels, breusch_pagan_test_results)), "hausman_test": hausman_results}
 
 
 def analyze_linearmodels_regression_results(
@@ -426,10 +453,6 @@ def analyze_linearmodels_regression_results(
     labels = ["LM-Stat", "LM p-val", "F-Stat", "F p-val"]
     # print("White-Test:", dict(zip(labels, white_test_results)))
 
-    # 3A.3 Breusch-Pagan-Test
-    # breusch_pagan_test_results = het_breuschpagan(residuals, exog)
-    labels = ["LM-Stat", "LM p-val", "F-Stat", "F p-val"]
-    # print("Breusch-Pagan-Test:", dict(zip(labels, breusch_pagan_test_results)))
 
     # 3.B Non-Autocorrelation
     # Durbin-Watson-Test

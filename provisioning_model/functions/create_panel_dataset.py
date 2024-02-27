@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 import re
 
+
 def custom_log_transform(value, min_value, max_value):
     if min_value >= 0 and max_value <= 1:
         # Case: All values are between 0 and 1
@@ -14,22 +15,31 @@ def custom_log_transform(value, min_value, max_value):
         # Case: Positive values, no offset needed
         offset = 0
 
-    return np.log(value + offset)
+    if value + offset != 0:
+        return np.log(value + offset)
+    else:
+        return 0
 
 
 def remove_outliers(outliers_to_remove, df, countries_to_remove=None):
     df_no_outliers = df.copy()
     for outlier in outliers_to_remove:
-        df_no_outliers = df_no_outliers[~((df_no_outliers['geo'] == outlier['geo']) & (df_no_outliers['TIME_PERIOD'] == outlier['TIME_PERIOD']))]
+        df_no_outliers = df_no_outliers[
+            ~(
+                (df_no_outliers["geo"] == outlier["geo"])
+                & (df_no_outliers["TIME_PERIOD"] == outlier["TIME_PERIOD"])
+            )
+        ]
     for country in countries_to_remove:
-        df_no_outliers = df_no_outliers[df_no_outliers['geo'] != country]
-    
+        df_no_outliers = df_no_outliers[df_no_outliers["geo"] != country]
+
     # Print the number of rows before and after outlier removal
-    print('Number of rows in df: {}'.format(len(df)))
-    print('Number of rows in df_no_outliers: {}'.format(len(df_no_outliers)))
-    
+    print("Number of rows in df: {}".format(len(df)))
+    print("Number of rows in df_no_outliers: {}".format(len(df_no_outliers)))
+
     # Return the modified dataframes
     return df_no_outliers
+
 
 def clean_and_transform_wdi(df, value_name):
     """
@@ -39,11 +49,12 @@ def clean_and_transform_wdi(df, value_name):
     # Extract columns that match the pattern 'XXXX [YRXXXX]' for year
     year_columns = [col for col in df.columns if re.match(r"\d{4} \[YR\d{4}\]", col)]
 
-    df_melted = df.melt(id_vars=["Country Name", "Country Code", "Series Name", "Series Code"],
-                        value_vars=year_columns,
-                        var_name="Year",
-                        value_name=value_name)
-
+    df_melted = df.melt(
+        id_vars=["Country Name", "Country Code", "Series Name", "Series Code"],
+        value_vars=year_columns,
+        var_name="Year",
+        value_name=value_name,
+    )
 
     # Extract the year from the "Year" column
     df_melted["Year"] = df_melted["Year"].str.extract("(\d{4})").astype(int)
@@ -52,10 +63,13 @@ def clean_and_transform_wdi(df, value_name):
     df_melted.drop(columns=["Series Code", "Series Name"], inplace=True)
 
     # Rename the columns
-    df_melted.rename(columns={
-        "Country Name": "Country.Name",
-        "Country Code": "Country.Code",
-    }, inplace=True)
+    df_melted.rename(
+        columns={
+            "Country Name": "Country.Name",
+            "Country Code": "Country.Code",
+        },
+        inplace=True,
+    )
 
     # Sort the dataframe by country_code and then year
     df_melted.sort_values(by=["Country.Name", "Year"], inplace=True)
@@ -70,14 +84,15 @@ def clean_and_transform_wdi(df, value_name):
     df_melted[value_name].replace("..", pd.NA, inplace=True)
 
     # Check if the column's dtype is 'object'
-    if df_melted[value_name].dtype == 'object':
+    if df_melted[value_name].dtype == "object":
         # Convert columns with object dtype that contain numeric data to numeric columns
-        num_col = pd.to_numeric(df_melted[value_name], errors='coerce')
+        num_col = pd.to_numeric(df_melted[value_name], errors="coerce")
         # Check if the column isn't all NaN (which would indicate it was a non-numeric column)
         if not num_col.isna().all():
             df_melted[value_name] = num_col
 
     return df_melted
+
 
 def clean_and_transform_wdi_outcomes(df, value_name):
     """
@@ -87,10 +102,12 @@ def clean_and_transform_wdi_outcomes(df, value_name):
     # Extract columns that match the pattern 'XXXX [YRXXXX]' for year
     year_columns = [col for col in df.columns if re.match(r"\d{4} \[YR\d{4}\]", col)]
 
-    df_melted = df.melt(id_vars=["Country Name", "Country Code", "Series Name", "Series Code"],
-                        value_vars=year_columns,
-                        var_name="Year",
-                        value_name=value_name)
+    df_melted = df.melt(
+        id_vars=["Country Name", "Country Code", "Series Name", "Series Code"],
+        value_vars=year_columns,
+        var_name="Year",
+        value_name=value_name,
+    )
 
     # Extract the year from the "Year" column
     df_melted["Year"] = df_melted["Year"].str.extract("(\d{4})").astype(int)
@@ -99,10 +116,13 @@ def clean_and_transform_wdi_outcomes(df, value_name):
     df_melted.drop(columns=["Series Code", "Series Name"], inplace=True)
 
     # Rename the columns
-    df_melted.rename(columns={
-        "Country Name": "Country.Name",
-        "Country Code": "Country.Code",
-    }, inplace=True)
+    df_melted.rename(
+        columns={
+            "Country Name": "Country.Name",
+            "Country Code": "Country.Code",
+        },
+        inplace=True,
+    )
 
     # Sort the dataframe by country_code and then year
     df_melted.sort_values(by=["Country.Name", "Year"], inplace=True)
@@ -117,14 +137,16 @@ def clean_and_transform_wdi_outcomes(df, value_name):
     df_melted[value_name].replace("..", pd.NA, inplace=True)
 
     # Check if the column's dtype is 'object'
-    if df_melted[value_name].dtype == 'object':
+    if df_melted[value_name].dtype == "object":
         # Convert columns with object dtype that contain numeric data to numeric columns
-        num_col = pd.to_numeric(df_melted[value_name], errors='coerce')
+        num_col = pd.to_numeric(df_melted[value_name], errors="coerce")
         # Check if the column isn't all NaN (which would indicate it was a non-numeric column)
         if not num_col.isna().all():
             df_melted[value_name] = num_col
 
     return df_melted
+
+
 def calculate_shares(df, value_col):
     """
     Calculate the share of each category in a value column.
@@ -133,20 +155,32 @@ def calculate_shares(df, value_col):
     :return: a DataFrame with the share of each category in a value column
     """
     # Group by 'geo', 'TIME_PERIOD', and 'final_foundational' and sum the specified value column
-    grouped = df.groupby(['geo', 'TIME_PERIOD', 'final_foundational'])[value_col].sum().reset_index()
+    grouped = (
+        df.groupby(["geo", "TIME_PERIOD", "final_foundational"])[value_col]
+        .sum()
+        .reset_index()
+    )
 
     # Calculate total value for each country-year combination
-    total_values = df.groupby(['geo', 'TIME_PERIOD'])[value_col].sum().reset_index()
-    total_values.rename(columns={value_col: 'total_value'}, inplace=True)
+    total_values = df.groupby(["geo", "TIME_PERIOD"])[value_col].sum().reset_index()
+    total_values.rename(columns={value_col: "total_value"}, inplace=True)
 
     # Merge and calculate share
-    merged = pd.merge(grouped, total_values, on=['geo', 'TIME_PERIOD'])
-    merged['share'] = merged[value_col] / merged['total_value']
+    merged = pd.merge(grouped, total_values, on=["geo", "TIME_PERIOD"])
+    merged["share"] = merged[value_col] / merged["total_value"]
 
     # Pivot the table to get categories as columns
-    pivot_table = merged.pivot_table(index=['geo', 'TIME_PERIOD'], columns='final_foundational', values='share', fill_value=0).reset_index()
+    pivot_table = merged.pivot_table(
+        index=["geo", "TIME_PERIOD"],
+        columns="final_foundational",
+        values="share",
+        fill_value=0,
+    ).reset_index()
+    # create a "foundational column" which is the sum of 'material' and 'providential'
+    pivot_table["Foundational"] = pivot_table["Material"] + pivot_table["Providential"]
 
     return pivot_table
+
 
 def standardize_data(input_data) -> np.ndarray:
     """
@@ -162,6 +196,7 @@ def standardize_data(input_data) -> np.ndarray:
     output_data = (input_data - mean) / std_dev
 
     return output_data
+
 
 def remove_cols_with_few_observations(df, threshold_country=75, threshold_year=75):
     """
@@ -220,8 +255,8 @@ def create_outcome_df_with_metadata(df, outcome, index_offset, outcome_index_off
     # Store information in the summary dictionary
     summary[outcome + "_df"] = df
     summary[outcome + "_indicators"] = df.iloc[
-                                       :, index_offset: len(df.columns) - outcome_index_offset
-                                       ]
+        :, index_offset : len(df.columns) - outcome_index_offset
+    ]
     summary[outcome + "_outcome"] = df[outcome]
     summary[outcome + "_countries"] = df["Country.Name"].unique()
     summary[outcome + "_variables"] = df.columns[index_offset:]
@@ -253,7 +288,9 @@ def remove_outliers_iqr(df, factor=1.5):
     upper_bound = Q3 + factor * IQR
 
     # Remove outliers
-    df_filtered_float = df_float[~((df_float < lower_bound) | (df_float > upper_bound)).any(axis=1)]
+    df_filtered_float = df_float[
+        ~((df_float < lower_bound) | (df_float > upper_bound)).any(axis=1)
+    ]
 
     # return the original df with the outliers removed
     df_filtered = df[df_float.index.isin(df_filtered_float.index)]

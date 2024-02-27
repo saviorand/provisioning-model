@@ -20,6 +20,7 @@ from statsmodels.stats.stattools import durbin_watson
 from termcolor import colored
 from IPython.display import display, Markdown
 
+
 def hausman(fe, re):
     b = fe.params
     B = re.params
@@ -31,32 +32,86 @@ def hausman(fe, re):
     pval = stats.chi2.sf(chi2, df)
     return chi2, df, pval
 
-def create_balanced_panel(df, years, dependent_variable, independent_variables, balanced=False):
-    # Step 1: Filter by selected years
-    df_filtered = df[df['TIME_PERIOD'].isin(years)]
 
-    # Step 2: Drop rows with NaN in dependent or any independent variable
-    columns_to_check = [dependent_variable] + independent_variables
-    df_filtered = df_filtered.dropna(subset=columns_to_check)
+def create_balanced_panel(
+    df, years, dependent_variable, independent_variables, balanced=False
+):
+    # Create a copy to avoid modifying the original DataFrame
+    df = df.copy()
+
+    # Step 1: Create an indicator for selected years
+    df["year_selected"] = df["TIME_PERIOD"].isin(years)
+
+    # Step 2: Create an indicator for rows without NaN in dependent or any independent variable
+    columns_to_check = [dependent_variable]
+    x_vars_list = (
+        independent_variables
+        if isinstance(independent_variables, list)
+        else [independent_variables]
+    )
+    for variable in x_vars_list:
+        if variable not in df.columns:
+            raise ValueError(f"{variable} is not in the DataFrame")
+        columns_to_check.append(variable)
+    df["no_nan"] = ~df[columns_to_check].isnull().any(axis=1)
 
     if balanced:
         # Check for each country if it has observations for all years and variables
-        # Group by 'geo' and filter groups
         def check_group(group):
-            # For each year, check if there are any missing observations for the required variables
+            valid = True
             for year in years:
-                year_group = group[group['TIME_PERIOD'] == year]
-                if year_group.empty or year_group[columns_to_check].isnull().values.any():
-                    return False
-            return True
+                year_group = group[
+                    (group["TIME_PERIOD"] == year)
+                    & group["year_selected"]
+                    & group["no_nan"]
+                ]
+                if year_group.empty:
+                    valid = False
+                    break
+            return valid
 
-        # Apply the check to each group and filter countries based on completeness
-        valid_countries = df_filtered.groupby('geo').filter(check_group)['geo'].unique()
+        # Apply the check to each group and create an indicator for valid countries
+        valid_countries = df.groupby("geo").filter(check_group)["geo"].unique()
+        df["valid_country"] = df["geo"].isin(valid_countries)
+    else:
+        # If not balancing, consider all rows valid as long as they meet year and NaN criteria
+        df["valid_country"] = True
 
-        # Filter the DataFrame to only include these countries
-        df_filtered = df_filtered[df_filtered['geo'].isin(valid_countries)]
+    # Combine all indicators to filter the DataFrame while preserving the original order and index
+    final_mask = df["year_selected"] & df["valid_country"] & df["no_nan"]
+    df_filtered = df[final_mask].drop(
+        columns=["year_selected", "valid_country", "no_nan"]
+    )
 
     return df_filtered
+    # # Step 1: Filter by selected years
+    # df_filtered = df[df["TIME_PERIOD"].isin(years)]
+
+    # # Step 2: Drop rows with NaN in dependent or any independent variable
+    # columns_to_check = [dependent_variable] + independent_variables
+    # df_filtered = df_filtered.dropna(subset=columns_to_check)
+
+    # if balanced:
+    #     # Check for each country if it has observations for all years and variables
+    #     # Group by 'geo' and filter groups
+    #     def check_group(group):
+    #         # For each year, check if there are any missing observations for the required variables
+    #         for year in years:
+    #             year_group = group[group["TIME_PERIOD"] == year]
+    #             if (
+    #                 year_group.empty
+    #                 or year_group[columns_to_check].isnull().values.any()
+    #             ):
+    #                 return False
+    #         return True
+
+    #     # Apply the check to each group and filter countries based on completeness
+    #     valid_countries = df_filtered.groupby("geo").filter(check_group)["geo"].unique()
+
+    #     # Filter the DataFrame to only include these countries
+    #     df_filtered = df_filtered[df_filtered["geo"].isin(valid_countries)]
+
+    # return df_filtered
 
 
 def analyze_regression_results(model_results, assumptions, model_name="OLS"):
@@ -75,7 +130,7 @@ def analyze_regression_results(model_results, assumptions, model_name="OLS"):
 
     # Adjusted R-squared
     if isinstance(
-            model_results, sm.regression.mixed_linear_model.MixedLMResultsWrapper
+        model_results, sm.regression.mixed_linear_model.MixedLMResultsWrapper
     ):
         adj_r_squared = None
     else:
@@ -173,11 +228,11 @@ def analyze_regression_results(model_results, assumptions, model_name="OLS"):
 
 
 def regression_model_statsmodels(
-        regression_df,
-        y_variable,
-        x_variables,
-        model_type="pooled_ols",
-        interaction_terms=[],
+    regression_df,
+    y_variable,
+    x_variables,
+    model_type="pooled_ols",
+    interaction_terms=[],
 ):
     """
     Perform a pooled OLS regression.
@@ -248,7 +303,7 @@ def regression_model_statsmodels(
         unit_names = regression_df["geo"].unique()
         n = len(unit_names)  # print("Number of groups=" + str(n))
         T = (
-                regression_df.shape[0] / n
+            regression_df.shape[0] / n
         )  # print("Number of time periods per group=" + str(T))
         N = n * T  # print("Total number of observations=" + str(N))
         k = len(x_variables) + 1  # print("Number of regression variables=" + str(k))
@@ -331,12 +386,12 @@ def regression_model_statsmodels(
 
 
 def regression_model_linearmodels(
-        regression_df,
-        y_variable,
-        x_variables,
-        model_type="pooled_ols",
-        interaction_terms=[],
-        time_effects=False,
+    regression_df,
+    y_variable,
+    x_variables,
+    model_type="pooled_ols",
+    interaction_terms=[],
+    time_effects=False,
 ):
     """
     Perform a regression analysis.
@@ -362,6 +417,7 @@ def regression_model_linearmodels(
     dataset = dataset.set_index(["geo", "TIME_PERIOD"])
     # years = dataset.index.get_level_values("TIME_PERIOD").to_list()
     # dataset["year"] = pd.Categorical(years)
+
     exog = sm.add_constant(dataset[x_variables])
     endog = dataset[y_variable]
 
@@ -392,22 +448,32 @@ def regression_model_linearmodels(
             # confirm the hypothesis that fixed effect is better than pooled OLS
             # res_fe_f_statistic = compare([res_fe, res_pooled]).f_statistic
             res_fe_f_statistic = res_fe.f_pooled
-            return {"model": res_fe, "type": "fixed_effects", "f-statistic": res_fe_f_statistic, "hausman_test": hausman_results}
+            return {
+                "model": res_fe,
+                "type": "fixed_effects",
+                "f-statistic": res_fe_f_statistic,
+                "hausman_test": hausman_results,
+            }
 
         elif model_type == "random_effects":
             # Note: RandomEffects model in linearmodels doesn't directly support time_effects
             # confirm the hypothesis that random effect is better than pooled OLS with Breusch-Pagan LM test
             breusch_pagan_test_results = het_breuschpagan(res_re.resids, exog)
             labels = ["LM-Stat", "LM p-val", "F-Stat", "F p-val"]
-            return {"model": res_re, "type": "random_effects", "breusch_pagan_test": dict(zip(labels, breusch_pagan_test_results)), "hausman_test": hausman_results}
+            return {
+                "model": res_re,
+                "type": "random_effects",
+                "breusch_pagan_test": dict(zip(labels, breusch_pagan_test_results)),
+                "hausman_test": hausman_results,
+            }
 
 
 def analyze_linearmodels_regression_results(
-        model_results,
-        assumptions,
-        model_name="PanelOLS",
-        x_variables=None,
-        model_type="pooled_ols",
+    model_results,
+    assumptions,
+    model_name="PanelOLS",
+    x_variables=None,
+    model_type="pooled_ols",
 ):
     """
     Analyze the regression results from linearmodels and print the outcomes.
@@ -452,7 +518,6 @@ def analyze_linearmodels_regression_results(
 
     labels = ["LM-Stat", "LM p-val", "F-Stat", "F p-val"]
     # print("White-Test:", dict(zip(labels, white_test_results)))
-
 
     # 3.B Non-Autocorrelation
     # Durbin-Watson-Test

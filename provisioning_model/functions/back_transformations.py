@@ -24,12 +24,39 @@ def back_transform_variable(data, saturation_value=None):
         back_transformed_data = np.exp(data)
     return back_transformed_data
 
+    # Maximum values: hospitalbeds 8.34, housing 93.3, communicable 9.31752899340398, rail 249.9476373390929, suicide: 37.8
+
+    # max reverse infantmortality  0.5555555555555556 roadinjury 0.37037037037037035
+
 
 def inverse_back_transform(y_data, target_variable_name, scaler_df):
     saturation_values = {
         "hale": 1.1 * 72.7,
         "socialsupport": 1.1 * 0.985,
         "education": 1.1 * 19.69990921,
+        "hospitalbeds": 8.34,
+        "infantmortality": 0.5555555555555556,
+        "rail": 249.9476373390929,
+        "roadinjury": 0.37037037037037035,
+        "suicide": 37.8,
+        "housing": 93.3,
+        "communicable": 9.31752899340398,
+        "broadband": 47.49841009,
+        "immunization": 99.0,
+        "internet": 98.13669867,
+        "renewable": 61.29,
+        "safesanitation": 99.8146572820038,
+        "telephone": 62.96037495,
+        "tests": 543.2060546875,
+        "uppersecondary": 90.2288589477539,
+        "dietaryrisks": 11.738358922607793,
+        "foodinsecurity": 0.45454545454545453,
+        "homicides": 2.0900200000000013,
+        "nutrideficiencies": 24.049951768725286,
+        "povertymulti": 0.08403361344537814,
+        "povertynational": 0.11627906976744186,
+        "unsafewater": 7819.263137758341,
+        "immunization": 0.014084507042253521,
     }
 
     if isinstance(y_data, (pd.DataFrame, pd.Series)):
@@ -128,14 +155,29 @@ def predict_with_back_transform(
 
         beta1 = model.params[predictor_variable_names[0]]
         beta2 = model.params[predictor_variable_names[1]]
-        beta3 = model.params[f'{predictor_variable_names[0]}:{predictor_variable_names[1]}']
+        beta3 = model.params[
+            f"{predictor_variable_names[0]}:{predictor_variable_names[1]}"
+        ]
 
-        beta1_var = vcov_matrix.loc[predictor_variable_names[0], predictor_variable_names[0]]
-        beta2_var = vcov_matrix.loc[predictor_variable_names[1], predictor_variable_names[1]]
-        beta3_var = vcov_matrix.loc[f'{predictor_variable_names[0]}:{predictor_variable_names[1]}', f'{predictor_variable_names[0]}:{predictor_variable_names[1]}']
+        beta1_var = vcov_matrix.loc[
+            predictor_variable_names[0], predictor_variable_names[0]
+        ]
+        beta2_var = vcov_matrix.loc[
+            predictor_variable_names[1], predictor_variable_names[1]
+        ]
+        beta3_var = vcov_matrix.loc[
+            f"{predictor_variable_names[0]}:{predictor_variable_names[1]}",
+            f"{predictor_variable_names[0]}:{predictor_variable_names[1]}",
+        ]
 
-        beta1_beta3_cov = vcov_matrix.loc[predictor_variable_names[0], f'{predictor_variable_names[0]}:{predictor_variable_names[1]}']
-        beta2_beta3_cov = vcov_matrix.loc[predictor_variable_names[1], f'{predictor_variable_names[0]}:{predictor_variable_names[1]}']
+        beta1_beta3_cov = vcov_matrix.loc[
+            predictor_variable_names[0],
+            f"{predictor_variable_names[0]}:{predictor_variable_names[1]}",
+        ]
+        beta2_beta3_cov = vcov_matrix.loc[
+            predictor_variable_names[1],
+            f"{predictor_variable_names[0]}:{predictor_variable_names[1]}",
+        ]
 
         marginal_effects = []
         for z_value in z_values:
@@ -148,13 +190,21 @@ def predict_with_back_transform(
 
         marginal_effects_se = []
         for z_value in z_values:
-            marginal_effect_var = beta1_var + (z_value ** 2) * beta3_var + 2 * z_value * beta1_beta3_cov
-            marginal_effect_se = marginal_effect_var ** 0.5  # Square root of variance to get standard error
+            marginal_effect_var = (
+                beta1_var + (z_value**2) * beta3_var + 2 * z_value * beta1_beta3_cov
+            )
+            marginal_effect_se = (
+                marginal_effect_var**0.5
+            )  # Square root of variance to get standard error
             marginal_effects_se.append(marginal_effect_se)
         marginal_effects_se_energy = []
         for z_value_energy in z_values_energy:
-            marginal_effect_energy_var = beta2_var + (z_value_energy ** 2) * beta3_var + 2 * z_value_energy * beta2_beta3_cov
-            marginal_effect_energy_se = marginal_effect_energy_var ** 0.5
+            marginal_effect_energy_var = (
+                beta2_var
+                + (z_value_energy**2) * beta3_var
+                + 2 * z_value_energy * beta2_beta3_cov
+            )
+            marginal_effect_energy_se = marginal_effect_energy_var**0.5
             marginal_effects_se_energy.append(marginal_effect_energy_se)
 
         marginal_effects_df = pd.DataFrame(
@@ -185,18 +235,18 @@ def predict_with_back_transform(
     back_transformed_predicted_y_with_geo = pd.DataFrame(
         predicted_y_array, columns=[f"predicted_{target_variable_name}"]
     )
-    back_transformed_predicted_y_with_geo[
-        ["geo", "TIME_PERIOD"]
-    ] = back_transformed_data[["geo", "TIME_PERIOD"]].reset_index(drop=True)
+    back_transformed_predicted_y_with_geo[["geo", "TIME_PERIOD"]] = (
+        back_transformed_data[["geo", "TIME_PERIOD"]].reset_index(drop=True)
+    )
 
     data_original_with_y = data_original.reset_index().merge(
         back_transformed_predicted_y_with_geo, on=["geo", "TIME_PERIOD"], how="inner"
     )
 
     # add a column with first transformed x for plotting
-    data_original_with_y[
-        f"{predictor_variable_names[0]}_transformed"
-    ] = data_transformed[predictor_variable_names[0]].reset_index(drop=True)
+    data_original_with_y[f"{predictor_variable_names[0]}_transformed"] = (
+        data_transformed[predictor_variable_names[0]].reset_index(drop=True)
+    )
 
     # Return the dataframe sorted by the first predictor variable
     sorted_df_columns = (

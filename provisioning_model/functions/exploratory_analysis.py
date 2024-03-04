@@ -6,6 +6,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 from scipy.stats import linregress
+from adjustText import adjust_text
 
 
 def draw_heatmap(df, time_col, country_col, energy_col, time_ticks):
@@ -110,34 +111,66 @@ def create_scatter_plots_twodim(df, time_col, cols, outcome_col):
     return fig
 
 
-def create_scatter_plots_grid(df, time_col, cols, time_periods):
-    """
-    Creates and displays a grid of scatter plots.
+def get_extreme_points(x, y, lower_percentile, upper_percentile):
+    # Extreme points
+    low_x, high_x = np.percentile(x, [lower_percentile, upper_percentile])
+    low_y, high_y = np.percentile(y, [lower_percentile, upper_percentile])
+    extreme_indices = np.where(
+        (x <= low_x) | (x >= high_x) | (y <= low_y) | (y >= high_y)
+    )[0]
+    return extreme_indices
 
-    This function uses Plotly to create a grid of scatter plots based on the specified columns of the DataFrame.
 
-    Parameters:
-    df (DataFrame): A Pandas DataFrame that contains the data to be plotted.
-    time_col (str): The name of the column in the DataFrame to use for the x-axis.
-    cols (list): A list of column names from the DataFrame to be plotted. Each column will also be used for the hover text.
-    time_periods (list): A list of time periods to be used as tick values on the x-axis.
+def get_middle_points(x, y, n_middle):
+    median_x = np.median(x)
+    median_y = np.median(y)
+    distances = np.sqrt((x - median_x) ** 2 + (y - median_y) ** 2)
+    middle_indices = np.argsort(distances)[:n_middle]
+    return middle_indices
 
-    Note:
-    The function currently supports creating up to a 2x2 grid of plots.
-    """
-    if len(cols) > 5:
-        raise ValueError("Maximum of 4 columns can be plotted in a 2x2 grid.")
 
-    time_period_col = df[time_col]
-    fig = make_subplots(rows=3, cols=2, subplot_titles=cols[:5])
+def create_scatter_plots_grid(
+    df,
+    time_col,
+    cols,
+    time_periods,
+    titles=[],
+    countries_to_annotate=[],
+    save_path=None,
+    height=600,
+    width=800,
+    rows=2,
+):
+    # if len(cols) > 4:
+    #     raise ValueError("Maximum of 4 columns can be plotted in a 2x2 grid.")
 
-    for i, col in enumerate(cols[:5]):
+    fig = make_subplots(rows=rows, cols=2, subplot_titles=cols[:4])
+
+    # Manually select indices of points to annotate
+    # For example, [0, -1] will annotate the first and last points in your dataset
+    indices_to_annotate = []
+    for country in countries_to_annotate:
+        country_index = df[
+            (df["geo"] == country["geo"]) & (df[time_col] == country[time_col])
+        ].index
+        if len(country_index) > 0:
+            indices_to_annotate.append(
+                {"country": country_index[0], "show": country["show"]}
+            )
+        else:
+            print(f"Country {country['geo']} not found in the dataset")
+
+    for i, col in enumerate(cols[:4]):
         row_num = i // 2 + 1
         col_num = i % 2 + 1
+        x = df[time_col]
+        y = df[col]
+
+        # Add scatter trace for markers
         fig.add_trace(
             go.Scatter(
-                x=time_period_col,
-                y=df[col],
+                x=x,
+                y=y,
                 mode="markers",
                 name=col,
                 hovertext=df["geo"],
@@ -145,9 +178,33 @@ def create_scatter_plots_grid(df, time_col, cols, time_periods):
             row=row_num,
             col=col_num,
         )
+        for idx in indices_to_annotate:
+            if idx["show"] == col:
+                country_index = idx["country"]
+                fig.add_annotation(
+                    x=df.iloc[country_index][
+                        time_col
+                    ],  # Use country_index to access the specific row
+                    y=df.iloc[country_index][
+                        col
+                    ],  # Use country_index to access the specific row
+                    text=f"{df.iloc[country_index]['geo']} {df.iloc[country_index][time_col]}: {float(df.iloc[country_index][col]):.2f}",
+                    showarrow=True,
+                    arrowhead=1,
+                    xref="x",
+                    yref="y",
+                    ax=20,  # Adjust these for arrow positioning
+                    ay=-30,  # Adjust these for arrow positioning
+                    row=row_num,
+                    col=col_num,
+                )
+
         fig.update_xaxes(tickvals=time_periods, row=row_num, col=col_num)
 
-    fig.update_layout(height=600, width=800, showlegend=False)
+    fig.update_layout(height=height, width=width, showlegend=False)
+    if save_path:
+        # save as png
+        fig.write_image(save_path)
     fig.show()
 
 

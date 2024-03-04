@@ -178,6 +178,8 @@ def calculate_shares(df, value_col):
     ).reset_index()
     # create a "foundational column" which is the sum of 'material' and 'providential'
     pivot_table["Foundational"] = pivot_table["Material"] + pivot_table["Providential"]
+    # create a "nonfoundational" column which is sum of "other" and "overlooked"
+    pivot_table["Nonfoundational"] = pivot_table["Other"] + pivot_table["Overlooked"]
 
     return pivot_table
 
